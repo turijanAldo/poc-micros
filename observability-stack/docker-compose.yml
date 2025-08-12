@@ -1,0 +1,121 @@
+version: '3.8'
+
+services:
+  # Contenedor auxiliar que genera la configuración usando una imagen con shell
+  otel-config-generator:
+    image: alpine:latest  # Imagen pequeña pero con shell completo
+    container_name: otel-config-generator
+    volumes:
+      - otel_config:/shared  # Volumen compartido para pasar la configuración
+    command: |
+      sh -c '
+      echo "🔧 Generando configuración del OpenTelemetry Collector..."
+      
+      cat > /shared/otel-collector-config.yaml << "EOF"
+      receivers:
+        otlp:
+          protocols:
+            grpc:
+              endpoint: 0.0.0.0:4317
+            http:
+              endpoint: 0.0.0.0:4318
+      
+      processors:
+        batch:
+          timeout: 1s
+          send_batch_size: 1024
+        memory_limiter:
+          limit_mib: 256
+          check_interval: 5s
+      
+      exporters:
+        zipkin:
+          endpoint: "http://zipkin:9411/api/v2/spans"
+          format: json
+        prometheus:
+          endpoint: "0.0.0.0:8889"
+        debug:
+          verbosity: detailed
+      
+      service:
+        pipelines:
+          traces:
+            receivers: [otlp]
+            processors: [memory_limiter, batch]
+            exporters: [zipkin, debug]
+          metrics:
+            receivers: [otlp]
+            processors: [memory_limiter, batch]
+            exporters: [prometheus, debug]
+      EOF
+      
+      echo "✅ Configuración generada en volumen compartido"
+      '
+
+  # Colector OpenTelemetry usando la configuración generada
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "8889:8889"
+    volumes:
+      - otel_config:/etc/otelcol-contrib  # Montar el volumen con la configuración generada
+    command: ["--config=/etc/otelcol-contrib/otel-collector-config.yaml"]
+    depends_on:
+      - otel-config-generator  # Asegurar que la configuración se genere primero
+      - zipkin
+      - prometheus
+    networks:
+      - observability
+
+  # Resto de servicios permanecen igual...
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mem
+    networks:
+      - observability
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    # Parámetros de configuración adicionales
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=15d'  # Retiene datos por 15 días
+      - '--web.enable-lifecycle'  # Permite recargar configuración sin reiniciar
+    networks:
+      - observability
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - observability
+
+volumes:
+  otel_config:  # Volumen para compartir configuración entre contenedores
+  grafana_data:
+
+networks:
+  observability:
+    driver: bridge

@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Zipkin: Para visualizar trazas distribuidas
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mem  # Almacena en memoria para simplicidad
+    networks:
+      - observability
+
+  # Prometheus: Para recolectar y almacenar métricas
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9091:9090"  # Puerto externo 9091 para evitar conflictos
+    # Usamos una estrategia diferente: comando personalizado con configuración mínima
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.enable-lifecycle'
+      # Agregamos configuración básica directamente en los argumentos
+      - '--web.listen-address=0.0.0.0:9090'
+    # Iniciamos sin archivo de configuración personalizado por ahora
+    networks:
+      - observability
+
+  # Grafana: Para crear dashboards y visualizaciones
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - observability
+
+volumes:
+  grafana_data:
+
+networks:
+  observability:
+    driver: bridge
