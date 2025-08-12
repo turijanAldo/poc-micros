@@ -1,135 +1,591 @@
-2025-08-11 17:08:10 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 20824 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
-2025-08-11 17:08:10 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
-2025-08-11 17:08:10 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
-2025-08-11 17:08:16 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
-2025-08-11 17:08:16 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-08-11 17:08:16 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-08-11 17:08:16 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-08-11 17:08:16 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5752 ms
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.c.a.GrpcCommonCodecAutoConfiguration - Found GrpcCodecDiscoverer -> Creating custom CompressorRegistry
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.c.c.AnnotationGrpcCodecDiscoverer - Searching for codecs...
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.c.c.AnnotationGrpcCodecDiscoverer - Done
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.c.a.GrpcCommonCodecAutoConfiguration - Found GrpcCodecDiscoverer -> Creating custom DecompressorRegistry
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - Pre-Registering service metrics
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - com.example.service_user.service.UserServiceImpl@7cd3e0da
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - io.grpc.protobuf.services.HealthServiceImpl@577bfadb
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - io.grpc.protobuf.services.ProtoReflectionService@20a1b3ae
-2025-08-11 17:08:18 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: metricCollectingServerInterceptor (io.micrometer.core.instrument.binder.grpc.MetricCollectingServerInterceptor@2ab9e43e)
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: grpcRequestScope (net.devh.boot.grpc.server.scope.GrpcRequestScope@10dfa7ef)
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: globalObservationGrpcServerInterceptorConfigurer (io.micrometer.core.instrument.binder.grpc.ObservationGrpcServerInterceptor@4fd80300)
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
-2025-08-11 17:08:18 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
-2025-08-11 17:08:18 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
-2025-08-11 17:08:19 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
-2025-08-11 17:08:19 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
-2025-08-11 17:08:19 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
-2025-08-11 17:08:19 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
-2025-08-11 17:08:19 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
-2025-08-11 17:08:19 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 12.887 seconds (process running for 14.633)
-2025-08-11 17:09:29 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 22408 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
-2025-08-11 17:09:29 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
-2025-08-11 17:09:29 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
-2025-08-11 17:09:34 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
-2025-08-11 17:09:34 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-08-11 17:09:34 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-08-11 17:09:34 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-08-11 17:09:34 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4266 ms
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.c.a.GrpcCommonCodecAutoConfiguration - Found GrpcCodecDiscoverer -> Creating custom CompressorRegistry
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.c.c.AnnotationGrpcCodecDiscoverer - Searching for codecs...
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.c.c.AnnotationGrpcCodecDiscoverer - Done
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.c.a.GrpcCommonCodecAutoConfiguration - Found GrpcCodecDiscoverer -> Creating custom DecompressorRegistry
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - Pre-Registering service metrics
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - com.example.service_user.service.UserServiceImpl@22ae905f
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - io.grpc.protobuf.services.HealthServiceImpl@2de3b052
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - io.grpc.protobuf.services.ProtoReflectionService@568f4faa
-2025-08-11 17:09:36 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: metricCollectingServerInterceptor (io.micrometer.core.instrument.binder.grpc.MetricCollectingServerInterceptor@12365bd8)
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: grpcRequestScope (net.devh.boot.grpc.server.scope.GrpcRequestScope@14874a5d)
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: globalObservationGrpcServerInterceptorConfigurer (io.micrometer.core.instrument.binder.grpc.ObservationGrpcServerInterceptor@49cb5030)
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
-2025-08-11 17:09:36 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
-2025-08-11 17:09:37 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
-2025-08-11 17:09:37 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
-2025-08-11 17:09:37 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
-2025-08-11 17:09:37 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
-2025-08-11 17:09:37 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
-2025-08-11 17:09:38 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
-2025-08-11 17:09:38 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 9.688 seconds (process running for 10.637)
-2025-08-11 17:11:43 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-08-11 17:11:43 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-08-11 17:11:43 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2025-08-11 17:11:43 [http-nio-8081-exec-1] INFO  [6d9d640b694ff2092bd452e2cb721508,6bf776ec3780e9ee] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:11:43 [http-nio-8081-exec-1] INFO  [6d9d640b694ff2092bd452e2cb721508,6bf776ec3780e9ee] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:13:04 [http-nio-8081-exec-3] INFO  [a14221461e8835a2c6eb4aa325a90cf1,9b5bb8be642c9d03] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:13:04 [http-nio-8081-exec-3] INFO  [a14221461e8835a2c6eb4aa325a90cf1,9b5bb8be642c9d03] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:19:24 [http-nio-8081-exec-5] INFO  [d1e4c8fc30bab3bc3cce923f3c5052f9,4a29e0734f84b7f3] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:19:24 [http-nio-8081-exec-5] INFO  [d1e4c8fc30bab3bc3cce923f3c5052f9,4a29e0734f84b7f3] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:20:01 [http-nio-8081-exec-6] INFO  [548168a6a2351974cf3ed19d88a6ad4b,dbe6e9505b476e8e] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:20:01 [http-nio-8081-exec-6] INFO  [548168a6a2351974cf3ed19d88a6ad4b,dbe6e9505b476e8e] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:27:26 [http-nio-8081-exec-8] INFO  [14d7ed3c6bd2f1decb051d4f67a1cf8a,7d938cbd44ae1d2c] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:27:26 [http-nio-8081-exec-8] INFO  [14d7ed3c6bd2f1decb051d4f67a1cf8a,7d938cbd44ae1d2c] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:27:27 [http-nio-8081-exec-9] INFO  [53c73251fd6184edd8d6e36070cfee6c,271a3afe15a6f10a] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:27:27 [http-nio-8081-exec-9] INFO  [53c73251fd6184edd8d6e36070cfee6c,271a3afe15a6f10a] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:27:28 [http-nio-8081-exec-10] INFO  [af8e5619c5a815a0779618fc38a2594b,0ca138bf4d410709] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:27:28 [http-nio-8081-exec-10] INFO  [af8e5619c5a815a0779618fc38a2594b,0ca138bf4d410709] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:27:29 [http-nio-8081-exec-1] INFO  [0182b6968cd1670632200d014137ce79,9452502875bf7bfd] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:27:30 [http-nio-8081-exec-1] INFO  [0182b6968cd1670632200d014137ce79,9452502875bf7bfd] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:52 [http-nio-8081-exec-3] INFO  [56c68ce68d5186c13c86c1e1ce4ad5de,d9b51a8be4016855] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:52 [http-nio-8081-exec-3] INFO  [56c68ce68d5186c13c86c1e1ce4ad5de,d9b51a8be4016855] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:54 [http-nio-8081-exec-4] INFO  [1be5f1df8a4213f0ef553fb35f677cfc,a457adf87ae650c9] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:54 [http-nio-8081-exec-4] INFO  [1be5f1df8a4213f0ef553fb35f677cfc,a457adf87ae650c9] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:54 [http-nio-8081-exec-5] INFO  [53627d959d3f3307060a62d82bee9407,ab19592013c82509] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:54 [http-nio-8081-exec-5] INFO  [53627d959d3f3307060a62d82bee9407,ab19592013c82509] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:55 [http-nio-8081-exec-6] INFO  [a37cbcdd51b0c35d97e06da273f7ef6e,b8facf3613d758c8] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:55 [http-nio-8081-exec-6] INFO  [a37cbcdd51b0c35d97e06da273f7ef6e,b8facf3613d758c8] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:55 [http-nio-8081-exec-7] INFO  [0fd6995734875a49df9bf120ce4d1880,96baa85373ac32d4] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:55 [http-nio-8081-exec-7] INFO  [0fd6995734875a49df9bf120ce4d1880,96baa85373ac32d4] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:55 [http-nio-8081-exec-8] INFO  [f10a5845e3530efded652a05060bbeeb,f0a2be8d87ba5362] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:56 [http-nio-8081-exec-8] INFO  [f10a5845e3530efded652a05060bbeeb,f0a2be8d87ba5362] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:56 [http-nio-8081-exec-9] INFO  [edffa4f67a10401ee9e953ce45ab43fa,009033ba4611c433] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:56 [http-nio-8081-exec-9] INFO  [edffa4f67a10401ee9e953ce45ab43fa,009033ba4611c433] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:56 [http-nio-8081-exec-10] INFO  [74858230c1d529310c1bd8ba31d55093,e76099308df5b67c] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:56 [http-nio-8081-exec-10] INFO  [74858230c1d529310c1bd8ba31d55093,e76099308df5b67c] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:56 [http-nio-8081-exec-1] INFO  [e8af70ad59c06bb9b8d3e554bd6c907b,e5399f88b2a12ecb] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:56 [http-nio-8081-exec-1] INFO  [e8af70ad59c06bb9b8d3e554bd6c907b,e5399f88b2a12ecb] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:57 [http-nio-8081-exec-2] INFO  [ea573a35d727c5a2d0ae4faf99e624f9,26b8854edfd20a6a] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:57 [http-nio-8081-exec-2] INFO  [ea573a35d727c5a2d0ae4faf99e624f9,26b8854edfd20a6a] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:57 [http-nio-8081-exec-3] INFO  [afc4aba5e65916e0275aff00ce998898,3b446ce6edc77a8f] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:57 [http-nio-8081-exec-3] INFO  [afc4aba5e65916e0275aff00ce998898,3b446ce6edc77a8f] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:57 [http-nio-8081-exec-4] INFO  [d050156873709c9bb333507df1c9831d,d7b2c5d166c725c9] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:57 [http-nio-8081-exec-4] INFO  [d050156873709c9bb333507df1c9831d,d7b2c5d166c725c9] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:57 [http-nio-8081-exec-5] INFO  [ab0149db3c569fc56005d05fd3310ada,7a3c6b76eab8ae67] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:58 [http-nio-8081-exec-5] INFO  [ab0149db3c569fc56005d05fd3310ada,7a3c6b76eab8ae67] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:58 [http-nio-8081-exec-6] INFO  [abef0ed04598cf45b7f4337d54849d22,9010f04845300929] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:58 [http-nio-8081-exec-6] INFO  [abef0ed04598cf45b7f4337d54849d22,9010f04845300929] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:58 [http-nio-8081-exec-7] INFO  [cf87a739b6d6dad0c742d1e01da9de3b,5b8b8e5d3960c1d2] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:58 [http-nio-8081-exec-7] INFO  [cf87a739b6d6dad0c742d1e01da9de3b,5b8b8e5d3960c1d2] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:58 [http-nio-8081-exec-8] INFO  [a7e4b04b7021e332ae7bc3e603c2ca95,8ea3876db0eea1df] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:58 [http-nio-8081-exec-8] INFO  [a7e4b04b7021e332ae7bc3e603c2ca95,8ea3876db0eea1df] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:58 [http-nio-8081-exec-9] INFO  [2e6bc70f342cc77bb468ef8051fc884e,3e71fe5b0773ce04] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:58 [http-nio-8081-exec-9] INFO  [2e6bc70f342cc77bb468ef8051fc884e,3e71fe5b0773ce04] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:59 [http-nio-8081-exec-10] INFO  [6801d4aff6291aee6f4a3b47db154887,2673dfd4df54c0ed] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:59 [http-nio-8081-exec-10] INFO  [6801d4aff6291aee6f4a3b47db154887,2673dfd4df54c0ed] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:59 [http-nio-8081-exec-1] INFO  [31844df0c1d229e280b9b783c9d9d1dc,3275071bcf430a5e] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:59 [http-nio-8081-exec-1] INFO  [31844df0c1d229e280b9b783c9d9d1dc,3275071bcf430a5e] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:59 [http-nio-8081-exec-2] INFO  [3e9e2c2d09cc911e99a0aaceae23c9b9,089266ab08851eda] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:28:59 [http-nio-8081-exec-2] INFO  [3e9e2c2d09cc911e99a0aaceae23c9b9,089266ab08851eda] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:28:59 [http-nio-8081-exec-3] INFO  [364dcf2e5695dbbb35b0ee0d03cdf0b3,65cc481f3132bca4] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:29:00 [http-nio-8081-exec-3] INFO  [364dcf2e5695dbbb35b0ee0d03cdf0b3,65cc481f3132bca4] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:29:00 [http-nio-8081-exec-4] INFO  [3c605bfcf25ebbf8dab10cbaf519dcb6,d8c1bc924c186202] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:29:00 [http-nio-8081-exec-4] INFO  [3c605bfcf25ebbf8dab10cbaf519dcb6,d8c1bc924c186202] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:29:00 [http-nio-8081-exec-5] INFO  [8d114af9516ab79410886c8d910df36c,dd66cab6356a89fd] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:29:00 [http-nio-8081-exec-5] INFO  [8d114af9516ab79410886c8d910df36c,dd66cab6356a89fd] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:29:00 [http-nio-8081-exec-6] INFO  [b058e450346c255297119a3922fe9d5a,936fe4bd5edaf125] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:29:00 [http-nio-8081-exec-6] INFO  [b058e450346c255297119a3922fe9d5a,936fe4bd5edaf125] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:29:00 [http-nio-8081-exec-7] INFO  [7d1e696b8d2b17988f14c5040a2a3c78,4f1046dafe364c29] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:29:00 [http-nio-8081-exec-7] INFO  [7d1e696b8d2b17988f14c5040a2a3c78,4f1046dafe364c29] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:29:01 [http-nio-8081-exec-8] INFO  [d6834c0d72a3adb2a4743bd294799182,161f40b2293a8689] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:29:01 [http-nio-8081-exec-8] INFO  [d6834c0d72a3adb2a4743bd294799182,161f40b2293a8689] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:29:01 [http-nio-8081-exec-9] INFO  [42095d3f21dd38de26fb23204ea7a126,361ccb12b1e121e1] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:29:01 [http-nio-8081-exec-9] INFO  [42095d3f21dd38de26fb23204ea7a126,361ccb12b1e121e1] c.e.s.controller.UserController - Returning user: Juan Pérez
-2025-08-11 17:29:01 [http-nio-8081-exec-10] INFO  [f299afd9bf911fdf9194798bd2b69124,b101a071665d28a4] c.e.s.controller.UserController - Received request for user data
-2025-08-11 17:29:01 [http-nio-8081-exec-10] INFO  [f299afd9bf911fdf9194798bd2b69124,b101a071665d28a4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:29 [http-nio-8081-exec-3] INFO  [d0633f1ffdda66367cc7450490ace24a,5ad13e770ef2e5a1] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:29 [http-nio-8081-exec-3] INFO  [d0633f1ffdda66367cc7450490ace24a,5ad13e770ef2e5a1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:30 [http-nio-8081-exec-5] INFO  [ed79ff0a81da3e075b5cb70f9e5cccdd,0be5cd37bfec2ea9] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:30 [http-nio-8081-exec-5] INFO  [ed79ff0a81da3e075b5cb70f9e5cccdd,0be5cd37bfec2ea9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:30 [http-nio-8081-exec-6] INFO  [0a50df60eab3b4e676c9f83a531d6ed5,d541e3db189d2b97] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:30 [http-nio-8081-exec-6] INFO  [0a50df60eab3b4e676c9f83a531d6ed5,d541e3db189d2b97] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:30 [http-nio-8081-exec-9] INFO  [50e880ef7e920aa20e529204e950441e,5f1e50028080ab46] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:30 [http-nio-8081-exec-9] INFO  [50e880ef7e920aa20e529204e950441e,5f1e50028080ab46] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:30 [http-nio-8081-exec-8] INFO  [8edc651ede72e3d7d9c71c23e3b9267f,d4c609a8030a2e11] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:30 [http-nio-8081-exec-8] INFO  [8edc651ede72e3d7d9c71c23e3b9267f,d4c609a8030a2e11] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:30 [http-nio-8081-exec-7] INFO  [a4df5d17fcc0af63765b7e8cfe208396,5d616094738ea149] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:31 [http-nio-8081-exec-7] INFO  [a4df5d17fcc0af63765b7e8cfe208396,5d616094738ea149] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:31 [http-nio-8081-exec-10] INFO  [c1e895544f8589ffa902b1f30a888071,10575de5b36c00b0] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:31 [http-nio-8081-exec-10] INFO  [c1e895544f8589ffa902b1f30a888071,10575de5b36c00b0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:31 [http-nio-8081-exec-2] INFO  [c2387decf8bff4edb225151883260c4e,6508c38f528b37b5] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:31 [http-nio-8081-exec-2] INFO  [c2387decf8bff4edb225151883260c4e,6508c38f528b37b5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:31 [http-nio-8081-exec-1] INFO  [7e84a4ad1b68dae617d7f0f81a035dca,af818994d710720a] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:31 [http-nio-8081-exec-1] INFO  [7e84a4ad1b68dae617d7f0f81a035dca,af818994d710720a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:13:31 [http-nio-8081-exec-4] INFO  [fac14bc55ab8b6b56f9ef4bff6cfb25c,157f48dcf49a9808] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:13:31 [http-nio-8081-exec-4] INFO  [fac14bc55ab8b6b56f9ef4bff6cfb25c,157f48dcf49a9808] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:34 [http-nio-8081-exec-9] INFO  [821384bb1fe2aaf49e5cf87fb347d00d,500d599eb1146e4e] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:34 [http-nio-8081-exec-9] INFO  [821384bb1fe2aaf49e5cf87fb347d00d,500d599eb1146e4e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:34 [http-nio-8081-exec-8] INFO  [3a0de7f7629e31dcad42590a677439e0,76063b4011da7387] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:34 [http-nio-8081-exec-8] INFO  [3a0de7f7629e31dcad42590a677439e0,76063b4011da7387] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:34 [http-nio-8081-exec-7] INFO  [715432b1ba38cdac24081d71c59bb295,9d72388bc8ea9204] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:34 [http-nio-8081-exec-7] INFO  [715432b1ba38cdac24081d71c59bb295,9d72388bc8ea9204] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:34 [http-nio-8081-exec-2] INFO  [f84331048efd998c2df5ed9d1df120c3,be1bb7c183814d62] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:34 [http-nio-8081-exec-2] INFO  [f84331048efd998c2df5ed9d1df120c3,be1bb7c183814d62] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:34 [http-nio-8081-exec-1] INFO  [5d9295219eeb3a7c193a2360c8df01e8,2d0eb41c1da7bcd4] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:35 [http-nio-8081-exec-1] INFO  [5d9295219eeb3a7c193a2360c8df01e8,2d0eb41c1da7bcd4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:35 [http-nio-8081-exec-4] INFO  [6e9bfeeda88e825ac5af4d24b02536d3,d9e8c3074c5c1957] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:35 [http-nio-8081-exec-4] INFO  [6e9bfeeda88e825ac5af4d24b02536d3,d9e8c3074c5c1957] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:35 [http-nio-8081-exec-3] INFO  [93833f5adb26c2ce548335b821b89784,c87a65848fbbbd64] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:35 [http-nio-8081-exec-3] INFO  [93833f5adb26c2ce548335b821b89784,c87a65848fbbbd64] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:35 [http-nio-8081-exec-5] INFO  [85e609709122c69005025fbd340382f7,cf2b7bb085a0fda7] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:35 [http-nio-8081-exec-5] INFO  [85e609709122c69005025fbd340382f7,cf2b7bb085a0fda7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:35 [http-nio-8081-exec-6] INFO  [ced0a2c4b012848879f21a7a1081bee8,ef6c7237aa62140a] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:35 [http-nio-8081-exec-6] INFO  [ced0a2c4b012848879f21a7a1081bee8,ef6c7237aa62140a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:36 [http-nio-8081-exec-9] INFO  [85b9d849978e4246d1369d1dbab972a8,da83425a3ecf37a4] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:36 [http-nio-8081-exec-9] INFO  [85b9d849978e4246d1369d1dbab972a8,da83425a3ecf37a4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:37 [http-nio-8081-exec-8] INFO  [76bc588a0a005272b4c067d46ec69f23,39b7dc77f25331d5] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:37 [http-nio-8081-exec-8] INFO  [76bc588a0a005272b4c067d46ec69f23,39b7dc77f25331d5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:37 [http-nio-8081-exec-7] INFO  [66d2d7c84c9608f261fcd2a82e69c420,60abb766d632e8f4] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:37 [http-nio-8081-exec-7] INFO  [66d2d7c84c9608f261fcd2a82e69c420,60abb766d632e8f4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:37 [http-nio-8081-exec-10] INFO  [798bd3ed3a855111d67693a00893ca1f,26ddff8e35d4aa40] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:38 [http-nio-8081-exec-10] INFO  [798bd3ed3a855111d67693a00893ca1f,26ddff8e35d4aa40] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:38 [http-nio-8081-exec-2] INFO  [1b306459841db903e5d3db470ce7480e,a868d39075702429] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:38 [http-nio-8081-exec-2] INFO  [1b306459841db903e5d3db470ce7480e,a868d39075702429] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:38 [http-nio-8081-exec-1] INFO  [df9890c17a9c0672c36494667acd1c51,ed468708316c3266] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:38 [http-nio-8081-exec-1] INFO  [df9890c17a9c0672c36494667acd1c51,ed468708316c3266] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:38 [http-nio-8081-exec-4] INFO  [01463f9e9db0535ddad9cf22a070aae4,0ed81671351bd8aa] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:38 [http-nio-8081-exec-4] INFO  [01463f9e9db0535ddad9cf22a070aae4,0ed81671351bd8aa] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:38 [http-nio-8081-exec-3] INFO  [6e11000ebe08eb57b8274288999c5ac0,43f3fba5e1d8d147] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:38 [http-nio-8081-exec-3] INFO  [6e11000ebe08eb57b8274288999c5ac0,43f3fba5e1d8d147] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:39 [http-nio-8081-exec-5] INFO  [e7540562e76d0e1ef66619a744c8a03f,f9410390f2add5a7] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:39 [http-nio-8081-exec-5] INFO  [e7540562e76d0e1ef66619a744c8a03f,f9410390f2add5a7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:39 [http-nio-8081-exec-6] INFO  [7f1991fcbe3482d5676431bc9219b9d9,5760109215ff1112] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:39 [http-nio-8081-exec-6] INFO  [7f1991fcbe3482d5676431bc9219b9d9,5760109215ff1112] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:39 [http-nio-8081-exec-9] INFO  [f42ab6b9a3bc45aa2cf85e15c8493390,ea310ec7105ecc3f] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:39 [http-nio-8081-exec-9] INFO  [f42ab6b9a3bc45aa2cf85e15c8493390,ea310ec7105ecc3f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:56 [http-nio-8081-exec-10] INFO  [397de39b255e1a8481dd426526693178,9fa3306d245c867b] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:56 [http-nio-8081-exec-10] INFO  [397de39b255e1a8481dd426526693178,9fa3306d245c867b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:56 [http-nio-8081-exec-2] INFO  [b0f553b1a49a232a37fa495fb185bc9f,ec3a3a2d409f4856] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:56 [http-nio-8081-exec-2] INFO  [b0f553b1a49a232a37fa495fb185bc9f,ec3a3a2d409f4856] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:57 [http-nio-8081-exec-1] INFO  [4e47a419c6d963b9dfb112621eb55636,f702e094637a238c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:57 [http-nio-8081-exec-1] INFO  [4e47a419c6d963b9dfb112621eb55636,f702e094637a238c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:57 [http-nio-8081-exec-4] INFO  [47173da14435f1a3c0a92b6a8b7056a2,6a7ccc9f1ad43008] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:57 [http-nio-8081-exec-4] INFO  [47173da14435f1a3c0a92b6a8b7056a2,6a7ccc9f1ad43008] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:57 [http-nio-8081-exec-3] INFO  [7219bc98648f819e6b4c7aa35b3a1a49,5d072896e0345d5d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:57 [http-nio-8081-exec-3] INFO  [7219bc98648f819e6b4c7aa35b3a1a49,5d072896e0345d5d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:57 [http-nio-8081-exec-5] INFO  [05fc174b7cfb35f5a2bdaec0fee00232,72200765e965b891] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:57 [http-nio-8081-exec-5] INFO  [05fc174b7cfb35f5a2bdaec0fee00232,72200765e965b891] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:57 [http-nio-8081-exec-6] INFO  [6d586f09083b1d12cb6e9df9cdbf3b1e,d9cd3283440c1ee7] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:58 [http-nio-8081-exec-6] INFO  [6d586f09083b1d12cb6e9df9cdbf3b1e,d9cd3283440c1ee7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:58 [http-nio-8081-exec-9] INFO  [ed42b779eb4777d4a121fce854faa6dd,1476e0c30abe2415] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:58 [http-nio-8081-exec-9] INFO  [ed42b779eb4777d4a121fce854faa6dd,1476e0c30abe2415] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:58 [http-nio-8081-exec-8] INFO  [18901650624c383052a17d546d2503b0,6f678543b69377a6] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:58 [http-nio-8081-exec-8] INFO  [18901650624c383052a17d546d2503b0,6f678543b69377a6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:15:58 [http-nio-8081-exec-7] INFO  [23425ba9b9806824ab40a171bc535a44,9b58c37a24f9df1d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:15:58 [http-nio-8081-exec-7] INFO  [23425ba9b9806824ab40a171bc535a44,9b58c37a24f9df1d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:01 [http-nio-8081-exec-10] INFO  [e42df7ee71f31e4d23b0edcb6cea10bb,9ef22aab9c333ac8] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:01 [http-nio-8081-exec-10] INFO  [e42df7ee71f31e4d23b0edcb6cea10bb,9ef22aab9c333ac8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:01 [http-nio-8081-exec-2] INFO  [cc1ae4260cbc4168463a4ab1e45dc687,03f5e593bcf09a80] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:01 [http-nio-8081-exec-2] INFO  [cc1ae4260cbc4168463a4ab1e45dc687,03f5e593bcf09a80] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:01 [http-nio-8081-exec-1] INFO  [1a95197ada01d8dfd384775422b9a9df,26d01e079a3d3077] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:01 [http-nio-8081-exec-1] INFO  [1a95197ada01d8dfd384775422b9a9df,26d01e079a3d3077] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:01 [http-nio-8081-exec-4] INFO  [0c2ca0bed7b7d150c104c274041549fc,a4d72b89dc20d165] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:01 [http-nio-8081-exec-4] INFO  [0c2ca0bed7b7d150c104c274041549fc,a4d72b89dc20d165] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:01 [http-nio-8081-exec-3] INFO  [2b092e8b457ce542a54f54e085f49847,642325ddb05fcd9c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:01 [http-nio-8081-exec-3] INFO  [2b092e8b457ce542a54f54e085f49847,642325ddb05fcd9c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:01 [http-nio-8081-exec-5] INFO  [8a9539f2a5264a85c334c6ab104af688,d88232f91be7d254] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:02 [http-nio-8081-exec-5] INFO  [8a9539f2a5264a85c334c6ab104af688,d88232f91be7d254] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:02 [http-nio-8081-exec-6] INFO  [f73e447bb37b64b34120a3c9d05af88c,daef0a87fb81fd3a] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:02 [http-nio-8081-exec-6] INFO  [f73e447bb37b64b34120a3c9d05af88c,daef0a87fb81fd3a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:02 [http-nio-8081-exec-9] INFO  [89b32a9ab41f776e0fc680337348b563,3726cbaca95a021d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:02 [http-nio-8081-exec-9] INFO  [89b32a9ab41f776e0fc680337348b563,3726cbaca95a021d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:02 [http-nio-8081-exec-8] INFO  [c5e8d39b4d8af0c7cbf032ff084bc96e,0e3a62a78f0da4f8] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:02 [http-nio-8081-exec-8] INFO  [c5e8d39b4d8af0c7cbf032ff084bc96e,0e3a62a78f0da4f8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:16:02 [http-nio-8081-exec-7] INFO  [075e0aaa2f57c5544f32679ed9df7d05,9304ef0e9c651cde] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:16:03 [http-nio-8081-exec-7] INFO  [075e0aaa2f57c5544f32679ed9df7d05,9304ef0e9c651cde] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:37:01 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.io.IOException: HTTP/1.1 header parser received no bytes
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.io.IOException: HTTP/1.1 header parser received no bytes
+	at java.net.http/jdk.internal.net.http.common.Utils.wrapWithExtraDetail(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1Response$HeadersReader.onReadError(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.checkForErrors(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.flush(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.io.EOFException: EOF reached while reading
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver$Http1TubeSubscriber.onComplete(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(Unknown Source)
+	at java.base/java.util.ArrayList.forEach(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+2025-08-12 00:37:21 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.io.IOException: HTTP/1.1 header parser received no bytes
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.io.IOException: HTTP/1.1 header parser received no bytes
+	at java.net.http/jdk.internal.net.http.common.Utils.wrapWithExtraDetail(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1Response$HeadersReader.onReadError(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.checkForErrors(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.flush(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.io.EOFException: EOF reached while reading
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver$Http1TubeSubscriber.onComplete(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(Unknown Source)
+	at java.base/java.util.ArrayList.forEach(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+2025-08-12 00:38:26 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.io.IOException: HTTP/1.1 header parser received no bytes
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.io.IOException: HTTP/1.1 header parser received no bytes
+	at java.net.http/jdk.internal.net.http.common.Utils.wrapWithExtraDetail(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1Response$HeadersReader.onReadError(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.checkForErrors(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.flush(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.io.EOFException: EOF reached while reading
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver$Http1TubeSubscriber.onComplete(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(Unknown Source)
+	at java.base/java.util.ArrayList.forEach(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+2025-08-12 00:39:36 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.nio.channels.ClosedChannelException: null
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	... 10 common frames omitted
+2025-08-12 00:50:00 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 27192 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-12 00:50:00 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-12 00:50:00 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-12 00:50:05 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-12 00:50:05 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-12 00:50:05 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-12 00:50:05 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-12 00:50:05 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4889 ms
+2025-08-12 00:50:07 [main] DEBUG [,] n.d.b.g.c.a.GrpcCommonCodecAutoConfiguration - Found GrpcCodecDiscoverer -> Creating custom CompressorRegistry
+2025-08-12 00:50:07 [main] DEBUG [,] n.d.b.g.c.c.AnnotationGrpcCodecDiscoverer - Searching for codecs...
+2025-08-12 00:50:07 [main] DEBUG [,] n.d.b.g.c.c.AnnotationGrpcCodecDiscoverer - Done
+2025-08-12 00:50:07 [main] DEBUG [,] n.d.b.g.c.a.GrpcCommonCodecAutoConfiguration - Found GrpcCodecDiscoverer -> Creating custom DecompressorRegistry
+2025-08-12 00:50:07 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - Pre-Registering service metrics
+2025-08-12 00:50:07 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - com.example.service_user.service.UserServiceImpl@6704df84
+2025-08-12 00:50:07 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - io.grpc.protobuf.services.HealthServiceImpl@21733cbe
+2025-08-12 00:50:07 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - io.grpc.protobuf.services.ProtoReflectionService@99c4993
+2025-08-12 00:50:07 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-12 00:50:08 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: metricCollectingServerInterceptor (io.micrometer.core.instrument.binder.grpc.MetricCollectingServerInterceptor@2084e65a)
+2025-08-12 00:50:08 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: grpcRequestScope (net.devh.boot.grpc.server.scope.GrpcRequestScope@1b8fa2fa)
+2025-08-12 00:50:08 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: globalObservationGrpcServerInterceptorConfigurer (io.micrometer.core.instrument.binder.grpc.ObservationGrpcServerInterceptor@21527b8)
+2025-08-12 00:50:08 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-12 00:50:08 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-12 00:50:08 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-12 00:50:08 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-08-12 00:50:09 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-12 00:50:09 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-12 00:50:09 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-12 00:50:09 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-08-12 00:50:09 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-12 00:50:09 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-12 00:50:09 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-12 00:50:10 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-12 00:50:10 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 12.289 seconds (process running for 13.798)
+2025-08-12 00:50:42 [http-nio-8081-exec-5] INFO  [0871bf84ca6e5785172d2b96a76468ba,4ab52b2aae7772e7] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:42 [http-nio-8081-exec-5] INFO  [0871bf84ca6e5785172d2b96a76468ba,4ab52b2aae7772e7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:43 [http-nio-8081-exec-6] INFO  [6fdd844d183ab237a6d32f363609f069,ee755773e6c18d35] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:43 [http-nio-8081-exec-6] INFO  [6fdd844d183ab237a6d32f363609f069,ee755773e6c18d35] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:43 [http-nio-8081-exec-7] INFO  [106624ff9081133cce225d75072617f2,d1c07ec6dd4e6abe] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:43 [http-nio-8081-exec-7] INFO  [106624ff9081133cce225d75072617f2,d1c07ec6dd4e6abe] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:43 [http-nio-8081-exec-8] INFO  [00b2461dc47bd89ce03407e207dda882,ebee7b1174d367a6] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:43 [http-nio-8081-exec-8] INFO  [00b2461dc47bd89ce03407e207dda882,ebee7b1174d367a6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:43 [http-nio-8081-exec-9] INFO  [9f0f2d558ef3691870e70f9e54c84b04,05467fd19e987c03] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:43 [http-nio-8081-exec-9] INFO  [9f0f2d558ef3691870e70f9e54c84b04,05467fd19e987c03] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:43 [http-nio-8081-exec-10] INFO  [f706ddbbd415d8bc793ee734eaecf116,6482a600637642fb] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:44 [http-nio-8081-exec-10] INFO  [f706ddbbd415d8bc793ee734eaecf116,6482a600637642fb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:44 [http-nio-8081-exec-1] INFO  [6f0d14a2fdf37bc4b887140373300c07,220249a3412773ee] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:44 [http-nio-8081-exec-1] INFO  [6f0d14a2fdf37bc4b887140373300c07,220249a3412773ee] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:44 [http-nio-8081-exec-2] INFO  [d9eb2faa590785ceab56847ae0944052,a0b0ff3eabc6fdf6] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:44 [http-nio-8081-exec-2] INFO  [d9eb2faa590785ceab56847ae0944052,a0b0ff3eabc6fdf6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:44 [http-nio-8081-exec-3] INFO  [6a62e5e5efbcd3aced95cb906a1034f1,d33467ba2fe04a68] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:44 [http-nio-8081-exec-3] INFO  [6a62e5e5efbcd3aced95cb906a1034f1,d33467ba2fe04a68] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:50:44 [http-nio-8081-exec-4] INFO  [7432eb62ab326216ae1118d5b2211e74,ba12dc2ac415e679] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:50:44 [http-nio-8081-exec-4] INFO  [7432eb62ab326216ae1118d5b2211e74,ba12dc2ac415e679] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:54:28 [http-nio-8081-exec-9] INFO  [d4b691bf05fc465005b912b9607f74c1,2d8a22b7c423afd3] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:54:28 [http-nio-8081-exec-9] INFO  [d4b691bf05fc465005b912b9607f74c1,2d8a22b7c423afd3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:55:29 [http-nio-8081-exec-6] INFO  [2ff42ea0cd6f3575af2828e9452e7e02,66adef6292436919] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:55:29 [http-nio-8081-exec-6] INFO  [2ff42ea0cd6f3575af2828e9452e7e02,66adef6292436919] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:55:31 [http-nio-8081-exec-7] INFO  [acd5178a532cbb98e1b26398156b75d7,e996f7eb86c343e4] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:55:32 [http-nio-8081-exec-7] INFO  [acd5178a532cbb98e1b26398156b75d7,e996f7eb86c343e4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:55:34 [http-nio-8081-exec-8] INFO  [518d1a3857d92fbc62d9cb559c3f0aa8,56ce7e6fedff636a] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:55:34 [http-nio-8081-exec-8] INFO  [518d1a3857d92fbc62d9cb559c3f0aa8,56ce7e6fedff636a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:55:35 [http-nio-8081-exec-9] INFO  [65c9640f0a33c926290b1b89b81927bb,ce62169344e7f841] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:55:35 [http-nio-8081-exec-9] INFO  [65c9640f0a33c926290b1b89b81927bb,ce62169344e7f841] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:55:40 [http-nio-8081-exec-1] INFO  [1fc5bed886d0cf1ff74a45f46eda3291,a525dd3dbcfadf9d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:55:40 [http-nio-8081-exec-1] INFO  [1fc5bed886d0cf1ff74a45f46eda3291,a525dd3dbcfadf9d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:56:38 [http-nio-8081-exec-7] INFO  [f3fe85e3d4478a88e80b25aca473fb1f,79aeb8a53ac529e5] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:41 [http-nio-8081-exec-9] INFO  [edb942cdeaf2144c7b7bf44a251b84d7,b2dfb240b6b0d66d] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:43 [http-nio-8081-exec-10] INFO  [75613ac8ce0f2cc97f7da8551879a2ad,7225c54a1960ce22] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:43 [http-nio-8081-exec-1] INFO  [57bc5bbc6a1998dcea48f5d03d0dcfd0,b5fee3645a26eedd] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:43 [http-nio-8081-exec-2] INFO  [a51568b3dd64fe303c292e8a1b96ad85,cdb7362507a24cbf] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:44 [http-nio-8081-exec-3] INFO  [fb4e798d5581b97ac90f63ac55e8593f,c46654475a88ce42] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:44 [http-nio-8081-exec-4] INFO  [82bd8750fa0385637c95f34a10795ba7,4b9d160e74f688cf] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:44 [http-nio-8081-exec-5] INFO  [135667a01f205082c31a0437c8952ff3,263d1fef423b6c2f] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:44 [http-nio-8081-exec-6] INFO  [68a22baeaa842169125f9e852939b541,08424f649dc19464] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:45 [http-nio-8081-exec-7] INFO  [788fce175149861a688b1cf9fda2d05f,8605bc2ed0a0375b] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:56:45 [http-nio-8081-exec-8] INFO  [5fa9f73172c30ad3d99dc9c31608eeb2,5de6c55d612eb240] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:57:01 [http-nio-8081-exec-1] INFO  [12657477526faafddc6c51b5c76a0b0a,bcdc34cf2949a3c2] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:01 [http-nio-8081-exec-1] INFO  [12657477526faafddc6c51b5c76a0b0a,bcdc34cf2949a3c2] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:01 [http-nio-8081-exec-2] INFO  [3ae5f5d4d2011828612783db89e77ccf,241d63c27e4651bb] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:02 [http-nio-8081-exec-2] INFO  [3ae5f5d4d2011828612783db89e77ccf,241d63c27e4651bb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:02 [http-nio-8081-exec-3] INFO  [f023d10620a812b5541f6c5fdeed95d5,eb9a8965fc30f7f9] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:02 [http-nio-8081-exec-3] INFO  [f023d10620a812b5541f6c5fdeed95d5,eb9a8965fc30f7f9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:02 [http-nio-8081-exec-4] INFO  [3fd15f1e1f41f2a25fcacd5f3c30014e,06a09e3b68354bae] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:02 [http-nio-8081-exec-4] INFO  [3fd15f1e1f41f2a25fcacd5f3c30014e,06a09e3b68354bae] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:02 [http-nio-8081-exec-5] INFO  [c85f72040716c334aeed9b47862e3fd9,0f139cd21ea68ec7] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:02 [http-nio-8081-exec-5] INFO  [c85f72040716c334aeed9b47862e3fd9,0f139cd21ea68ec7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:02 [http-nio-8081-exec-6] INFO  [958f45f2e40e1526e25f8b806f533e52,a75fdc1bdb11d8b5] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:02 [http-nio-8081-exec-6] INFO  [958f45f2e40e1526e25f8b806f533e52,a75fdc1bdb11d8b5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:02 [http-nio-8081-exec-7] INFO  [4c5e3558ccadd2af20a67d29fd43213a,a76b6c0ef314ce75] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:03 [http-nio-8081-exec-7] INFO  [4c5e3558ccadd2af20a67d29fd43213a,a76b6c0ef314ce75] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:03 [http-nio-8081-exec-8] INFO  [b7dd85b28c50f2c00082a8a79f4ba819,57fd13b4673cb32d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:03 [http-nio-8081-exec-8] INFO  [b7dd85b28c50f2c00082a8a79f4ba819,57fd13b4673cb32d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:03 [http-nio-8081-exec-9] INFO  [24b3b67ca5494bf7280142884f13ad56,e72106fc59d01793] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:03 [http-nio-8081-exec-9] INFO  [24b3b67ca5494bf7280142884f13ad56,e72106fc59d01793] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:03 [http-nio-8081-exec-10] INFO  [de14b20ae9cb18afe4ee8c073c4948f8,0d9ee050091c2725] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:03 [http-nio-8081-exec-10] INFO  [de14b20ae9cb18afe4ee8c073c4948f8,0d9ee050091c2725] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:05 [http-nio-8081-exec-1] INFO  [37c7da0fc81e6fff89c79f4561025169,75edd1a51fe66100] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:05 [http-nio-8081-exec-1] INFO  [37c7da0fc81e6fff89c79f4561025169,75edd1a51fe66100] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:06 [http-nio-8081-exec-2] INFO  [49861373643941ed8268a87121f9e108,9069e753f49bb84a] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:06 [http-nio-8081-exec-2] INFO  [49861373643941ed8268a87121f9e108,9069e753f49bb84a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:06 [http-nio-8081-exec-3] INFO  [1d2e2b3e3c07d57ceca7960138296836,85601b0faf194f5f] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:06 [http-nio-8081-exec-3] INFO  [1d2e2b3e3c07d57ceca7960138296836,85601b0faf194f5f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:06 [http-nio-8081-exec-4] INFO  [937a62aaacce2edfd21bb99f66ddc53a,b8917ccc55c49044] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:06 [http-nio-8081-exec-4] INFO  [937a62aaacce2edfd21bb99f66ddc53a,b8917ccc55c49044] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:06 [http-nio-8081-exec-5] INFO  [47eba1b1932afd8cb10c2effa371175f,1a0943935350895c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:06 [http-nio-8081-exec-5] INFO  [47eba1b1932afd8cb10c2effa371175f,1a0943935350895c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:06 [http-nio-8081-exec-6] INFO  [0885727d1a0b45b371ae81239a863eda,409c6f489068224b] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:06 [http-nio-8081-exec-6] INFO  [0885727d1a0b45b371ae81239a863eda,409c6f489068224b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:07 [http-nio-8081-exec-7] INFO  [ee0d8d01edc188e4d23694d0fdc92eb4,9a9ef08eb314281a] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:07 [http-nio-8081-exec-7] INFO  [ee0d8d01edc188e4d23694d0fdc92eb4,9a9ef08eb314281a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:07 [http-nio-8081-exec-8] INFO  [59c8e857fd52ce04f3a5fcab20c397ad,7a92ce6b413c3ccf] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:07 [http-nio-8081-exec-8] INFO  [59c8e857fd52ce04f3a5fcab20c397ad,7a92ce6b413c3ccf] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:07 [http-nio-8081-exec-9] INFO  [49805bb9cb9ee4e9917830acf62ef3eb,9765f702222dcb34] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:07 [http-nio-8081-exec-9] INFO  [49805bb9cb9ee4e9917830acf62ef3eb,9765f702222dcb34] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:07 [http-nio-8081-exec-10] INFO  [93c03c07d821c03b3eb199cacdd2568f,f8ff8b12ef81314d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:07 [http-nio-8081-exec-10] INFO  [93c03c07d821c03b3eb199cacdd2568f,f8ff8b12ef81314d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:08 [http-nio-8081-exec-1] INFO  [19d2315e380a09787c197841cec86db5,2949fa8b6d579abb] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:08 [http-nio-8081-exec-1] INFO  [19d2315e380a09787c197841cec86db5,2949fa8b6d579abb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:08 [http-nio-8081-exec-3] INFO  [e44bce20143cd4ee237bbde209bfedd6,af7749d7d6f3cced] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:09 [http-nio-8081-exec-3] INFO  [e44bce20143cd4ee237bbde209bfedd6,af7749d7d6f3cced] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:09 [http-nio-8081-exec-4] INFO  [604c877ac67928798e8bb55d9f0d91d1,0e7aba86828ce734] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:09 [http-nio-8081-exec-4] INFO  [604c877ac67928798e8bb55d9f0d91d1,0e7aba86828ce734] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:09 [http-nio-8081-exec-5] INFO  [fc1dff2b3edf5b7f7b5f8855e4a0c1a8,46eb2da34d22e09c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:09 [http-nio-8081-exec-5] INFO  [fc1dff2b3edf5b7f7b5f8855e4a0c1a8,46eb2da34d22e09c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:09 [http-nio-8081-exec-6] INFO  [4880da522e9305e6afabbbd297db4a0d,098c077af11f8cd9] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:10 [http-nio-8081-exec-6] INFO  [4880da522e9305e6afabbbd297db4a0d,098c077af11f8cd9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:10 [http-nio-8081-exec-7] INFO  [4f07a3451c75f497370d044c6d844c48,001c51e7014670bc] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:10 [http-nio-8081-exec-7] INFO  [4f07a3451c75f497370d044c6d844c48,001c51e7014670bc] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:10 [http-nio-8081-exec-8] INFO  [af69c0a308a8bbf9469c9b69ed433454,66b735c9669fe091] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:11 [http-nio-8081-exec-8] INFO  [af69c0a308a8bbf9469c9b69ed433454,66b735c9669fe091] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:11 [http-nio-8081-exec-9] INFO  [79d856f0afac86fcb9de3e92ccfa9eef,f58e7effe50dcba9] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:11 [http-nio-8081-exec-9] INFO  [79d856f0afac86fcb9de3e92ccfa9eef,f58e7effe50dcba9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:11 [http-nio-8081-exec-10] INFO  [13eacf30f6e4630e8b6b5f93a41736af,84741ff0e332c84d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:11 [http-nio-8081-exec-10] INFO  [13eacf30f6e4630e8b6b5f93a41736af,84741ff0e332c84d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:57:11 [http-nio-8081-exec-1] INFO  [1b6cb55bc55870f04864e465a2fc1a0f,5f0cfe8bf5d75c0c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:57:11 [http-nio-8081-exec-1] INFO  [1b6cb55bc55870f04864e465a2fc1a0f,5f0cfe8bf5d75c0c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:03 [http-nio-8081-exec-7] INFO  [1090608d2c1555adab395cf7ba65a1b5,643f92332794a568] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:03 [http-nio-8081-exec-7] INFO  [1090608d2c1555adab395cf7ba65a1b5,643f92332794a568] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:03 [http-nio-8081-exec-8] INFO  [00f45ab7ecc45899bd75a07842e6599e,39c38a6175eeddd1] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:03 [http-nio-8081-exec-8] INFO  [00f45ab7ecc45899bd75a07842e6599e,39c38a6175eeddd1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:03 [http-nio-8081-exec-9] INFO  [1dd4a7ba7751c62cb1ffc82b4a18a9e5,7d5baa6e594540fb] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:03 [http-nio-8081-exec-9] INFO  [1dd4a7ba7751c62cb1ffc82b4a18a9e5,7d5baa6e594540fb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:03 [http-nio-8081-exec-10] INFO  [646e38451ce1283ac8b2fe56e8cc36a4,c61612cba51ea9ec] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:04 [http-nio-8081-exec-10] INFO  [646e38451ce1283ac8b2fe56e8cc36a4,c61612cba51ea9ec] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:04 [http-nio-8081-exec-1] INFO  [c9df943bd2b5df457f2a759264a6ef46,7810915a4341d044] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:04 [http-nio-8081-exec-1] INFO  [c9df943bd2b5df457f2a759264a6ef46,7810915a4341d044] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:04 [http-nio-8081-exec-2] INFO  [985dd22d284da8e5e818d93fb2b20f88,ba3b6f714bade5bd] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:04 [http-nio-8081-exec-2] INFO  [985dd22d284da8e5e818d93fb2b20f88,ba3b6f714bade5bd] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:04 [http-nio-8081-exec-3] INFO  [4a0ad6d157e9946e0a8a8d3938179793,2369493bf18ae049] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:04 [http-nio-8081-exec-3] INFO  [4a0ad6d157e9946e0a8a8d3938179793,2369493bf18ae049] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:04 [http-nio-8081-exec-4] INFO  [9b855ac4ec049b3573c14bee427f1ba2,fbed8e9b0c8a2aa6] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:04 [http-nio-8081-exec-4] INFO  [9b855ac4ec049b3573c14bee427f1ba2,fbed8e9b0c8a2aa6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:04 [http-nio-8081-exec-5] INFO  [e8a921a1a16e1e2df559224c36a57c48,f81503a2185731f0] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:04 [http-nio-8081-exec-5] INFO  [e8a921a1a16e1e2df559224c36a57c48,f81503a2185731f0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:05 [http-nio-8081-exec-6] INFO  [8075938be926c5c0bd7f2e9616197f98,51163eb368b86cbc] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:05 [http-nio-8081-exec-6] INFO  [8075938be926c5c0bd7f2e9616197f98,51163eb368b86cbc] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:09 [http-nio-8081-exec-8] INFO  [039f570fd534bd6f3821e98c711e5413,8c217a7da2af1957] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:09 [http-nio-8081-exec-8] INFO  [039f570fd534bd6f3821e98c711e5413,8c217a7da2af1957] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:09 [http-nio-8081-exec-9] INFO  [e95c4743c68ea95d89f98acf25c8684d,644ccee2af8f757f] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:09 [http-nio-8081-exec-9] INFO  [e95c4743c68ea95d89f98acf25c8684d,644ccee2af8f757f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:09 [http-nio-8081-exec-10] INFO  [2d8975adea227c343bcfeb0cec904d96,c6a587d873ce9d19] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:09 [http-nio-8081-exec-10] INFO  [2d8975adea227c343bcfeb0cec904d96,c6a587d873ce9d19] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:09 [http-nio-8081-exec-1] INFO  [1c5800c1ce86f02927ba3943bf084685,8b517591f8da8508] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:09 [http-nio-8081-exec-1] INFO  [1c5800c1ce86f02927ba3943bf084685,8b517591f8da8508] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:09 [http-nio-8081-exec-2] INFO  [7cbc9c70de11c717cce6ed1e66b16019,5c80fb2f463f509f] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:09 [http-nio-8081-exec-2] INFO  [7cbc9c70de11c717cce6ed1e66b16019,5c80fb2f463f509f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:09 [http-nio-8081-exec-3] INFO  [997eec9072b8c1d4e4fa1ea654c6a9cb,62913d3b355342e1] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:09 [http-nio-8081-exec-3] INFO  [997eec9072b8c1d4e4fa1ea654c6a9cb,62913d3b355342e1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:10 [http-nio-8081-exec-4] INFO  [2f101ac49b5be8bd5d699a17cc26358f,a53147d0fae63e76] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:10 [http-nio-8081-exec-4] INFO  [2f101ac49b5be8bd5d699a17cc26358f,a53147d0fae63e76] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:10 [http-nio-8081-exec-5] INFO  [2fc1f8624abacf04433c1c4805486155,f0b994bf82ff85c0] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:10 [http-nio-8081-exec-5] INFO  [2fc1f8624abacf04433c1c4805486155,f0b994bf82ff85c0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:10 [http-nio-8081-exec-6] INFO  [a19ce25c0d39b20d9495b09c50770819,eae314f4b43a067d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:10 [http-nio-8081-exec-6] INFO  [a19ce25c0d39b20d9495b09c50770819,eae314f4b43a067d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:10 [http-nio-8081-exec-7] INFO  [4e72c160bce771376f56f3d8e84ea073,48fe88d68414e4cb] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:10 [http-nio-8081-exec-7] INFO  [4e72c160bce771376f56f3d8e84ea073,48fe88d68414e4cb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:23 [http-nio-8081-exec-9] INFO  [34bd83538d766eb300dbec94e611e7b7,2c3d26257e0c0d58] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:23 [http-nio-8081-exec-9] INFO  [34bd83538d766eb300dbec94e611e7b7,2c3d26257e0c0d58] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:26 [http-nio-8081-exec-10] INFO  [6f60496529c190f20154e23c63e8e292,248a9e875d5d398c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:26 [http-nio-8081-exec-10] INFO  [6f60496529c190f20154e23c63e8e292,248a9e875d5d398c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:26 [http-nio-8081-exec-1] INFO  [0f0abfd8f57ab7f87d2372de44d050ee,a471b0b8b521d399] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:26 [http-nio-8081-exec-1] INFO  [0f0abfd8f57ab7f87d2372de44d050ee,a471b0b8b521d399] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:26 [http-nio-8081-exec-2] INFO  [17942cd1408e68478ba56ba627dae4d5,1d32882e987d52d3] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:26 [http-nio-8081-exec-2] INFO  [17942cd1408e68478ba56ba627dae4d5,1d32882e987d52d3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:26 [http-nio-8081-exec-3] INFO  [c13e37e99717da4109cc1c658fadf799,18e1026c17314cf3] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:26 [http-nio-8081-exec-3] INFO  [c13e37e99717da4109cc1c658fadf799,18e1026c17314cf3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:27 [http-nio-8081-exec-4] INFO  [2748ef6ec838c4074fe99aa9cba8e369,c32f7b628318d539] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:27 [http-nio-8081-exec-4] INFO  [2748ef6ec838c4074fe99aa9cba8e369,c32f7b628318d539] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:27 [http-nio-8081-exec-5] INFO  [5d483fc7af1d080140193dcce4a1a14d,a7c0fd54c07b51b5] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:27 [http-nio-8081-exec-5] INFO  [5d483fc7af1d080140193dcce4a1a14d,a7c0fd54c07b51b5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:27 [http-nio-8081-exec-6] INFO  [e4ee32c2404f70197040c09738a32b11,4c7980f7b259f349] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:27 [http-nio-8081-exec-6] INFO  [e4ee32c2404f70197040c09738a32b11,4c7980f7b259f349] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:27 [http-nio-8081-exec-7] INFO  [b486c6403aeed02aa8f51a697f5aefa9,38fac66965551271] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:27 [http-nio-8081-exec-7] INFO  [b486c6403aeed02aa8f51a697f5aefa9,38fac66965551271] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:28 [http-nio-8081-exec-8] INFO  [fc95ab83b2897bc8c72511326ac552a9,ed2513456757f418] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:28 [http-nio-8081-exec-8] INFO  [fc95ab83b2897bc8c72511326ac552a9,ed2513456757f418] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:28 [http-nio-8081-exec-9] INFO  [0f0966a86c11966f65f5b4aa1890c58a,da0d2c7def8075de] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:28 [http-nio-8081-exec-9] INFO  [0f0966a86c11966f65f5b4aa1890c58a,da0d2c7def8075de] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:50 [http-nio-8081-exec-3] INFO  [070c405430301fa671bac99658bc5d82,2dd6d70c874bbc2c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:50 [http-nio-8081-exec-3] INFO  [070c405430301fa671bac99658bc5d82,2dd6d70c874bbc2c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:52 [http-nio-8081-exec-4] INFO  [d07d45a56ab708a2b76ea4146b320870,6e0087b84bca9a32] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:52 [http-nio-8081-exec-4] INFO  [d07d45a56ab708a2b76ea4146b320870,6e0087b84bca9a32] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:52 [http-nio-8081-exec-5] INFO  [1a5c2a5d83f834debaff8a79913648b1,168672e5dbfdb8d6] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:52 [http-nio-8081-exec-5] INFO  [1a5c2a5d83f834debaff8a79913648b1,168672e5dbfdb8d6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:52 [http-nio-8081-exec-6] INFO  [1ec2d9524ef1a88a60665820a5bbaecb,53605b2bd088f7ed] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:52 [http-nio-8081-exec-6] INFO  [1ec2d9524ef1a88a60665820a5bbaecb,53605b2bd088f7ed] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:53 [http-nio-8081-exec-7] INFO  [1de943f7272c32090eae92ef6aea9d34,25b25f474935ac42] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:53 [http-nio-8081-exec-7] INFO  [1de943f7272c32090eae92ef6aea9d34,25b25f474935ac42] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:53 [http-nio-8081-exec-8] INFO  [99c4127ed263b070075537939206f47a,38978174c1d9b35a] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:53 [http-nio-8081-exec-8] INFO  [99c4127ed263b070075537939206f47a,38978174c1d9b35a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:53 [http-nio-8081-exec-9] INFO  [c67020e724a062442323047a3bb98aee,65a7bf32a3aa8200] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:53 [http-nio-8081-exec-9] INFO  [c67020e724a062442323047a3bb98aee,65a7bf32a3aa8200] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:53 [http-nio-8081-exec-10] INFO  [525d486666eb32d92433ccf3d66b3a26,8a9e64804631204c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:53 [http-nio-8081-exec-10] INFO  [525d486666eb32d92433ccf3d66b3a26,8a9e64804631204c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:54 [http-nio-8081-exec-1] INFO  [1b2fe5cf3fc254c95fb74db7e41e715e,eca56180ff13bdca] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:54 [http-nio-8081-exec-1] INFO  [1b2fe5cf3fc254c95fb74db7e41e715e,eca56180ff13bdca] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:54 [http-nio-8081-exec-2] INFO  [c8e37b32906b274cbee021768a27c91b,4e89e8c8a5bf8949] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:54 [http-nio-8081-exec-2] INFO  [c8e37b32906b274cbee021768a27c91b,4e89e8c8a5bf8949] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:58:54 [http-nio-8081-exec-3] INFO  [56963703ecdb64d13f8fc00604cf195c,56ca349e8b36fab1] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:58:54 [http-nio-8081-exec-3] INFO  [56963703ecdb64d13f8fc00604cf195c,56ca349e8b36fab1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:16 [http-nio-8081-exec-6] INFO  [3dbe338d57d5b4373a37fbe1fbf6e73a,4de5f1aa9c033f4e] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:16 [http-nio-8081-exec-6] INFO  [3dbe338d57d5b4373a37fbe1fbf6e73a,4de5f1aa9c033f4e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:24 [http-nio-8081-exec-8] INFO  [af529b8fb98230143f9ae0d44af259e1,47a66802ac2699df] c.e.s.controller.UserController - Health check requested
+2025-08-12 00:59:31 [http-nio-8081-exec-10] INFO  [ff6fe422383904703dd3870bf06c487e,e6091bc07cae0fc6] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:31 [http-nio-8081-exec-10] INFO  [ff6fe422383904703dd3870bf06c487e,e6091bc07cae0fc6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:32 [http-nio-8081-exec-1] INFO  [6bc4727dcb4d08c4fcbe70deb02e79f6,6c77004c7ad75181] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:32 [http-nio-8081-exec-1] INFO  [6bc4727dcb4d08c4fcbe70deb02e79f6,6c77004c7ad75181] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:32 [http-nio-8081-exec-2] INFO  [c5bc7357e3c9ca52ba520b76ea856fb3,88e69cb2eeb71dac] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:32 [http-nio-8081-exec-2] INFO  [c5bc7357e3c9ca52ba520b76ea856fb3,88e69cb2eeb71dac] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:32 [http-nio-8081-exec-3] INFO  [6bcf520190daedc779c41ebecfdcc456,541b91d433f81530] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:32 [http-nio-8081-exec-3] INFO  [6bcf520190daedc779c41ebecfdcc456,541b91d433f81530] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:32 [http-nio-8081-exec-4] INFO  [a0d632af173a4534e739e3efd6b43e4b,56989a8c298eb8f6] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:32 [http-nio-8081-exec-4] INFO  [a0d632af173a4534e739e3efd6b43e4b,56989a8c298eb8f6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:32 [http-nio-8081-exec-5] INFO  [4c2a6b71bbce043c88fccba2af19e89d,43c72c252e218427] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:32 [http-nio-8081-exec-5] INFO  [4c2a6b71bbce043c88fccba2af19e89d,43c72c252e218427] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:33 [http-nio-8081-exec-6] INFO  [e6761e7eb70bf68d0d660fc650ba07c8,77b6d7c2208bac8f] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:33 [http-nio-8081-exec-6] INFO  [e6761e7eb70bf68d0d660fc650ba07c8,77b6d7c2208bac8f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:33 [http-nio-8081-exec-7] INFO  [7731b710a37b9c4308e8c2d082b46687,4b6b89be9edcbe69] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:33 [http-nio-8081-exec-7] INFO  [7731b710a37b9c4308e8c2d082b46687,4b6b89be9edcbe69] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:33 [http-nio-8081-exec-8] INFO  [d8573e16c115c05e1dca9b87c4960f15,8bd79b570062245b] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:33 [http-nio-8081-exec-8] INFO  [d8573e16c115c05e1dca9b87c4960f15,8bd79b570062245b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:33 [http-nio-8081-exec-9] INFO  [0933690f1dd5cc8bed670c96a0e32f29,239eb2c5c69be2d2] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:33 [http-nio-8081-exec-9] INFO  [0933690f1dd5cc8bed670c96a0e32f29,239eb2c5c69be2d2] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:36 [http-nio-8081-exec-10] INFO  [9d99ef5bcc393f77f91b809abbc8362c,da84c02d43fd2793] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:36 [http-nio-8081-exec-10] INFO  [9d99ef5bcc393f77f91b809abbc8362c,da84c02d43fd2793] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:36 [http-nio-8081-exec-1] INFO  [118b3eb1a77fba51674bce36fedf2595,26a34d8a1bbbba49] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:36 [http-nio-8081-exec-1] INFO  [118b3eb1a77fba51674bce36fedf2595,26a34d8a1bbbba49] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:36 [http-nio-8081-exec-2] INFO  [c416990ed750e93bde517c9c549dd995,a5e6a392c7ba38d7] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:36 [http-nio-8081-exec-2] INFO  [c416990ed750e93bde517c9c549dd995,a5e6a392c7ba38d7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:36 [http-nio-8081-exec-3] INFO  [390b284df2ba68f680355057ff453be5,0cac72963bbc9160] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:36 [http-nio-8081-exec-3] INFO  [390b284df2ba68f680355057ff453be5,0cac72963bbc9160] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:37 [http-nio-8081-exec-4] INFO  [acc017f0c2b08e32c8d21ad4aafab199,1aed8d7111934d80] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:37 [http-nio-8081-exec-4] INFO  [acc017f0c2b08e32c8d21ad4aafab199,1aed8d7111934d80] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:37 [http-nio-8081-exec-5] INFO  [d5c6ee7dce11b0efa7cd2f54cfdc35d0,ac136899f57928bb] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:37 [http-nio-8081-exec-5] INFO  [d5c6ee7dce11b0efa7cd2f54cfdc35d0,ac136899f57928bb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:37 [http-nio-8081-exec-6] INFO  [835104a1538c447e7b6dae0d6227b9fa,4b5c16c9a88f2102] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:37 [http-nio-8081-exec-6] INFO  [835104a1538c447e7b6dae0d6227b9fa,4b5c16c9a88f2102] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:37 [http-nio-8081-exec-7] INFO  [f4b4454c4deafca04420f3a0a9236863,41c4d43fd0b5591e] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:37 [http-nio-8081-exec-7] INFO  [f4b4454c4deafca04420f3a0a9236863,41c4d43fd0b5591e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:37 [http-nio-8081-exec-8] INFO  [b16e208da4feef4e58b6306f69a96715,7d351b5ad419aba9] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:38 [http-nio-8081-exec-8] INFO  [b16e208da4feef4e58b6306f69a96715,7d351b5ad419aba9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:38 [http-nio-8081-exec-9] INFO  [13817fd9d9aa6ddcd4305ad98a10c933,654b05bb3358956b] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:38 [http-nio-8081-exec-9] INFO  [13817fd9d9aa6ddcd4305ad98a10c933,654b05bb3358956b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:39 [http-nio-8081-exec-1] INFO  [c762ba46975384eda0bceb5b86da5f82,0e92f4ed98d68fb5] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:39 [http-nio-8081-exec-1] INFO  [c762ba46975384eda0bceb5b86da5f82,0e92f4ed98d68fb5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:39 [http-nio-8081-exec-2] INFO  [63451c16e6ec3e1dc7ace2bc74038b71,9bc788670d9d6bf0] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:39 [http-nio-8081-exec-2] INFO  [63451c16e6ec3e1dc7ace2bc74038b71,9bc788670d9d6bf0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:39 [http-nio-8081-exec-3] INFO  [d80997af8d5939060acae9a02d9df755,d3f7d861da69c77d] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:40 [http-nio-8081-exec-3] INFO  [d80997af8d5939060acae9a02d9df755,d3f7d861da69c77d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:40 [http-nio-8081-exec-4] INFO  [db75256dc96325c752b302a3c1f95860,cacc63f194fb6835] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:40 [http-nio-8081-exec-4] INFO  [db75256dc96325c752b302a3c1f95860,cacc63f194fb6835] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:40 [http-nio-8081-exec-5] INFO  [882b834b9f9559ec728e27a9c0099a67,f6f578b10aa886f5] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:40 [http-nio-8081-exec-5] INFO  [882b834b9f9559ec728e27a9c0099a67,f6f578b10aa886f5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:40 [http-nio-8081-exec-6] INFO  [284004c3340d779a2d479d0905bddf59,858836812d942b44] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:40 [http-nio-8081-exec-6] INFO  [284004c3340d779a2d479d0905bddf59,858836812d942b44] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:40 [http-nio-8081-exec-7] INFO  [32d84f9cb8134d7baa95116f536f0ed9,d9d90e8da693ae0a] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:40 [http-nio-8081-exec-7] INFO  [32d84f9cb8134d7baa95116f536f0ed9,d9d90e8da693ae0a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:41 [http-nio-8081-exec-8] INFO  [f9215fb8d29eafd60678fc3c5e3eacdf,dc4ec3fcc222d9a5] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:41 [http-nio-8081-exec-8] INFO  [f9215fb8d29eafd60678fc3c5e3eacdf,dc4ec3fcc222d9a5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:41 [http-nio-8081-exec-9] INFO  [954ec41ffdca9151a7772d390135012c,2813247ade321e25] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:41 [http-nio-8081-exec-9] INFO  [954ec41ffdca9151a7772d390135012c,2813247ade321e25] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:41 [http-nio-8081-exec-10] INFO  [9a999e711d4e6c9885f4e7aed5cd8bcb,f62996ab61cc6303] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:41 [http-nio-8081-exec-10] INFO  [9a999e711d4e6c9885f4e7aed5cd8bcb,f62996ab61cc6303] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:41 [http-nio-8081-exec-1] INFO  [08500081128ad96bee12195932d218b7,1add5fe2d533d42e] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:41 [http-nio-8081-exec-1] INFO  [08500081128ad96bee12195932d218b7,1add5fe2d533d42e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:42 [http-nio-8081-exec-2] INFO  [e7815e0a2d4f792597ef6baae1d6e665,c84648fb69cbe43c] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:42 [http-nio-8081-exec-2] INFO  [e7815e0a2d4f792597ef6baae1d6e665,c84648fb69cbe43c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:42 [http-nio-8081-exec-3] INFO  [e9519c17a625c725b20afc7baa05c578,78444ce3b29fab2f] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:42 [http-nio-8081-exec-3] INFO  [e9519c17a625c725b20afc7baa05c578,78444ce3b29fab2f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:42 [http-nio-8081-exec-4] INFO  [39f62fe9d42f801fe1e897cf6bbcc08c,b7370e9c09343fbd] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:42 [http-nio-8081-exec-4] INFO  [39f62fe9d42f801fe1e897cf6bbcc08c,b7370e9c09343fbd] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:42 [http-nio-8081-exec-5] INFO  [23b4edbc367cf51ad2de3042a0f5e751,f3d7ed9255140401] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:42 [http-nio-8081-exec-5] INFO  [23b4edbc367cf51ad2de3042a0f5e751,f3d7ed9255140401] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:42 [http-nio-8081-exec-6] INFO  [76700cc7ac6463ee1730fdfd4446aae3,5bcc700b208424fe] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:42 [http-nio-8081-exec-6] INFO  [76700cc7ac6463ee1730fdfd4446aae3,5bcc700b208424fe] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:43 [http-nio-8081-exec-7] INFO  [74da024c05c491a28811a787e0534106,727965694a9166fb] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:43 [http-nio-8081-exec-7] INFO  [74da024c05c491a28811a787e0534106,727965694a9166fb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:43 [http-nio-8081-exec-8] INFO  [0ddcc03e910fb520aa72674618b571bc,877ae00690ff7d46] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:43 [http-nio-8081-exec-8] INFO  [0ddcc03e910fb520aa72674618b571bc,877ae00690ff7d46] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:43 [http-nio-8081-exec-9] INFO  [ab7c4031c66d01a4295126b6f3086beb,0aebb225cfbc8e04] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:43 [http-nio-8081-exec-9] INFO  [ab7c4031c66d01a4295126b6f3086beb,0aebb225cfbc8e04] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:43 [http-nio-8081-exec-10] INFO  [f23dffa954415f6344dae8ea92cba4b4,327488a05f9482a4] c.e.s.controller.UserController - Received request for user data
+2025-08-12 00:59:43 [http-nio-8081-exec-10] INFO  [f23dffa954415f6344dae8ea92cba4b4,327488a05f9482a4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-12 00:59:45 [http-nio-8081-exec-1] INFO  [39809c2becc5e06f0ebc28c31dabea49,af78d7c09f19c6df] c.e.s.controller.UserController - Health check requested
+2025-08-12 08:08:02 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.net.http.HttpTimeoutException: request timed out
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
