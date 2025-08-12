@@ -1,0 +1,39 @@
+# application.yml para MICROSERVICIO 2 (Web/WebFlux)  
+# 👇 CAMBIAR ESTOS VALORES POR LOS TUYOS
+spring:
+  application:
+    name: service-gateway  # 👈 CAMBIAR por el nombre real de tu servicio
+
+server:
+  port: 8082  # 👈 CAMBIAR por el puerto que usas
+
+# Configuración mínima para observabilidad
+# Actuator con endpoints de health, info, metrics y prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  # Configuración de tracing
+  tracing:
+    sampling:
+      probability: 1.0  # 100% para desarrollo, bajar en producción
+  # Configuración específica de Zipkin
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+# Logging con correlación de traces
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+  file:
+    name: ./logs/service-gateway.log
