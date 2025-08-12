@@ -1,0 +1,113 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // ═══════════════════════════════════════════════════════════════
+    // DEPENDENCIAS PRINCIPALES DE SPRING BOOT
+    // ═══════════════════════════════════════════════════════════════
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'  // Para WebClient
+    
+    // ═══════════════════════════════════════════════════════════════
+    // ACTUATOR PARA MÉTRICAS Y HEALTH CHECKS
+    // ═══════════════════════════════════════════════════════════════
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    
+    // ═══════════════════════════════════════════════════════════════
+    // MICROMETER TRACING - NUEVA API DE SPRING BOOT 3
+    // Estas dependencias reemplazan completamente Spring Cloud Sleuth
+    // ═══════════════════════════════════════════════════════════════
+    
+    // Bridge entre Micrometer Tracing y OpenTelemetry
+    // Esta es la dependencia clave que proporciona la API de Tracer correcta
+    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+    
+    // Exportador para enviar trazas a Zipkin
+    // Compatible con el stack que tienes en docker-compose
+    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
+    
+    // ═══════════════════════════════════════════════════════════════
+    // PROMETHEUS PARA MÉTRICAS
+    // ═══════════════════════════════════════════════════════════════
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    
+    // ═══════════════════════════════════════════════════════════════
+    // LOGGING ESTRUCTURADO (OPCIONAL PERO RECOMENDADO)
+    // ═══════════════════════════════════════════════════════════════
+    implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
+    
+    // ═══════════════════════════════════════════════════════════════
+    // DEPENDENCIAS DE TESTING
+    // ═══════════════════════════════════════════════════════════════
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CONFIGURACIONES ADICIONALES PARA OBSERVABILIDAD
+// ═══════════════════════════════════════════════════════════════
+
+// Configuración para que Gradle proporcione información del build a la aplicación
+jar {
+    manifest {
+        attributes(
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Built-By': System.getProperty('user.name'),
+            'Built-Date': new Date().toString(),
+            'Built-JDK': System.getProperty('java.version')
+        )
+    }
+}
+
+// Tarea personalizada para verificar que todas las dependencias de observabilidad estén disponibles
+task checkObservabilityDependencies {
+    group = 'verification'
+    description = 'Verifica que todas las dependencias de observabilidad estén disponibles'
+    
+    doLast {
+        println "🔍 Verificando dependencias de observabilidad..."
+        
+        def requiredClasses = [
+            'io.micrometer.tracing.Tracer': 'Micrometer Tracing API',
+            'io.micrometer.tracing.Span': 'Micrometer Span API',
+            'io.micrometer.core.instrument.MeterRegistry': 'Micrometer Core',
+            'io.opentelemetry.exporter.zipkin.ZipkinSpanExporter': 'Zipkin Exporter',
+            'io.micrometer.core.instrument.Counter': 'Micrometer Counter'
+        ]
+        
+        requiredClasses.each { className, description ->
+            try {
+                Class.forName(className)
+                println "✅ $description: $className"
+            } catch (ClassNotFoundException e) {
+                println "❌ FALTA: $description: $className"
+            }
+        }
+        
+        println "🎯 Verificación de dependencias completada"
+    }
+}
+
+// Ejecutar verificación antes del build
+build.dependsOn checkObservabilityDependencies
