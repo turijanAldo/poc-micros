@@ -1,0 +1,46 @@
+# application.yml para MICROSERVICIO 1 (gRPC)
+# 👇 CAMBIAR ESTOS VALORES POR LOS TUYOS
+spring:
+  application:
+    name: service-user  # 👈 CAMBIAR por el nombre real de tu servicio
+
+server:
+  port: 8081  # 👈 CAMBIAR por el puerto que usas
+
+# Configuración gRPC
+grpc:
+  server:
+    port: 9090  # Puerto para gRPC (diferente del HTTP)
+
+# Configuración mínima para observabilidad
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  # Configuración de tracing
+  tracing:
+    sampling:
+      probability: 1.0  # 100% para desarrollo, bajar en producción
+    # Configuración específica de Zipkin
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+
+# Logging con correlación de traces
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+    net.devh.boot.grpc: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+  file:
+    name: ./logs/service-user.log
+
+---

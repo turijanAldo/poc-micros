@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc.user";
+option java_outer_classname = "UserProto";
+
+package user;
+
+// Mensaje User
+message User {
+  int64 id = 1;
+  string name = 2;
+}
+
+// Mensaje vacío para la solicitud
+message Empty {}
+
+// Servicio
+service UserService {
+  rpc GetUser(Empty) returns (User);
+}
