@@ -1,39 +1,185 @@
-# application.yml para MICROSERVICIO 2 (Web/WebFlux)  
-# 👇 CAMBIAR ESTOS VALORES POR LOS TUYOS
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN PRINCIPAL DEL SERVICE-GATEWAY
+# Configuración unificada que integra todas las características de observabilidad
+# ═══════════════════════════════════════════════════════════════
+
+# Configuración básica de la aplicación Spring Boot
 spring:
   application:
-    name: service-gateway  # 👈 CAMBIAR por el nombre real de tu servicio
+    name: service-gateway
+  
+  # Configuración específica para manejo de requests web
+  webflux:
+    multipart:
+      max-in-memory-size: 1MB
 
+# Configuración del servidor web embebido
 server:
-  port: 8082  # 👈 CAMBIAR por el puerto que usas
+  port: 8082
+  tomcat:
+    connection-timeout: 20000ms
+    keep-alive-timeout: 15000ms
 
-# Configuración mínima para observabilidad
-# Actuator con endpoints de health, info, metrics y prometheus
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN UNIFICADA DE OBSERVABILIDAD
+# Esta sección consolida TODA la configuración de management, métricas y tracing
+# ═══════════════════════════════════════════════════════════════
 management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,prometheus
-  endpoint:
-    health:
-      show-details: always
-  # Configuración de tracing
   tracing:
     sampling:
-      probability: 1.0  # 100% para desarrollo, bajar en producción
-  # Configuración específica de Zipkin
+      probability: 1.0
+    # Configuración corregida de propagación usando tipos válidos
+    propagation:
+      # Usamos múltiples tipos para máxima compatibilidad
+      type: 
+        - B3          # Formato clásico de Zipkin (single header)
+        - B3_MULTI    # Formato extendido de Zipkin (multiple headers)
+        - W3C         # Estándar moderno W3C para máxima interoperabilidad
+    baggage:
+      correlation:
+        enabled: true
+        fields:
+          - user-id
+          - request-id
+          - operation-type
+          - session-id
+      remote-fields:
+        - user-id
+        - request-id
+        - operation-type
+        - session-id
+  
+
+  # Configuración de endpoints de Spring Boot Actuator
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        # Exponemos todos los endpoints necesarios para observabilidad completa
+        include: health,info,metrics,prometheus,env,configprops,threaddump
+  
+  # Configuración específica de cada endpoint
+  endpoint:
+    health:
+      show-details: always       # Muestra detalles completos del health check
+      show-components: always    # Incluye estado de dependencias externas
+    metrics:
+      enabled: true             # Habilita el endpoint de métricas generales
+    prometheus:
+      enabled: true             # Habilita el endpoint específico de Prometheus
+  
+  # Configuración avanzada del sistema de métricas
+  metrics:
+    # Tags globales que se añaden automáticamente a TODAS las métricas
+    tags:
+      application: ${spring.application.name}
+      version: "1.0.0"
+      environment: "development"
+      team: "backend"
+    
+    # Configuración de distribución para métricas de timing y latencia
+    distribution:
+      # Genera histogramas para análisis de percentiles
+      percentiles-histogram:
+        http.server.requests: true    # Para requests HTTP entrantes
+        http.client.requests: true    # Para requests HTTP salientes (WebClient)
+      
+      # Percentiles específicos que queremos calcular
+      percentiles:
+        http.server.requests: 0.5, 0.75, 0.95, 0.99
+        http.client.requests: 0.5, 0.75, 0.95, 0.99
+      
+      # Service Level Agreement buckets - define qué consideramos "rápido" vs "lento"
+      sla:
+        http.server.requests: 50ms, 100ms, 200ms, 500ms, 1s, 2s
+        http.client.requests: 50ms, 100ms, 200ms, 500ms, 1s
+    
+    # Configuración para exportación a Prometheus
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true        # Incluye descripciones human-readable
+        step: 10s                # Intervalo de agregación de métricas
+  
+  # Configuración específica para envío de trazas a Zipkin
   zipkin:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
+      connect-timeout: 1s       # Timeout para conectar a Zipkin
+      read-timeout: 10s         # Timeout para leer respuesta de Zipkin
 
-# Logging con correlación de traces
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DE LOGGING CON CORRELACIÓN DE TRAZAS
+# ═══════════════════════════════════════════════════════════════
 logging:
+  # Niveles de logging optimizados para observabilidad
   level:
-    root: INFO
-    com.example: DEBUG
-    org.springframework.web: DEBUG
+    root: INFO                    # Nivel general conservador
+    com.example: DEBUG            # Tu código específico - más detallado
+    org.springframework.web: INFO # Spring Web - información importante
+    
+    # Niveles específicos para componentes de observabilidad
+    io.micrometer: INFO           # Información de métricas
+    io.zipkin: INFO              # Información de trazas
+    brave: INFO                  # Brave tracing library
+    
+    # Logging específico para WebClient (útil para debugging)
+    org.springframework.web.reactive.function.client: INFO
+  
+  # Patrones de logging que incluyen información de trazas
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    # Patrón para consola - incluye trace ID y span ID para correlación
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    
+    # Patrón para archivo - mismo formato para consistencia
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+  
+  # Configuración de archivos de log
   file:
     name: ./logs/service-gateway.log
+    max-size: 100MB               # Rotación cuando el archivo llega a 100MB
+    max-history: 30               # Mantener 30 archivos históricos
+
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN PERSONALIZADA PARA TU APLICACIÓN
+# ═══════════════════════════════════════════════════════════════
+app:
+  # Configuración para comunicación con el service-user
+  service-user:
+    base-url: http://localhost:8081
+    timeout:
+      connect: 2s               # Tiempo máximo para establecer conexión
+      read: 5s                  # Tiempo máximo para leer respuesta
+      write: 5s                 # Tiempo máximo para enviar datos
+  
+  # Configuración para circuit breaker (preparación para features futuras)
+  circuit-breaker:
+    enabled: false              # Deshabilitado por ahora
+    failure-rate-threshold: 50  # 50% de fallos para abrir el circuit
+    wait-duration-in-open-state: 30s
+
+# ═══════════════════════════════════════════════════════════════
+# INFORMACIÓN DE LA APLICACIÓN
+# Esta información aparece en el endpoint /actuator/info
+# ═══════════════════════════════════════════════════════════════
+info:
+  app:
+    name: ${spring.application.name}
+    description: "Service Gateway con observabilidad completa - Zipkin y Prometheus"
+    version: "1.0.0"
+    team: "Backend Team"
+    contact:
+      email: "backend@empresa.com"
+  
+  build:
+    artifact: "service-gateway"
+    version: "1.0.0"
+    timestamp: "2025-08-11"
+  
+  features:
+    - "Spring Boot Actuator"
+    - "Micrometer Metrics"
+    - "Prometheus Integration"
+    - "Zipkin Distributed Tracing"
+    - "Custom Business Metrics"
+    - "Request Correlation"
