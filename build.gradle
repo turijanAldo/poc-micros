@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.4'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.google.protobuf' version '0.9.4'
 }
 
 group = 'com.example'
@@ -22,36 +23,42 @@ dependencies {
     // DEPENDENCIAS PRINCIPALES DE SPRING BOOT
     // ═══════════════════════════════════════════════════════════════
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'  // Para WebClient
-    
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
     // ═══════════════════════════════════════════════════════════════
     // ACTUATOR PARA MÉTRICAS Y HEALTH CHECKS
     // ═══════════════════════════════════════════════════════════════
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    
+
     // ═══════════════════════════════════════════════════════════════
     // MICROMETER TRACING - NUEVA API DE SPRING BOOT 3
-    // Estas dependencias reemplazan completamente Spring Cloud Sleuth
     // ═══════════════════════════════════════════════════════════════
-    
-    // Bridge entre Micrometer Tracing y OpenTelemetry
-    // Esta es la dependencia clave que proporciona la API de Tracer correcta
     implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-    
-    // Exportador para enviar trazas a Zipkin
-    // Compatible con el stack que tienes en docker-compose
     implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
-    
+
     // ═══════════════════════════════════════════════════════════════
     // PROMETHEUS PARA MÉTRICAS
     // ═══════════════════════════════════════════════════════════════
     implementation 'io.micrometer:micrometer-registry-prometheus'
-    
+
     // ═══════════════════════════════════════════════════════════════
-    // LOGGING ESTRUCTURADO (OPCIONAL PERO RECOMENDADO)
+    // LOGGING ESTRUCTURADO
     // ═══════════════════════════════════════════════════════════════
     implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
-    
+
+    // ═══════════════════════════════════════════════════════════════
+    // DEPENDENCIAS DE GRPC Y PROTOBUF
+    // ═══════════════════════════════════════════════════════════════
+    implementation 'com.google.protobuf:protobuf-java:3.25.1'
+    runtimeOnly 'net.devh:grpc-client-spring-boot-starter:3.0.0.RELEASE'
+    implementation 'io.grpc:grpc-stub:1.62.2'
+    implementation 'io.grpc:grpc-protobuf:1.62.2'
+    implementation 'io.grpc:grpc-netty-shaded:1.62.2'
+
+    // ✅ CORRECCIÓN: Añadido javax.annotation para Java 21
+    implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
+
     // ═══════════════════════════════════════════════════════════════
     // DEPENDENCIAS DE TESTING
     // ═══════════════════════════════════════════════════════════════
@@ -59,15 +66,48 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.25.1"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.62.2"
+        }
+    }
+    generateProtoTasks {
+        all()*.builtins {
+            java {}
+        }
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+// Incluye los directorios generados en el sourceSet
+sourceSets {
+    main {
+        java {
+            srcDirs += [
+                "$buildDir/generated/source/proto/main/java",
+                "$buildDir/generated/source/proto/main/grpc"
+            ]
+        }
+    }
+}
+
+// Asegurar que la generación de proto se ejecute antes de la compilación
+compileJava.dependsOn generateProto
+
 tasks.named('test') {
     useJUnitPlatform()
+    dependsOn tasks.named('generateProto')
 }
 
 // ═══════════════════════════════════════════════════════════════
-// CONFIGURACIONES ADICIONALES PARA OBSERVABILIDAD
+// Configuración adicional de JAR
 // ═══════════════════════════════════════════════════════════════
-
-// Configuración para que Gradle proporcione información del build a la aplicación
 jar {
     manifest {
         attributes(
@@ -80,14 +120,13 @@ jar {
     }
 }
 
-// Tarea personalizada para verificar que todas las dependencias de observabilidad estén disponibles
+// Tarea de verificación opcional
 task checkObservabilityDependencies {
     group = 'verification'
     description = 'Verifica que todas las dependencias de observabilidad estén disponibles'
-    
+
     doLast {
         println "🔍 Verificando dependencias de observabilidad..."
-        
         def requiredClasses = [
             'io.micrometer.tracing.Tracer': 'Micrometer Tracing API',
             'io.micrometer.tracing.Span': 'Micrometer Span API',
@@ -95,7 +134,7 @@ task checkObservabilityDependencies {
             'io.opentelemetry.exporter.zipkin.ZipkinSpanExporter': 'Zipkin Exporter',
             'io.micrometer.core.instrument.Counter': 'Micrometer Counter'
         ]
-        
+
         requiredClasses.each { className, description ->
             try {
                 Class.forName(className)
@@ -104,10 +143,9 @@ task checkObservabilityDependencies {
                 println "❌ FALTA: $description: $className"
             }
         }
-        
+
         println "🎯 Verificación de dependencias completada"
     }
 }
 
-// Ejecutar verificación antes del build
 build.dependsOn checkObservabilityDependencies

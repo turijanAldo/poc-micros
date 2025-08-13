@@ -19,7 +19,23 @@ server:
   tomcat:
     connection-timeout: 20000ms
     keep-alive-timeout: 15000ms
-
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DEL CLIENTE gRPC
+# Esta sección le dice a tu Gateway cómo conectarse a otros servicios gRPC
+# ═══════════════════════════════════════════════════════════════
+grpc:
+  client:
+    # Configuración específica para conectarse a tu servicio de usuarios
+    user-service:  # Este nombre debe coincidir exactamente con @GrpcClient("user-service")
+      address: 'static://localhost:9090'  # Dirección del servidor gRPC
+      negotiationType: plaintext  # Sin encriptación para desarrollo local
+      # Configuración de timeouts para evitar que las peticiones se cuelguen indefinidamente
+      deadline: 10s  # Tiempo máximo para completar una operación
+      # Configuración de retry para manejar fallos temporales de red
+      retry: true
+      max-inbound-message-size: 1MB  # Tamaño máximo de mensajes que puede recibir
+      keep-alive-time: 30s  # Frecuencia de mensajes keep-alive para mantener conexión
+      keep-alive-timeout: 5s  # Tiempo de espera para respuesta de keep-alive
 # ═══════════════════════════════════════════════════════════════
 # CONFIGURACIÓN UNIFICADA DE OBSERVABILIDAD
 # Esta sección consolida TODA la configuración de management, métricas y tracing
