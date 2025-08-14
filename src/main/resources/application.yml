@@ -1,56 +1,48 @@
 # ═══════════════════════════════════════════════════════════════
 # CONFIGURACIÓN PRINCIPAL DEL SERVICE-GATEWAY
-# Configuración unificada que integra todas las características de observabilidad
 # ═══════════════════════════════════════════════════════════════
 
-# Configuración básica de la aplicación Spring Boot
 spring:
   application:
     name: service-gateway
   
-  # Configuración específica para manejo de requests web
   webflux:
     multipart:
       max-in-memory-size: 1MB
 
-# Configuración del servidor web embebido
 server:
   port: 8082
   tomcat:
     connection-timeout: 20000ms
     keep-alive-timeout: 15000ms
+
 # ═══════════════════════════════════════════════════════════════
 # CONFIGURACIÓN DEL CLIENTE gRPC
-# Esta sección le dice a tu Gateway cómo conectarse a otros servicios gRPC
 # ═══════════════════════════════════════════════════════════════
 grpc:
   client:
-    # Configuración específica para conectarse a tu servicio de usuarios
-    user-service:  # Este nombre debe coincidir exactamente con @GrpcClient("user-service")
-      address: 'static://localhost:9090'  # Dirección del servidor gRPC
-      negotiationType: plaintext  # Sin encriptación para desarrollo local
-      # Configuración de timeouts para evitar que las peticiones se cuelguen indefinidamente
-      deadline: 10s  # Tiempo máximo para completar una operación
-      # Configuración de retry para manejar fallos temporales de red
+    user-service:
+      address: 'static://localhost:9090'
+      negotiationType: plaintext
+      deadline: 10s
       retry: true
-      max-inbound-message-size: 1MB  # Tamaño máximo de mensajes que puede recibir
-      keep-alive-time: 30s  # Frecuencia de mensajes keep-alive para mantener conexión
-      keep-alive-timeout: 5s  # Tiempo de espera para respuesta de keep-alive
+      max-inbound-message-size: 1MB
+      keep-alive-time: 30s
+      keep-alive-timeout: 5s
+
 # ═══════════════════════════════════════════════════════════════
-# CONFIGURACIÓN UNIFICADA DE OBSERVABILIDAD
-# Esta sección consolida TODA la configuración de management, métricas y tracing
+# CONFIGURACIÓN DE OBSERVABILIDAD (Micrometer + OTEL)
 # ═══════════════════════════════════════════════════════════════
 management:
   tracing:
+    enabled: true
     sampling:
       probability: 1.0
-    # Configuración corregida de propagación usando tipos válidos
     propagation:
-      # Usamos múltiples tipos para máxima compatibilidad
       type: 
-        - B3          # Formato clásico de Zipkin (single header)
-        - B3_MULTI    # Formato extendido de Zipkin (multiple headers)
-        - W3C         # Estándar moderno W3C para máxima interoperabilidad
+        - B3
+        - B3_MULTI
+        - W3C
     baggage:
       correlation:
         enabled: true
@@ -65,137 +57,116 @@ management:
         - operation-type
         - session-id
   
+  # Configuración limpia y unificada para OTLP
+  otlp:
+    tracing:
+      endpoint: http://host.docker.internal:4318/v1/traces
 
-  # Configuración de endpoints de Spring Boot Actuator
   endpoints:
     web:
       base-path: /actuator
       exposure:
-        # Exponemos todos los endpoints necesarios para observabilidad completa
         include: health,info,metrics,prometheus,env,configprops,threaddump
-  
-  # Configuración específica de cada endpoint
+
   endpoint:
     health:
-      show-details: always       # Muestra detalles completos del health check
-      show-components: always    # Incluye estado de dependencias externas
+      show-details: always
+      show-components: always
     metrics:
-      enabled: true             # Habilita el endpoint de métricas generales
+      enabled: true
     prometheus:
-      enabled: true             # Habilita el endpoint específico de Prometheus
-  
-  # Configuración avanzada del sistema de métricas
+      enabled: true
+
   metrics:
-    # Tags globales que se añaden automáticamente a TODAS las métricas
     tags:
       application: ${spring.application.name}
       version: "1.0.0"
       environment: "development"
       team: "backend"
-    
-    # Configuración de distribución para métricas de timing y latencia
     distribution:
-      # Genera histogramas para análisis de percentiles
       percentiles-histogram:
-        http.server.requests: true    # Para requests HTTP entrantes
-        http.client.requests: true    # Para requests HTTP salientes (WebClient)
-      
-      # Percentiles específicos que queremos calcular
+        http.server.requests: true
+        http.client.requests: true
       percentiles:
         http.server.requests: 0.5, 0.75, 0.95, 0.99
         http.client.requests: 0.5, 0.75, 0.95, 0.99
-      
-      # Service Level Agreement buckets - define qué consideramos "rápido" vs "lento"
       sla:
         http.server.requests: 50ms, 100ms, 200ms, 500ms, 1s, 2s
         http.client.requests: 50ms, 100ms, 200ms, 500ms, 1s
-    
-    # Configuración para exportación a Prometheus
     export:
       prometheus:
         enabled: true
-        descriptions: true        # Incluye descripciones human-readable
-        step: 10s                # Intervalo de agregación de métricas
-  
-  # Configuración específica para envío de trazas a Zipkin
-  zipkin:
-    tracing:
-      endpoint: http://localhost:9411/api/v2/spans
-      connect-timeout: 1s       # Timeout para conectar a Zipkin
-      read-timeout: 10s         # Timeout para leer respuesta de Zipkin
+        descriptions: true
+        step: 10s
 
 # ═══════════════════════════════════════════════════════════════
-# CONFIGURACIÓN DE LOGGING CON CORRELACIÓN DE TRAZAS
+# ATRIBUTOS DE RECURSO OTEL
+# ═══════════════════════════════════════════════════════════════
+otel:
+  resource:
+    attributes: 
+      service.name: service-gateway
+      service.version: "1.0.0"
+      deployment.environment: "development"
+      team: "backend"
+  exporter:
+    otlp:
+      endpoint: http://host.docker.internal:4318/v1/traces
+      protocol: http
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DE LOGGING CON TRACEID Y SPANID
 # ═══════════════════════════════════════════════════════════════
 logging:
-  # Niveles de logging optimizados para observabilidad
   level:
-    root: INFO                    # Nivel general conservador
-    com.example: DEBUG            # Tu código específico - más detallado
-    org.springframework.web: INFO # Spring Web - información importante
-    
-    # Niveles específicos para componentes de observabilidad
-    io.micrometer: INFO           # Información de métricas
-    io.zipkin: INFO              # Información de trazas
-    brave: INFO                  # Brave tracing library
-    
-    # Logging específico para WebClient (útil para debugging)
+    root: INFO
+    com.example: DEBUG
+    org.springframework.web: INFO
+    io.micrometer: INFO
+    io.zipkin: INFO
+    brave: INFO
     org.springframework.web.reactive.function.client: INFO
-  
-  # Patrones de logging que incluyen información de trazas
   pattern:
-    # Patrón para consola - incluye trace ID y span ID para correlación
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
-    
-    # Patrón para archivo - mismo formato para consistencia
     file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
-  
-  # Configuración de archivos de log
   file:
     name: ./logs/service-gateway.log
-    max-size: 100MB               # Rotación cuando el archivo llega a 100MB
-    max-history: 30               # Mantener 30 archivos históricos
+    max-size: 100MB
+    max-history: 30
 
 # ═══════════════════════════════════════════════════════════════
-# CONFIGURACIÓN PERSONALIZADA PARA TU APLICACIÓN
+# CONFIGURACIÓN DE TU APP PERSONALIZADA
 # ═══════════════════════════════════════════════════════════════
 app:
-  # Configuración para comunicación con el service-user
   service-user:
     base-url: http://localhost:8081
     timeout:
-      connect: 2s               # Tiempo máximo para establecer conexión
-      read: 5s                  # Tiempo máximo para leer respuesta
-      write: 5s                 # Tiempo máximo para enviar datos
-  
-  # Configuración para circuit breaker (preparación para features futuras)
+      connect: 2s
+      read: 5s
+      write: 5s
   circuit-breaker:
-    enabled: false              # Deshabilitado por ahora
-    failure-rate-threshold: 50  # 50% de fallos para abrir el circuit
+    enabled: false
+    failure-rate-threshold: 50
     wait-duration-in-open-state: 30s
 
 # ═══════════════════════════════════════════════════════════════
-# INFORMACIÓN DE LA APLICACIÓN
-# Esta información aparece en el endpoint /actuator/info
+# INFORMACIÓN DE LA APP
 # ═══════════════════════════════════════════════════════════════
 info:
   app:
     name: ${spring.application.name}
-    description: "Service Gateway con observabilidad completa - Zipkin y Prometheus"
+    description: "Service Gateway con observabilidad completa - Jaeger, Zipkin y Prometheus"
     version: "1.0.0"
     team: "Backend Team"
     contact:
       email: "backend@empresa.com"
-  
   build:
     artifact: "service-gateway"
     version: "1.0.0"
     timestamp: "2025-08-11"
-  
   features:
     - "Spring Boot Actuator"
     - "Micrometer Metrics"
     - "Prometheus Integration"
-    - "Zipkin Distributed Tracing"
+    - "Jaeger & Zipkin Distributed Tracing"
     - "Custom Business Metrics"
     - "Request Correlation"
