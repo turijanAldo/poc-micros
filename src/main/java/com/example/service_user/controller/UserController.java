@@ -9,6 +9,7 @@ import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 @RestController
 public class UserController {
     
@@ -36,9 +37,11 @@ public class UserController {
                 
                 logger.info("Received request for user data");
                 
-                // Simular algo de procesamiento
-                Thread.sleep(50); // 50ms delay
-                
+                // Generar un retraso aleatorio entre 10ms y 2000ms
+                int delay = ThreadLocalRandom.current().nextInt(10, 2001); // 2001 porque el límite superior es
+                                                                           // exclusivo
+                Thread.sleep(delay);
+
                 User user = new User(1L, "Juan Pérez");
                 logger.info("Returning user: {}", user.getName());
                 

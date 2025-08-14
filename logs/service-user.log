@@ -1,37 +1,128 @@
-2025-08-13 12:34:16 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.1 with PID 18468 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
-2025-08-13 12:34:16 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
-2025-08-13 12:34:16 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
-2025-08-13 12:34:20 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
-2025-08-13 12:34:20 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-08-13 12:34:20 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-08-13 12:34:20 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-08-13 12:34:20 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3202 ms
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.c.a.GrpcCommonCodecAutoConfiguration - Found GrpcCodecDiscoverer -> Creating custom CompressorRegistry
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.c.c.AnnotationGrpcCodecDiscoverer - Searching for codecs...
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.c.c.AnnotationGrpcCodecDiscoverer - Done
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.c.a.GrpcCommonCodecAutoConfiguration - Found GrpcCodecDiscoverer -> Creating custom DecompressorRegistry
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - Pre-Registering service metrics
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - com.example.service_user.service.UserServiceImpl@1a717d79
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - io.grpc.protobuf.services.HealthServiceImpl@2bb717d7
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.a.GrpcServerMetricAutoConfiguration - - io.grpc.protobuf.services.ProtoReflectionService@57e4b86c
-2025-08-13 12:34:22 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: metricCollectingServerInterceptor (io.micrometer.core.instrument.binder.grpc.MetricCollectingServerInterceptor@4586a8aa)
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: grpcRequestScope (net.devh.boot.grpc.server.scope.GrpcRequestScope@3dc82e6a)
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.i.AnnotationGlobalServerInterceptorConfigurer - Registering GlobalServerInterceptor: globalObservationGrpcServerInterceptorConfigurer (io.micrometer.core.instrument.binder.grpc.ObservationGrpcServerInterceptor@54463380)
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
-2025-08-13 12:34:22 [main] DEBUG [,] n.d.b.g.s.s.AnnotationGrpcServiceDiscoverer - Found gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
-2025-08-13 12:34:22 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
-2025-08-13 12:34:22 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
-2025-08-13 12:34:23 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
-2025-08-13 12:34:23 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
-2025-08-13 12:34:23 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
-2025-08-13 12:34:23 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
-2025-08-13 12:34:23 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 7.914 seconds (process running for 8.776)
-2025-08-13 12:35:00 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+2025-08-14 00:28:32.341 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 19384 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 00:28:32.385 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 00:28:32.387 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 00:28:36.702 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 00:28:36.744 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 00:28:36.746 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 00:28:36.943 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 00:28:36.944 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4373 ms
+2025-08-14 00:28:39.359 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 00:28:39.889 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 00:28:40.076 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 00:28:40.270 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 00:28:40.270 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 00:28:40.270 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 00:28:40.599 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 00:28:40.600 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 00:28:40.603 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-08-14 00:28:40.680 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 00:28:40.745 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 10.579 seconds (process running for 12.196)
+2025-08-14 00:34:20.838 [http-nio-8081-exec-6] INFO  [ca21e222b4e335861d8563284a1f3ba7,036d381e1b6c1012] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:21.791 [http-nio-8081-exec-6] INFO  [ca21e222b4e335861d8563284a1f3ba7,036d381e1b6c1012] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:24.828 [http-nio-8081-exec-7] INFO  [2ec5d5cc563527432bcf9273039a7fc6,2e15b48fbd0917a8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:25.129 [http-nio-8081-exec-8] INFO  [fff491ef467b1d5032f9c67d672d11bd,69bf92daf3ae6313] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:25.654 [http-nio-8081-exec-10] INFO  [fa70a76473324f97688fc41366d3b57c,91e781c5d2e72bf6] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:25.686 [http-nio-8081-exec-9] INFO  [a85cdde606d96da6c1189dafa6dcc732,0953a1865528fe5c] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:25.695 [http-nio-8081-exec-1] INFO  [caf5d0ace098302fcaf4ec97e04b6df3,590eb6579283d951] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:25.779 [http-nio-8081-exec-2] INFO  [834b7afc7e65227f536329ecaabe63b0,7e93fd6b4b7d1076] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:25.944 [http-nio-8081-exec-7] INFO  [2ec5d5cc563527432bcf9273039a7fc6,2e15b48fbd0917a8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:25.947 [http-nio-8081-exec-3] INFO  [9b772e031fd5790c5018529f671865b0,6e86dfe2c53d0aa1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:26.010 [http-nio-8081-exec-4] INFO  [616be389b8056a4a5332f4e146b76685,5580a36bff9b20a3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:26.276 [http-nio-8081-exec-8] INFO  [fff491ef467b1d5032f9c67d672d11bd,69bf92daf3ae6313] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:26.344 [http-nio-8081-exec-5] INFO  [045cfc729b24210b0cacff528f68b587,51fb761a7be5acd3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:26.599 [http-nio-8081-exec-6] INFO  [821ee05651b60fbb5fdfa0dea61e5c5d,8259505748518c1f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:26.623 [http-nio-8081-exec-2] INFO  [834b7afc7e65227f536329ecaabe63b0,7e93fd6b4b7d1076] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:26.726 [http-nio-8081-exec-5] INFO  [045cfc729b24210b0cacff528f68b587,51fb761a7be5acd3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:26.885 [http-nio-8081-exec-7] INFO  [73e1cf6a868d8b0e3c3d816fb6243191,2aba1432e9cdfdbe] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:26.890 [http-nio-8081-exec-9] INFO  [a85cdde606d96da6c1189dafa6dcc732,0953a1865528fe5c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:27.097 [http-nio-8081-exec-10] INFO  [fa70a76473324f97688fc41366d3b57c,91e781c5d2e72bf6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:27.115 [http-nio-8081-exec-8] INFO  [792f546c9aa968711ea4625b850e17de,9e8d0510dd8fbde3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:34:27.193 [http-nio-8081-exec-4] INFO  [616be389b8056a4a5332f4e146b76685,5580a36bff9b20a3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:27.409 [http-nio-8081-exec-3] INFO  [9b772e031fd5790c5018529f671865b0,6e86dfe2c53d0aa1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:27.632 [http-nio-8081-exec-1] INFO  [caf5d0ace098302fcaf4ec97e04b6df3,590eb6579283d951] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:27.717 [http-nio-8081-exec-8] INFO  [792f546c9aa968711ea4625b850e17de,9e8d0510dd8fbde3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:28.253 [http-nio-8081-exec-6] INFO  [821ee05651b60fbb5fdfa0dea61e5c5d,8259505748518c1f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:34:28.858 [http-nio-8081-exec-7] INFO  [73e1cf6a868d8b0e3c3d816fb6243191,2aba1432e9cdfdbe] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:35:09.373 [http-nio-8081-exec-4] INFO  [bc2d0a6406a984e736f3ca0270710f59,b0473e25d7dccedf] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:35:09.645 [http-nio-8081-exec-10] INFO  [cd407e9dc3b8c896f151493fc5e1c42b,898b755f95520ba9] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:35:09.896 [http-nio-8081-exec-3] INFO  [2a957c64018e3e39acfe92b5237f0d45,a3cb9880274dafad] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:35:10.007 [http-nio-8081-exec-4] INFO  [bc2d0a6406a984e736f3ca0270710f59,b0473e25d7dccedf] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:35:10.128 [http-nio-8081-exec-1] INFO  [3a0e268821eb46baef85eb2408f3d663,021bdbb0db4bb059] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:35:10.948 [http-nio-8081-exec-1] INFO  [3a0e268821eb46baef85eb2408f3d663,021bdbb0db4bb059] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:35:11.071 [http-nio-8081-exec-3] INFO  [2a957c64018e3e39acfe92b5237f0d45,a3cb9880274dafad] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:35:11.194 [http-nio-8081-exec-10] INFO  [cd407e9dc3b8c896f151493fc5e1c42b,898b755f95520ba9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:36:35.277 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 18532 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 00:36:35.282 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 00:36:35.283 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 00:36:41.079 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 00:36:41.171 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 00:36:41.172 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 00:36:41.515 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 00:36:41.518 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6115 ms
+2025-08-14 00:36:48.445 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 00:36:49.629 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 00:36:49.950 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 00:36:50.239 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 00:36:50.240 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 00:36:50.240 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 00:36:50.755 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 00:36:50.756 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 00:36:50.760 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-08-14 00:36:50.820 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 00:36:50.868 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 17.191 seconds (process running for 18.945)
+2025-08-14 00:37:24.610 [http-nio-8081-exec-6] INFO  [60afe56fcd28758d7e2c27d92acdd82e,558575858fe734e1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:37:24.611 [http-nio-8081-exec-9] INFO  [17f2ffe392237fa5d684b7a9abba97d7,14d631825f019c10] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:37:24.612 [http-nio-8081-exec-5] INFO  [499c9399f35d0b275047702f11cf2199,1be47553cdd77aff] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:37:24.613 [http-nio-8081-exec-8] INFO  [7e5f0851ab78fb2fb1e47b748c25e641,2a72e166b0e5741e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:37:24.612 [http-nio-8081-exec-7] INFO  [519b001b65676ff68c5bb2b802e89770,7fe80933dcafe7b0] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:37:24.663 [http-nio-8081-exec-8] INFO  [7e5f0851ab78fb2fb1e47b748c25e641,2a72e166b0e5741e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:37:24.749 [http-nio-8081-exec-6] INFO  [60afe56fcd28758d7e2c27d92acdd82e,558575858fe734e1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:37:25.059 [http-nio-8081-exec-7] INFO  [519b001b65676ff68c5bb2b802e89770,7fe80933dcafe7b0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:37:25.610 [http-nio-8081-exec-9] INFO  [17f2ffe392237fa5d684b7a9abba97d7,14d631825f019c10] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:37:25.686 [http-nio-8081-exec-5] INFO  [499c9399f35d0b275047702f11cf2199,1be47553cdd77aff] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:39:32.065 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 13508 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 00:39:32.069 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 00:39:32.070 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 00:39:36.659 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 00:39:36.761 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 00:39:36.761 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 00:39:37.116 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 00:39:37.137 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4818 ms
+2025-08-14 00:39:40.970 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 00:39:42.438 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 00:39:42.683 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 00:39:42.988 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 00:39:42.988 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 00:39:42.988 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 00:39:43.383 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 00:39:43.417 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 13.783 seconds (process running for 15.284)
+2025-08-14 00:39:48.971 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 00:39:48.972 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 00:39:48.987 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2025-08-14 00:40:04.882 [http-nio-8081-exec-4] INFO  [7083e89c91d2a69ea64ca37506cc5ba4,22ccbc361154e1e8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:40:04.882 [http-nio-8081-exec-3] INFO  [6d809e485d478071574fbdda847066d7,a589626004058308] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:40:05.159 [http-nio-8081-exec-4] INFO  [7083e89c91d2a69ea64ca37506cc5ba4,22ccbc361154e1e8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:40:05.179 [http-nio-8081-exec-5] INFO  [9dc1f7244a43bf4103ea32af57e26dbe,6e9a4df30daf66b9] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:40:05.364 [http-nio-8081-exec-3] INFO  [6d809e485d478071574fbdda847066d7,a589626004058308] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:40:05.693 [http-nio-8081-exec-6] INFO  [d3dc49ab04c1cdfcf5a5e82f2bcd2c3a,515341d0a6405056] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:40:05.811 [http-nio-8081-exec-5] INFO  [9dc1f7244a43bf4103ea32af57e26dbe,6e9a4df30daf66b9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:40:06.280 [http-nio-8081-exec-6] INFO  [d3dc49ab04c1cdfcf5a5e82f2bcd2c3a,515341d0a6405056] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:40:07.166 [http-nio-8081-exec-7] INFO  [1ce252a889e1d8d1a33b3f9819450d07,33a26cd66dfef7da] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:40:08.680 [http-nio-8081-exec-7] INFO  [1ce252a889e1d8d1a33b3f9819450d07,33a26cd66dfef7da] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:41:08.427 [http-nio-8081-exec-8] INFO  [414a210b989a7e90a85341fc8d47951a,6d85aea547dd2544] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:41:08.742 [http-nio-8081-exec-10] INFO  [0344327ade6ba8d6d39700e4ce76d4fc,13c7c9823efe9095] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:41:08.772 [http-nio-8081-exec-1] INFO  [5914dacd2f9cbddac7a0d4a73e06b1f4,6170547aa33c8ba5] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:41:08.898 [http-nio-8081-exec-2] INFO  [b8485d151c1af02843389fee0e6ebf8f,2e3342ea9aa3b04d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:41:09.039 [http-nio-8081-exec-8] INFO  [414a210b989a7e90a85341fc8d47951a,6d85aea547dd2544] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:41:09.362 [http-nio-8081-exec-4] INFO  [069a8d383e777697a1ad83530558e648,5d47660e66bff5d8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 00:41:09.746 [http-nio-8081-exec-2] INFO  [b8485d151c1af02843389fee0e6ebf8f,2e3342ea9aa3b04d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:41:10.340 [http-nio-8081-exec-10] INFO  [0344327ade6ba8d6d39700e4ce76d4fc,13c7c9823efe9095] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:41:10.391 [http-nio-8081-exec-1] INFO  [5914dacd2f9cbddac7a0d4a73e06b1f4,6170547aa33c8ba5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 00:41:11.109 [http-nio-8081-exec-4] INFO  [069a8d383e777697a1ad83530558e648,5d47660e66bff5d8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:07:03.399 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
 java.net.ConnectException: null
-	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:951)
-	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
 	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
 	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
 	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
@@ -41,38 +132,148 @@ java.net.ConnectException: null
 	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
 	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
 	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
 	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
 	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
 	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
+	at java.base/java.lang.Thread.run(Unknown Source)
 Caused by: java.net.ConnectException: null
-	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1028)
-	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227)
-	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280)
-	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238)
-	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
-	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911)
-	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
-	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	... 1 common frames omitted
 Caused by: java.nio.channels.ClosedChannelException: null
-	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:202)
-	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:786)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:874)
-	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571)
-	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212)
-	... 9 common frames omitted
-2025-08-13 12:40:18 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-08-13 12:40:18 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-08-13 12:40:18 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 70 ms
-2025-08-13 12:40:27 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	... 10 common frames omitted
+2025-08-14 01:09:04.254 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 14216 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 01:09:04.265 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 01:09:04.270 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 01:09:11.653 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 01:09:11.741 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 01:09:11.742 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 01:09:12.138 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 01:09:12.139 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 7559 ms
+2025-08-14 01:09:17.038 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 01:09:17.769 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 01:09:18.042 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 01:09:18.351 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 01:09:18.352 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 01:09:18.352 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 01:09:18.388 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 01:09:18.389 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 01:09:18.392 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-08-14 01:09:18.904 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 01:09:18.957 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 18.634 seconds (process running for 20.298)
+2025-08-14 01:09:22.979 [http-nio-8081-exec-2] INFO  [a028cda68a6382887d9e34680342a392,0329310023f0afc1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:24.787 [http-nio-8081-exec-2] INFO  [a028cda68a6382887d9e34680342a392,0329310023f0afc1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:27.478 [http-nio-8081-exec-3] INFO  [1f5b30dfa95e49ea02bf3c2f6ae92c09,27bdd87b81a8479c] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:27.784 [http-nio-8081-exec-5] INFO  [21b9733f66864bb9ac988af9f7eda0f3,2c6eca864b10f48d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:28.059 [http-nio-8081-exec-6] INFO  [4e087fe730628c7402f49a205ec2f23d,61f59c6de4a6114a] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:28.283 [http-nio-8081-exec-7] INFO  [5988b3b86c163ffd966e9f3152471dd0,a5dca4ecbcfc9de8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:28.290 [http-nio-8081-exec-5] INFO  [21b9733f66864bb9ac988af9f7eda0f3,2c6eca864b10f48d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:29.197 [http-nio-8081-exec-3] INFO  [1f5b30dfa95e49ea02bf3c2f6ae92c09,27bdd87b81a8479c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:29.311 [http-nio-8081-exec-6] INFO  [4e087fe730628c7402f49a205ec2f23d,61f59c6de4a6114a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:29.592 [http-nio-8081-exec-7] INFO  [5988b3b86c163ffd966e9f3152471dd0,a5dca4ecbcfc9de8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:52.500 [http-nio-8081-exec-5] INFO  [55e5bb4013849fdd39f996beb96bf491,c694d416f09dd96f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:52.680 [http-nio-8081-exec-3] INFO  [c70443f7b1f7096206aad2365e7c08f4,350d912283250ec0] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:52.931 [http-nio-8081-exec-6] INFO  [9438012578ca028b1a5d5ce3a3f606da,a8d56ce1fd9bc165] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:53.147 [http-nio-8081-exec-7] INFO  [21e6671d5e859eb721a538c16339dcbe,29d9d32afee54d10] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:53.225 [http-nio-8081-exec-7] INFO  [21e6671d5e859eb721a538c16339dcbe,29d9d32afee54d10] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:53.553 [http-nio-8081-exec-6] INFO  [9438012578ca028b1a5d5ce3a3f606da,a8d56ce1fd9bc165] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:53.580 [http-nio-8081-exec-8] INFO  [0c6ba56e1a8ccc7b6efd1f954be47fb2,57e69d430b8ca465] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:09:54.143 [http-nio-8081-exec-5] INFO  [55e5bb4013849fdd39f996beb96bf491,c694d416f09dd96f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:54.513 [http-nio-8081-exec-3] INFO  [c70443f7b1f7096206aad2365e7c08f4,350d912283250ec0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:09:54.980 [http-nio-8081-exec-8] INFO  [0c6ba56e1a8ccc7b6efd1f954be47fb2,57e69d430b8ca465] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:26:58.385 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - Starting ServiceUserApplicationTests using Java 21.0.1 with PID 16204 (started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 01:26:58.389 [Test worker] DEBUG [,] c.e.s.ServiceUserApplicationTests - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 01:26:58.389 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 01:27:06.615 [Test worker] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 01:27:11.281 [Test worker] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 6 endpoints beneath base path '/actuator'
+2025-08-14 01:27:12.167 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 01:27:12.169 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 01:27:12.170 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 01:27:12.891 [Test worker] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 01:27:12.954 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - Started ServiceUserApplicationTests in 16.011 seconds (process running for 20.831)
+2025-08-14 01:27:16.558 [SpringApplicationShutdownHook] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - Completed gRPC server shutdown
+2025-08-14 01:28:03.791 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 27496 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 01:28:03.795 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 01:28:03.796 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 01:28:07.742 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 01:28:07.793 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 01:28:07.793 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 01:28:08.035 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 01:28:08.038 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4073 ms
+2025-08-14 01:28:10.326 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 01:28:11.000 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 01:28:11.224 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 01:28:11.437 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 01:28:11.438 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 01:28:11.439 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 01:28:11.508 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 01:28:11.508 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 01:28:11.512 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-08-14 01:28:11.943 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 01:28:11.988 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 9.41 seconds (process running for 11.265)
+2025-08-14 01:28:15.584 [http-nio-8081-exec-2] INFO  [9023576b37243bb5c0a434c70ed07da8,d4049577db46d85b] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:28:17.072 [http-nio-8081-exec-2] INFO  [9023576b37243bb5c0a434c70ed07da8,d4049577db46d85b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:28:42.415 [http-nio-8081-exec-7] INFO  [ac1cee8fec37546744b3a88527491b5f,9410b8f5ac145b36] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:28:42.734 [http-nio-8081-exec-8] INFO  [1d2f94fa2b5c0ab9e9dce0df77381f7f,ae2aa258c60f37d8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:28:42.801 [http-nio-8081-exec-8] INFO  [1d2f94fa2b5c0ab9e9dce0df77381f7f,ae2aa258c60f37d8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:28:43.009 [http-nio-8081-exec-9] INFO  [aefd52d5eb29c4d5cf2a4a6b243355e9,31a1d6b10f98dce9] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:28:43.448 [http-nio-8081-exec-10] INFO  [a2bd342a01fc62dc09c1af62267ab5e1,eb8aca755f3af74c] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:28:43.679 [http-nio-8081-exec-10] INFO  [a2bd342a01fc62dc09c1af62267ab5e1,eb8aca755f3af74c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:28:44.140 [http-nio-8081-exec-9] INFO  [aefd52d5eb29c4d5cf2a4a6b243355e9,31a1d6b10f98dce9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:28:44.370 [http-nio-8081-exec-7] INFO  [ac1cee8fec37546744b3a88527491b5f,9410b8f5ac145b36] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:29:49.906 [http-nio-8081-exec-7] INFO  [ea125d99cc21424aa7a1a113d30f0edb,94d16399f5433889] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:29:49.942 [http-nio-8081-exec-7] INFO  [ea125d99cc21424aa7a1a113d30f0edb,94d16399f5433889] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:37:09.505 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 15736 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 01:37:09.520 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 01:37:09.521 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 01:37:14.691 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 01:37:14.823 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 01:37:14.835 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 01:37:15.459 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 01:37:15.465 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5816 ms
+2025-08-14 01:37:17.855 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 01:37:18.765 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 01:37:19.011 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 01:37:19.335 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 01:37:19.335 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 01:37:19.336 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 01:37:19.776 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 01:37:19.777 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 01:37:19.787 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-08-14 01:37:19.816 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 01:37:19.852 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 12.765 seconds (process running for 13.995)
+2025-08-14 01:37:53.304 [http-nio-8081-exec-5] INFO  [9e11db33aa0ca85e481ea22cfe323091,5283930d26e4dfcd] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:37:53.896 [http-nio-8081-exec-5] INFO  [9e11db33aa0ca85e481ea22cfe323091,5283930d26e4dfcd] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:37:57.573 [http-nio-8081-exec-7] INFO  [f40a706c9ce0551113ed562096be5b02,f85a58744645ed8a] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:37:57.959 [http-nio-8081-exec-8] INFO  [9632eef2c9dacc2d3ffffb4a7005b629,0ab1e03d241a149a] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:37:59.291 [http-nio-8081-exec-7] INFO  [f40a706c9ce0551113ed562096be5b02,f85a58744645ed8a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:37:59.686 [http-nio-8081-exec-8] INFO  [9632eef2c9dacc2d3ffffb4a7005b629,0ab1e03d241a149a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:38:27.186 [http-nio-8081-exec-4] INFO  [e5aeb0e158092d07577413bb71b35622,60e669482413da01] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:38:27.571 [http-nio-8081-exec-4] INFO  [e5aeb0e158092d07577413bb71b35622,60e669482413da01] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:38:33.127 [http-nio-8081-exec-5] INFO  [b2a7d8ea09787c03be3261e0b0fce637,b99b4c2007059d4a] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:38:34.620 [http-nio-8081-exec-5] INFO  [b2a7d8ea09787c03be3261e0b0fce637,b99b4c2007059d4a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:39:22.799 [http-nio-8081-exec-2] INFO  [03fe935b0947f90b61bea9ae090d8ff6,888538240b96098e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:39:23.667 [http-nio-8081-exec-2] INFO  [03fe935b0947f90b61bea9ae090d8ff6,888538240b96098e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:39:32.091 [http-nio-8081-exec-4] INFO  [eecfcd05d6e3c933bf3ea431b0a13705,78f7458f5adcf759] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:39:32.395 [http-nio-8081-exec-4] INFO  [eecfcd05d6e3c933bf3ea431b0a13705,78f7458f5adcf759] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:44:06.207 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
 java.io.IOException: HTTP/1.1 header parser received no bytes
-	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:964)
-	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
 	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
 	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
 	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
@@ -82,34 +283,967 @@ java.io.IOException: HTTP/1.1 header parser received no bytes
 	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
 	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
 	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
 	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
 	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
 	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
+	at java.base/java.lang.Thread.run(Unknown Source)
 Caused by: java.io.IOException: HTTP/1.1 header parser received no bytes
-	at java.net.http/jdk.internal.net.http.common.Utils.wrapWithExtraDetail(Utils.java:388)
-	at java.net.http/jdk.internal.net.http.Http1Response$HeadersReader.onReadError(Http1Response.java:590)
-	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.checkForErrors(Http1AsyncReceiver.java:302)
-	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.flush(Http1AsyncReceiver.java:268)
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(SequentialScheduler.java:182)
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:149)
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.net.http/jdk.internal.net.http.common.Utils.wrapWithExtraDetail(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1Response$HeadersReader.onReadError(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.checkForErrors(Unknown Source)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.flush(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	... 1 common frames omitted
 Caused by: java.io.EOFException: EOF reached while reading
-	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver$Http1TubeSubscriber.onComplete(Http1AsyncReceiver.java:601)
-	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(SocketTube.java:648)
-	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:853)
-	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181)
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207)
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280)
-	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233)
-	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:782)
-	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:965)
-	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253)
-	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:1467)
-	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:1412)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1412)
+	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver$Http1TubeSubscriber.onComplete(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Unknown Source)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(Unknown Source)
+	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(Unknown Source)
+	at java.base/java.util.ArrayList.forEach(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+2025-08-14 01:45:36.071 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 20240 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 01:45:36.074 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 01:45:36.075 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 01:45:42.916 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 01:45:42.980 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 01:45:42.981 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 01:45:43.171 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 01:45:43.173 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6942 ms
+2025-08-14 01:45:45.711 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 01:45:46.635 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 01:45:47.006 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 01:45:47.292 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 01:45:47.293 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 01:45:47.293 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 01:45:47.934 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 01:45:47.974 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 14.199 seconds (process running for 15.288)
+2025-08-14 01:45:50.505 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 01:45:50.506 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 01:45:50.509 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-08-14 01:47:00.260 [http-nio-8081-exec-8] INFO  [dadfa6d08ed5c353d6b7a03a86b11059,fe5f0577cd29ee3e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:47:00.635 [http-nio-8081-exec-8] INFO  [dadfa6d08ed5c353d6b7a03a86b11059,fe5f0577cd29ee3e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:47:04.997 [http-nio-8081-exec-10] INFO  [9a1a2dca06cbced58b49f5727f0f0a73,b37ab55da4882cb7] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:47:06.110 [http-nio-8081-exec-10] INFO  [9a1a2dca06cbced58b49f5727f0f0a73,b37ab55da4882cb7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:47:27.592 [http-nio-8081-exec-4] INFO  [0b81143f8e3bae8e5f66224339011566,82e891c1d8f3c967] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:47:28.979 [http-nio-8081-exec-4] INFO  [0b81143f8e3bae8e5f66224339011566,82e891c1d8f3c967] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:47:33.867 [http-nio-8081-exec-6] INFO  [3330def10a215476b7fe9074c56bad80,427466e2fcdd0921] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:47:35.212 [http-nio-8081-exec-6] INFO  [3330def10a215476b7fe9074c56bad80,427466e2fcdd0921] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 01:47:36.736 [http-nio-8081-exec-7] INFO  [63d3e1ddaa7ee276ae17cbf2aa162767,086c660e99fdff77] c.e.s.controller.UserController - Received request for user data
+2025-08-14 01:47:38.372 [http-nio-8081-exec-7] INFO  [63d3e1ddaa7ee276ae17cbf2aa162767,086c660e99fdff77] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 10:57:45.329 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 20748 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 10:57:45.333 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 10:57:45.341 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 10:57:49.259 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 10:57:49.300 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 10:57:49.301 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 10:57:49.487 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 10:57:49.488 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4035 ms
+2025-08-14 10:57:51.844 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 10:57:52.562 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 10:57:52.745 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 10:57:52.968 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 10:57:52.968 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 10:57:52.969 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 10:57:53.284 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 10:57:53.311 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 10.024 seconds (process running for 11.484)
+2025-08-14 10:59:35.498 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.nio.channels.ClosedChannelException: null
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	... 10 common frames omitted
+2025-08-14 10:59:40.523 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.nio.channels.ClosedChannelException: null
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	... 10 common frames omitted
+2025-08-14 10:59:55.189 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 10:59:55.189 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 10:59:55.193 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-08-14 10:59:55.251 [http-nio-8081-exec-1] INFO  [22ac32637efca55f13b79845ce57ae7f,e2c3693eca42cde6] c.e.s.controller.UserController - Received request for user data
+2025-08-14 10:59:57.014 [http-nio-8081-exec-1] INFO  [22ac32637efca55f13b79845ce57ae7f,e2c3693eca42cde6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:00:00.583 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.nio.channels.ClosedChannelException: null
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	... 10 common frames omitted
+2025-08-14 11:00:04.093 [http-nio-8081-exec-3] INFO  [f54f2097d80fdc60b726df10212ac86b,801c2a6748f7835d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:00:04.269 [http-nio-8081-exec-4] INFO  [2ce5ac6432dcc0c86cbfdb05c71b19a8,2a4916ae6d4f97aa] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:00:04.456 [http-nio-8081-exec-5] INFO  [90edcdfa83612dbe4bc68b1f444323c0,b02740768af5e9bb] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:00:04.519 [http-nio-8081-exec-5] INFO  [90edcdfa83612dbe4bc68b1f444323c0,b02740768af5e9bb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:00:04.592 [http-nio-8081-exec-3] INFO  [f54f2097d80fdc60b726df10212ac86b,801c2a6748f7835d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:00:04.678 [http-nio-8081-exec-7] INFO  [c46adaf8292920388ae9350ab9ac9e65,8f8d067fb3e820ec] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:00:04.798 [http-nio-8081-exec-8] INFO  [e1226b34fe5bc46934b450b783ed6c8e,db0b1307fac3b5d5] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:00:05.059 [http-nio-8081-exec-10] INFO  [87e9a932db99e6008bb2c48913871dd7,e2416bd9359f6b25] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:00:05.143 [http-nio-8081-exec-8] INFO  [e1226b34fe5bc46934b450b783ed6c8e,db0b1307fac3b5d5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:00:05.509 [http-nio-8081-exec-4] INFO  [2ce5ac6432dcc0c86cbfdb05c71b19a8,2a4916ae6d4f97aa] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:00:05.613 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.nio.channels.ClosedChannelException: null
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	... 10 common frames omitted
+2025-08-14 11:00:05.970 [http-nio-8081-exec-7] INFO  [c46adaf8292920388ae9350ab9ac9e65,8f8d067fb3e820ec] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:00:06.563 [http-nio-8081-exec-10] INFO  [87e9a932db99e6008bb2c48913871dd7,e2416bd9359f6b25] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:00:10.627 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.nio.channels.ClosedChannelException: null
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	... 10 common frames omitted
+2025-08-14 11:31:55.551 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 22024 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 11:31:55.554 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 11:31:55.556 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 11:31:59.223 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 11:31:59.268 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 11:31:59.269 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 11:31:59.458 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 11:31:59.459 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3798 ms
+2025-08-14 11:32:04.779 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 11:32:06.155 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 11:32:06.693 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 11:32:06.926 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 11:32:06.926 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 11:32:06.926 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 11:32:07.419 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 11:32:07.493 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 14.201 seconds (process running for 15.607)
+2025-08-14 11:32:35.358 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 11:32:35.359 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 11:32:35.362 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-08-14 11:32:35.447 [http-nio-8081-exec-1] INFO  [bdffbd62c8115c0f9c5771e6f8cb3c5a,84fcfad8a99db4ac] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:32:35.447 [http-nio-8081-exec-2] INFO  [4685634e0780faf6858ec2c771798ea3,e1d650fc86069b44] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:32:35.536 [http-nio-8081-exec-3] INFO  [8164eba5f8555e898eac3387f6267829,f124cd73f5e13c85] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:32:35.546 [http-nio-8081-exec-2] INFO  [4685634e0780faf6858ec2c771798ea3,e1d650fc86069b44] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:32:35.733 [http-nio-8081-exec-4] INFO  [d55ee7a029585ea83611cfeab4b42d4e,8283331baaf3bb61] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:32:36.612 [http-nio-8081-exec-1] INFO  [bdffbd62c8115c0f9c5771e6f8cb3c5a,84fcfad8a99db4ac] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:32:36.687 [http-nio-8081-exec-4] INFO  [d55ee7a029585ea83611cfeab4b42d4e,8283331baaf3bb61] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:32:36.695 [http-nio-8081-exec-3] INFO  [8164eba5f8555e898eac3387f6267829,f124cd73f5e13c85] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:36:52.445 [http-nio-8081-exec-2] INFO  [c821dc43ce899ecaa2128737fe240562,a040926c95583f0d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:36:52.560 [http-nio-8081-exec-1] INFO  [c23dee905bdc510a04a034488cf76fb6,2a3ab0e3eb387532] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:36:52.784 [http-nio-8081-exec-4] INFO  [8dd7d314054ffe94f37f4c2cd5d5fb16,af45425f94e7def8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:36:53.353 [http-nio-8081-exec-1] INFO  [c23dee905bdc510a04a034488cf76fb6,2a3ab0e3eb387532] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:36:53.412 [http-nio-8081-exec-2] INFO  [c821dc43ce899ecaa2128737fe240562,a040926c95583f0d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:36:53.760 [http-nio-8081-exec-4] INFO  [8dd7d314054ffe94f37f4c2cd5d5fb16,af45425f94e7def8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:37:30.911 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 9276 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 11:37:30.915 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 11:37:30.916 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 11:37:36.849 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 11:37:36.902 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 11:37:36.902 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 11:37:37.262 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 11:37:37.264 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6187 ms
+2025-08-14 11:37:42.731 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 11:37:43.613 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 11:37:43.864 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 11:37:44.124 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 11:37:44.124 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 11:37:44.125 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 11:37:44.516 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 11:37:44.549 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 15.695 seconds (process running for 16.783)
+2025-08-14 11:37:49.091 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 11:37:49.092 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 11:37:49.094 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-08-14 11:39:08.088 [http-nio-8081-exec-3] INFO  [9c1ca46d2bce592377800460b0258248,a5c5e21fc3ca198f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:39:08.263 [http-nio-8081-exec-4] INFO  [0f126bafdc01f5a90c905ecc5fece345,36cc3a956985d392] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:39:08.441 [http-nio-8081-exec-5] INFO  [1d8df7dfd5a343e403e30506887f3979,e1653a3409db9d60] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:39:08.580 [http-nio-8081-exec-3] INFO  [9c1ca46d2bce592377800460b0258248,a5c5e21fc3ca198f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:39:09.647 [http-nio-8081-exec-5] INFO  [1d8df7dfd5a343e403e30506887f3979,e1653a3409db9d60] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:39:09.937 [http-nio-8081-exec-4] INFO  [0f126bafdc01f5a90c905ecc5fece345,36cc3a956985d392] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:45:59.523 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 20232 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 11:45:59.526 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 11:45:59.528 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 11:46:04.178 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 11:46:04.269 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 11:46:04.270 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 11:46:04.517 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 11:46:04.518 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4805 ms
+2025-08-14 11:46:08.116 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 11:46:08.800 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 11:46:08.973 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 11:46:09.183 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 11:46:09.183 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 11:46:09.184 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 11:46:09.578 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 11:46:09.623 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 12.189 seconds (process running for 14.499)
+2025-08-14 11:46:15.049 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 11:46:15.051 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 11:46:15.054 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-08-14 11:47:26.731 [http-nio-8081-exec-1] INFO  [676fffc5660a7b4430dd9cb04b5817d9,9245a7d971071e86] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:26.894 [http-nio-8081-exec-2] INFO  [a67c48587cbb7123bf3c2f2dfabed4d7,163cc5cba28fe94f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:27.028 [http-nio-8081-exec-3] INFO  [2df3fe25a511a6f4edbd432f1e1213bb,5f66f5d459c8e1cc] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:27.181 [http-nio-8081-exec-2] INFO  [a67c48587cbb7123bf3c2f2dfabed4d7,163cc5cba28fe94f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:27.186 [http-nio-8081-exec-4] INFO  [614c69465c9e40f7e5c0b39b3c5e5ec9,460afd4029b19e74] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:27.357 [http-nio-8081-exec-5] INFO  [af84075ea06cb70b1d458027d6230862,811bbd829f31e0f1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:27.613 [http-nio-8081-exec-6] INFO  [49e5f34f01a2a57473d013a1859e1559,7f06ee679fa33636] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:27.991 [http-nio-8081-exec-3] INFO  [2df3fe25a511a6f4edbd432f1e1213bb,5f66f5d459c8e1cc] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:28.044 [http-nio-8081-exec-1] INFO  [676fffc5660a7b4430dd9cb04b5817d9,9245a7d971071e86] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:28.074 [http-nio-8081-exec-5] INFO  [af84075ea06cb70b1d458027d6230862,811bbd829f31e0f1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:28.169 [http-nio-8081-exec-4] INFO  [614c69465c9e40f7e5c0b39b3c5e5ec9,460afd4029b19e74] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:28.213 [http-nio-8081-exec-6] INFO  [49e5f34f01a2a57473d013a1859e1559,7f06ee679fa33636] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:28.585 [http-nio-8081-exec-8] INFO  [4780a87d9c46de782eef56febbb32e5c,782f2b3b577aa975] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:28.786 [http-nio-8081-exec-9] INFO  [07801f820a2805aaf8a692d7bb6d9980,864d3a348dee2630] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:28.969 [http-nio-8081-exec-10] INFO  [53b0d1857db396c66e640b5a6647c976,9446191e07350818] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:29.127 [http-nio-8081-exec-2] INFO  [c713ccb98c68ae6e1caec51b0b6ec5e9,bc23f9437b7a18dc] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:29.310 [http-nio-8081-exec-3] INFO  [e91cb4b25c3bd23c52d91038c4806f1b,4dabe6909d0f9bf5] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:30.045 [http-nio-8081-exec-10] INFO  [53b0d1857db396c66e640b5a6647c976,9446191e07350818] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:30.068 [http-nio-8081-exec-8] INFO  [4780a87d9c46de782eef56febbb32e5c,782f2b3b577aa975] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:30.088 [http-nio-8081-exec-2] INFO  [c713ccb98c68ae6e1caec51b0b6ec5e9,bc23f9437b7a18dc] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:30.362 [http-nio-8081-exec-9] INFO  [07801f820a2805aaf8a692d7bb6d9980,864d3a348dee2630] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:30.864 [http-nio-8081-exec-3] INFO  [e91cb4b25c3bd23c52d91038c4806f1b,4dabe6909d0f9bf5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:48.667 [http-nio-8081-exec-8] INFO  [de9a972954980ea9a69aa1db510d5c7d,1184a0f431a8f895] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:49.251 [http-nio-8081-exec-2] INFO  [d339534870603cd4019dd36b50d2242d,066e765c1085018d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:47:49.694 [http-nio-8081-exec-8] INFO  [de9a972954980ea9a69aa1db510d5c7d,1184a0f431a8f895] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:47:50.224 [http-nio-8081-exec-2] INFO  [d339534870603cd4019dd36b50d2242d,066e765c1085018d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:48:05.406 [grpc-nio-worker-ELG-3-2] INFO  [,] i.g.n.s.i.g.n.N.connections - Transport failed
+io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2Exception: Unexpected HTTP/1.x request: GET / 
+	at io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2Exception.connectionError(Http2Exception.java:109)
+	at io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2ConnectionHandler$PrefaceDecoder.readClientPrefaceString(Http2ConnectionHandler.java:317)
+	at io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2ConnectionHandler$PrefaceDecoder.decode(Http2ConnectionHandler.java:247)
+	at io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2ConnectionHandler.decode(Http2ConnectionHandler.java:453)
+	at io.grpc.netty.shaded.io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
+	at io.grpc.netty.shaded.io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:468)
+	at io.grpc.netty.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.grpc.netty.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.grpc.netty.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.grpc.netty.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.grpc.netty.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.grpc.netty.shaded.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.grpc.netty.shaded.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2025-08-14 11:48:05.615 [grpc-nio-worker-ELG-3-3] INFO  [,] i.g.n.s.i.g.n.N.connections - Transport failed
+io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2Exception: Unexpected HTTP/1.x request: GET /favicon.ico 
+	at io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2Exception.connectionError(Http2Exception.java:109)
+	at io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2ConnectionHandler$PrefaceDecoder.readClientPrefaceString(Http2ConnectionHandler.java:317)
+	at io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2ConnectionHandler$PrefaceDecoder.decode(Http2ConnectionHandler.java:247)
+	at io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2ConnectionHandler.decode(Http2ConnectionHandler.java:453)
+	at io.grpc.netty.shaded.io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529)
+	at io.grpc.netty.shaded.io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:468)
+	at io.grpc.netty.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.grpc.netty.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.grpc.netty.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.grpc.netty.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.grpc.netty.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.grpc.netty.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.grpc.netty.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.grpc.netty.shaded.io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.grpc.netty.shaded.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2025-08-14 11:59:44.364 [http-nio-8081-exec-9] INFO  [5e0c85768a558fbe8775f0b27abae73c,8c5c5033568b35e3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:59:44.668 [http-nio-8081-exec-3] INFO  [2c5ee202db423411fccfefd483de96e2,66312dceaa50e532] c.e.s.controller.UserController - Received request for user data
+2025-08-14 11:59:46.364 [http-nio-8081-exec-9] INFO  [5e0c85768a558fbe8775f0b27abae73c,8c5c5033568b35e3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 11:59:46.626 [http-nio-8081-exec-3] INFO  [2c5ee202db423411fccfefd483de96e2,66312dceaa50e532] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 12:04:08.064 [http-nio-8081-exec-4] INFO  [6234f96cd92cbf94aa136747c081bd6d,aabca715570e80a4] c.e.s.controller.UserController - Received request for user data
+2025-08-14 12:04:08.282 [http-nio-8081-exec-7] INFO  [9d2eb7d9e73fcbf02fb1939a9117257e,93120768a402b456] c.e.s.controller.UserController - Received request for user data
+2025-08-14 12:04:08.513 [http-nio-8081-exec-10] INFO  [d1e4d85a416f5c6e051a8fc7e5b99806,c9ac1476f65a29c1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 12:04:08.715 [http-nio-8081-exec-8] INFO  [7ae386a320a70b8995c017875200ea53,73ae5ec31c125aa1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 12:04:09.044 [http-nio-8081-exec-10] INFO  [d1e4d85a416f5c6e051a8fc7e5b99806,c9ac1476f65a29c1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 12:04:09.484 [http-nio-8081-exec-4] INFO  [6234f96cd92cbf94aa136747c081bd6d,aabca715570e80a4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 12:04:09.847 [http-nio-8081-exec-7] INFO  [9d2eb7d9e73fcbf02fb1939a9117257e,93120768a402b456] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 12:04:09.941 [http-nio-8081-exec-8] INFO  [7ae386a320a70b8995c017875200ea53,73ae5ec31c125aa1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 12:05:27.875 [http-nio-8081-exec-1] INFO  [4860ea66eb58eacbb0b1e228ce08b363,28d1aea7933ba626] c.e.s.controller.UserController - Received request for user data
+2025-08-14 12:05:29.342 [http-nio-8081-exec-1] INFO  [4860ea66eb58eacbb0b1e228ce08b363,28d1aea7933ba626] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 12:11:14.494 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 27968 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 12:11:14.508 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 12:11:14.509 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 12:11:18.974 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 12:11:19.100 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 12:11:19.101 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 12:11:19.833 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 12:11:19.835 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5219 ms
+2025-08-14 12:11:26.502 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 12:11:27.386 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 12:11:27.590 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 12:11:27.860 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 12:11:27.860 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 12:11:27.860 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 12:11:28.651 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 12:11:28.713 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 16.579 seconds (process running for 17.858)
+2025-08-14 12:12:01.250 [http-nio-8081-exec-3] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 12:12:01.251 [http-nio-8081-exec-3] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 12:12:01.256 [http-nio-8081-exec-3] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-08-14 12:12:01.399 [http-nio-8081-exec-3] INFO  [0c11ba34b620bdefbf4f66053ee6a28d,555ac89f3ebc2db1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 12:12:01.728 [http-nio-8081-exec-3] INFO  [0c11ba34b620bdefbf4f66053ee6a28d,555ac89f3ebc2db1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 12:12:08.496 [http-nio-8081-exec-1] INFO  [3d22215d11e4a859401767af02c421a3,e89730feb1c769b3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 12:12:09.070 [http-nio-8081-exec-1] INFO  [3d22215d11e4a859401767af02c421a3,e89730feb1c769b3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 12:25:45.942 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 30532 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 12:25:45.945 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 12:25:45.946 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 12:25:49.469 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 12:25:49.530 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 12:25:49.530 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 12:25:49.732 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 12:25:49.733 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3675 ms
+2025-08-14 12:25:51.624 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 12:25:52.277 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 12:25:52.688 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 12:25:53.049 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 12:25:53.051 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 12:25:53.052 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 12:25:53.504 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 12:25:53.547 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 8.732 seconds (process running for 9.798)
+2025-08-14 13:14:45.185 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 1256 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 13:14:45.189 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 13:14:45.190 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 13:14:50.549 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 13:14:50.603 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 13:14:50.609 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 13:14:50.927 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 13:14:50.928 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5583 ms
+2025-08-14 13:14:54.167 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 13:14:54.737 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 13:14:54.918 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 13:14:55.169 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 13:14:55.169 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 13:14:55.170 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 13:14:55.676 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 13:14:55.712 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 13.453 seconds (process running for 16.06)
+2025-08-14 13:24:23.452 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 13:24:23.453 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 13:24:23.455 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-14 13:24:23.556 [http-nio-8081-exec-1] INFO  [5aeda07a1155c0a5b3475357df0a3f89,2864cc229ca71207] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:24:24.421 [http-nio-8081-exec-1] INFO  [5aeda07a1155c0a5b3475357df0a3f89,2864cc229ca71207] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:28:02.394 [http-nio-8081-exec-3] INFO  [4c9eaaf77088467757c469a73cdc87c5,e67841a35810dd86] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:28:04.273 [http-nio-8081-exec-3] INFO  [4c9eaaf77088467757c469a73cdc87c5,e67841a35810dd86] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:28:04.277 [http-nio-8081-exec-4] INFO  [7beb050047e796654ff7a83d0dba467f,8941d31e4eedc188] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:28:05.274 [http-nio-8081-exec-4] INFO  [7beb050047e796654ff7a83d0dba467f,8941d31e4eedc188] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:41:26.768 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 28876 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 13:41:26.772 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 13:41:26.773 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 13:41:32.953 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 13:41:33.059 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 13:41:33.060 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 13:41:33.375 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 13:41:33.376 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6481 ms
+2025-08-14 13:41:36.612 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 13:41:37.711 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 13:41:38.081 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 13:41:38.404 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 13:41:38.406 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 13:41:38.406 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 13:41:38.812 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 13:41:38.846 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 13.905 seconds (process running for 15.574)
+2025-08-14 13:42:12.420 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 13:42:12.420 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 13:42:12.423 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-08-14 13:42:12.805 [http-nio-8081-exec-1] INFO  [5d8faab9ca39b7a70916fc7a924629f4,d04fa9f325ec0b33] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:42:12.844 [http-nio-8081-exec-2] INFO  [94844b5f7934df1f982147cc9b18a757,bac80bcef5b8fda8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:42:13.394 [http-nio-8081-exec-2] INFO  [94844b5f7934df1f982147cc9b18a757,bac80bcef5b8fda8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:42:13.525 [http-nio-8081-exec-1] INFO  [5d8faab9ca39b7a70916fc7a924629f4,d04fa9f325ec0b33] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:42:45.459 [http-nio-8081-exec-5] INFO  [e26ec363704796e02660902622a55e25,811c00231460ca5d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:42:46.875 [http-nio-8081-exec-5] INFO  [e26ec363704796e02660902622a55e25,811c00231460ca5d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:57:16.348 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 12164 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 13:57:16.352 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 13:57:16.353 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 13:57:21.088 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 13:57:21.145 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 13:57:21.146 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 13:57:21.362 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 13:57:21.363 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4864 ms
+2025-08-14 13:57:24.368 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 13:57:25.236 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 13:57:25.440 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 13:57:25.725 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 13:57:25.725 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 13:57:25.726 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 13:57:26.153 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 13:57:26.191 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 12.409 seconds (process running for 14.376)
+2025-08-14 13:58:27.469 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 13:58:27.471 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 13:58:27.473 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-08-14 13:58:27.598 [http-nio-8081-exec-1] INFO  [8e5a02afa1fcdcc8b6c19a45beedc7a9,3319e1967ae45b3e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:58:28.114 [http-nio-8081-exec-2] INFO  [3e388f9e79409c7c9be817f76fc85da6,08d251eb82478064] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:58:28.372 [http-nio-8081-exec-3] INFO  [60cd3f2daa4087c723cf8b87d168f54e,880a2267fa609d3d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:58:28.551 [http-nio-8081-exec-3] INFO  [60cd3f2daa4087c723cf8b87d168f54e,880a2267fa609d3d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:58:28.651 [http-nio-8081-exec-5] INFO  [dfe6a55c09639cd793138f6f80105ae7,89856ce2b909347a] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:58:28.963 [http-nio-8081-exec-1] INFO  [8e5a02afa1fcdcc8b6c19a45beedc7a9,3319e1967ae45b3e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:58:29.475 [http-nio-8081-exec-2] INFO  [3e388f9e79409c7c9be817f76fc85da6,08d251eb82478064] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:58:29.541 [http-nio-8081-exec-7] INFO  [450e44411c400139f3e44c67b4b8b8fe,5d35918d0f6acd56] c.e.s.controller.UserController - Received request for user data
+2025-08-14 13:58:30.491 [http-nio-8081-exec-5] INFO  [dfe6a55c09639cd793138f6f80105ae7,89856ce2b909347a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 13:58:30.560 [http-nio-8081-exec-7] INFO  [450e44411c400139f3e44c67b4b8b8fe,5d35918d0f6acd56] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:01.343 [http-nio-8081-exec-1] INFO  [4b6df661ac5cabc1e254c05e56b70846,6192bf88168f3c8a] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:01.903 [http-nio-8081-exec-3] INFO  [da05e8f15fc0dafdc638bdc5bdf2c013,474d2a33a495b352] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:01.906 [http-nio-8081-exec-2] INFO  [bf8664de82e137830475028b674164eb,97e523f9f012ce62] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:02.088 [http-nio-8081-exec-3] INFO  [da05e8f15fc0dafdc638bdc5bdf2c013,474d2a33a495b352] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:02.757 [http-nio-8081-exec-1] INFO  [4b6df661ac5cabc1e254c05e56b70846,6192bf88168f3c8a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:03.389 [http-nio-8081-exec-2] INFO  [bf8664de82e137830475028b674164eb,97e523f9f012ce62] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:04.752 [http-nio-8081-exec-5] INFO  [12f224b3bd37f897172292a166099459,10cd480e7303e225] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:05.118 [http-nio-8081-exec-5] INFO  [12f224b3bd37f897172292a166099459,10cd480e7303e225] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:05.595 [http-nio-8081-exec-7] INFO  [9b0d75f21be8d41348e61a5c880921d4,c97fe8dd19376ad4] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:05.610 [http-nio-8081-exec-6] INFO  [bc519fca56769dc784b9f5634012289c,fe39b3bd1952b26f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:05.641 [http-nio-8081-exec-6] INFO  [bc519fca56769dc784b9f5634012289c,fe39b3bd1952b26f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:06.790 [http-nio-8081-exec-7] INFO  [9b0d75f21be8d41348e61a5c880921d4,c97fe8dd19376ad4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:06.837 [http-nio-8081-exec-4] INFO  [30fd679f0dce09621a0dd769250be87c,2a12e69d776c2eab] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:07.329 [http-nio-8081-exec-8] INFO  [46ecf101a1b63fb8ec8a815806d1ec10,ee1cf7e450ea2f58] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:07.740 [http-nio-8081-exec-9] INFO  [b5c4e0bb46a367478e76aa624d5c64b0,d536d16a0a17ab4f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:07.741 [http-nio-8081-exec-10] INFO  [674524b2a8ae80878f9436a5a0ce5bc9,9ffac3aa9a1f3a42] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:08.070 [http-nio-8081-exec-3] INFO  [ae7f0e48e1a7f575692ba766149d1ac1,a38974897fcd3533] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:08.238 [http-nio-8081-exec-8] INFO  [46ecf101a1b63fb8ec8a815806d1ec10,ee1cf7e450ea2f58] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:08.474 [http-nio-8081-exec-10] INFO  [674524b2a8ae80878f9436a5a0ce5bc9,9ffac3aa9a1f3a42] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:08.661 [http-nio-8081-exec-4] INFO  [30fd679f0dce09621a0dd769250be87c,2a12e69d776c2eab] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:08.848 [http-nio-8081-exec-9] INFO  [b5c4e0bb46a367478e76aa624d5c64b0,d536d16a0a17ab4f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:09.899 [http-nio-8081-exec-3] INFO  [ae7f0e48e1a7f575692ba766149d1ac1,a38974897fcd3533] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:11.525 [http-nio-8081-exec-1] INFO  [3f4c5ce8ff28385b83007826d163209c,92acc52dee545627] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:12.175 [http-nio-8081-exec-2] INFO  [de06f4ee8f5307899721b0a3b35d9230,1857d6b04d76ef74] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:12.204 [http-nio-8081-exec-5] INFO  [439aa495295b6bb6017e6dea73e5c9ee,239cefdeef468237] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:12.205 [http-nio-8081-exec-6] INFO  [b8d7f87322559032ae4cd3f6e2d93b21,bba01fa791e64473] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:12.442 [http-nio-8081-exec-7] INFO  [300e014f8fe4ffbf357a78dde2291f3b,23427d06b725de58] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:12.462 [http-nio-8081-exec-8] INFO  [2e3bf22dcbcf46bc6a3852031d033007,3c552ace22b62af1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:12.505 [http-nio-8081-exec-10] INFO  [d03f746b6daa4d2568dc3fda26a68d4f,024a20192b040379] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:12.708 [http-nio-8081-exec-6] INFO  [b8d7f87322559032ae4cd3f6e2d93b21,bba01fa791e64473] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:13.213 [http-nio-8081-exec-1] INFO  [3f4c5ce8ff28385b83007826d163209c,92acc52dee545627] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:13.309 [http-nio-8081-exec-8] INFO  [2e3bf22dcbcf46bc6a3852031d033007,3c552ace22b62af1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:13.496 [http-nio-8081-exec-2] INFO  [de06f4ee8f5307899721b0a3b35d9230,1857d6b04d76ef74] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:13.698 [http-nio-8081-exec-10] INFO  [d03f746b6daa4d2568dc3fda26a68d4f,024a20192b040379] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:13.886 [http-nio-8081-exec-5] INFO  [439aa495295b6bb6017e6dea73e5c9ee,239cefdeef468237] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:14.331 [http-nio-8081-exec-7] INFO  [300e014f8fe4ffbf357a78dde2291f3b,23427d06b725de58] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:14.693 [http-nio-8081-exec-4] INFO  [98e29cd39ff1f1704cd4cf70b24ba408,811d0d50b326518c] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:14.710 [http-nio-8081-exec-3] INFO  [636b6f429c6f96805463ef60ad8fcb1c,ef1d5d089063c8e4] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:14.713 [http-nio-8081-exec-9] INFO  [a8fc227fe19b9029486735184adee9ce,30a8d3d3b177607e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:15.342 [http-nio-8081-exec-9] INFO  [a8fc227fe19b9029486735184adee9ce,30a8d3d3b177607e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:15.682 [http-nio-8081-exec-3] INFO  [636b6f429c6f96805463ef60ad8fcb1c,ef1d5d089063c8e4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:16.178 [http-nio-8081-exec-4] INFO  [98e29cd39ff1f1704cd4cf70b24ba408,811d0d50b326518c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:16.720 [http-nio-8081-exec-6] INFO  [f9caade5c8a84474592835c83f4cf7c8,215b1670fb9f7cc6] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:16.735 [http-nio-8081-exec-1] INFO  [35d987a7180eae953703290b43eac1db,bec906912e2e6e3b] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:16.735 [http-nio-8081-exec-8] INFO  [f305c47535199a5911b6e08d4ddc4fee,559b3ccb347e5a2a] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:16.793 [http-nio-8081-exec-8] INFO  [f305c47535199a5911b6e08d4ddc4fee,559b3ccb347e5a2a] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:17.185 [http-nio-8081-exec-6] INFO  [f9caade5c8a84474592835c83f4cf7c8,215b1670fb9f7cc6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:17.370 [http-nio-8081-exec-1] INFO  [35d987a7180eae953703290b43eac1db,bec906912e2e6e3b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:17.649 [http-nio-8081-exec-2] INFO  [70be4c0588361eea0d72b00079fce532,9ec5aebaa090df0d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:17.650 [http-nio-8081-exec-10] INFO  [b918e19e39daa238bd5d3b7697973a84,d214a1c3ab8aadf6] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:17.655 [http-nio-8081-exec-5] INFO  [9cbd05bac634e9e3ddecd42937ce22e0,11c7dc09a74354c8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:17.980 [http-nio-8081-exec-7] INFO  [28cb0364bb57a25673b85c266d9cbcbe,905d15cd97f5b5b6] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.060 [http-nio-8081-exec-9] INFO  [1e101e0a2d7ba92e1c8bce66d7a7fb46,34682c91305aa8e8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.062 [http-nio-8081-exec-3] INFO  [6d8ee2ad2cae2a6d6513f6710eface85,10f3203427e3186b] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.066 [http-nio-8081-exec-4] INFO  [809927759fd2dcbface0e9acf77166ca,43198b7d3a87a4d3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.280 [http-nio-8081-exec-8] INFO  [8d74ca13af98acde9b372e15cb334f9a,76bc0459078a2a81] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.327 [http-nio-8081-exec-6] INFO  [480c32f4de32f55de6cfdf890564a076,716308be5ecf33d1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.521 [http-nio-8081-exec-3] INFO  [6d8ee2ad2cae2a6d6513f6710eface85,10f3203427e3186b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:18.530 [http-nio-8081-exec-3] INFO  [7eb34db31b90e8b586258e2f22092730,a439955163aa9e42] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.532 [http-nio-8081-exec-1] INFO  [19675ce8af1b4e0e4f32b88d51defb90,2506f572df3c1f9c] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.548 [http-nio-8081-exec-11] INFO  [9b3a712535f7c05c50f14ada6c04e767,20058aeb66ba9e26] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:18.839 [http-nio-8081-exec-2] INFO  [70be4c0588361eea0d72b00079fce532,9ec5aebaa090df0d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:18.865 [http-nio-8081-exec-8] INFO  [8d74ca13af98acde9b372e15cb334f9a,76bc0459078a2a81] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:18.986 [http-nio-8081-exec-10] INFO  [b918e19e39daa238bd5d3b7697973a84,d214a1c3ab8aadf6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:19.077 [http-nio-8081-exec-9] INFO  [1e101e0a2d7ba92e1c8bce66d7a7fb46,34682c91305aa8e8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:19.249 [http-nio-8081-exec-5] INFO  [9cbd05bac634e9e3ddecd42937ce22e0,11c7dc09a74354c8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:19.591 [http-nio-8081-exec-4] INFO  [809927759fd2dcbface0e9acf77166ca,43198b7d3a87a4d3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:19.605 [http-nio-8081-exec-7] INFO  [28cb0364bb57a25673b85c266d9cbcbe,905d15cd97f5b5b6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:19.633 [http-nio-8081-exec-1] INFO  [19675ce8af1b4e0e4f32b88d51defb90,2506f572df3c1f9c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:19.981 [http-nio-8081-exec-6] INFO  [480c32f4de32f55de6cfdf890564a076,716308be5ecf33d1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:20.006 [http-nio-8081-exec-11] INFO  [9b3a712535f7c05c50f14ada6c04e767,20058aeb66ba9e26] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:20.114 [http-nio-8081-exec-3] INFO  [7eb34db31b90e8b586258e2f22092730,a439955163aa9e42] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:21.722 [http-nio-8081-exec-2] INFO  [96dd2b83576241e868b4e95b9add6dcf,0322c809009d875b] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:21.738 [http-nio-8081-exec-2] INFO  [96dd2b83576241e868b4e95b9add6dcf,0322c809009d875b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:21.763 [http-nio-8081-exec-8] INFO  [774a3e004f87c1ea8f3e025892f6bca5,92f2e233ab1a5303] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:21.823 [http-nio-8081-exec-10] INFO  [0856cb5b6c874cde61ba937003a340f0,895574a8cfb5ff53] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:21.900 [http-nio-8081-exec-9] INFO  [483a2141b797f0562640e769561ef027,530ac6cf5d3ba526] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:22.040 [http-nio-8081-exec-5] INFO  [16c8ede52f9124bf8a6f034d1350b3f5,d8e015cc682cb84b] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:22.224 [http-nio-8081-exec-4] INFO  [308aa4bb75a89fb211f9eabb6832542a,9dcdd6d2dff1f4c0] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:22.265 [http-nio-8081-exec-9] INFO  [483a2141b797f0562640e769561ef027,530ac6cf5d3ba526] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:22.485 [http-nio-8081-exec-8] INFO  [774a3e004f87c1ea8f3e025892f6bca5,92f2e233ab1a5303] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:22.603 [http-nio-8081-exec-7] INFO  [cbc84cad46dd565976cacc05e3c82e90,505485f5f99583a1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:22.660 [http-nio-8081-exec-5] INFO  [16c8ede52f9124bf8a6f034d1350b3f5,d8e015cc682cb84b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:22.923 [http-nio-8081-exec-10] INFO  [0856cb5b6c874cde61ba937003a340f0,895574a8cfb5ff53] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:23.021 [http-nio-8081-exec-7] INFO  [cbc84cad46dd565976cacc05e3c82e90,505485f5f99583a1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:23.822 [http-nio-8081-exec-4] INFO  [308aa4bb75a89fb211f9eabb6832542a,9dcdd6d2dff1f4c0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:24.770 [http-nio-8081-exec-1] INFO  [1023690fd90cbd8d14d7b03d6cdeb158,e50aed9a5da0bb43] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:24.802 [http-nio-8081-exec-6] INFO  [2afc7826168d085e5143b76f99a49925,2988cb9a6b4c5b8d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:24.804 [http-nio-8081-exec-11] INFO  [33b1d4e754dbe8ec455664be876c70e5,749d2ce75a0417b2] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:24.806 [http-nio-8081-exec-3] INFO  [3af508fd4f7a76b02b7a419b50dd4a1f,14cd0c79cc677c45] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:24.811 [http-nio-8081-exec-2] INFO  [f97910e3940707f028af84af8ed9b56f,e2e29315092b11b2] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:24.944 [http-nio-8081-exec-9] INFO  [a7f5387cb3e6ee8bfb9f18901e8fc546,e737026faebc4deb] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:24.958 [http-nio-8081-exec-8] INFO  [d3b088e4239681d9f484f06abd1f390a,55a0cea8f87f1cb8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:24.961 [http-nio-8081-exec-3] INFO  [3af508fd4f7a76b02b7a419b50dd4a1f,14cd0c79cc677c45] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:25.518 [http-nio-8081-exec-5] INFO  [d222825597b92ae7d4381fce41319066,35a6d449ae970994] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:25.550 [http-nio-8081-exec-10] INFO  [8abc661007249256775a709f35d9578d,a360260bf62415ce] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:25.559 [http-nio-8081-exec-2] INFO  [f97910e3940707f028af84af8ed9b56f,e2e29315092b11b2] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:25.849 [http-nio-8081-exec-7] INFO  [0c312e7e7235b5c77893ff0054bf199c,bd4d9bb8b852a111] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:25.848 [http-nio-8081-exec-4] INFO  [8345e6c72201b4e618cd6c728730d108,92544f8af37869d4] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:25.910 [http-nio-8081-exec-3] INFO  [a0eda40c2df5d67cf26f63447aae8cf0,9e2282db46487f0e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:25.926 [http-nio-8081-exec-2] INFO  [57cb88e7a07ee3a563eb3369f01e87d8,fbc8d4702c7cbff8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:25.929 [http-nio-8081-exec-12] INFO  [163066a4c62d47d6b46d8f3fb5f5555c,c02285831b07b1db] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:26.012 [http-nio-8081-exec-6] INFO  [2afc7826168d085e5143b76f99a49925,2988cb9a6b4c5b8d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:26.033 [http-nio-8081-exec-1] INFO  [1023690fd90cbd8d14d7b03d6cdeb158,e50aed9a5da0bb43] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:26.083 [http-nio-8081-exec-8] INFO  [d3b088e4239681d9f484f06abd1f390a,55a0cea8f87f1cb8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:26.179 [http-nio-8081-exec-11] INFO  [33b1d4e754dbe8ec455664be876c70e5,749d2ce75a0417b2] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:26.824 [http-nio-8081-exec-9] INFO  [a7f5387cb3e6ee8bfb9f18901e8fc546,e737026faebc4deb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:26.829 [http-nio-8081-exec-10] INFO  [8abc661007249256775a709f35d9578d,a360260bf62415ce] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:26.933 [http-nio-8081-exec-6] INFO  [68658ad8a73fbb343ce91f007279330b,1d281df5bd5d6652] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:26.937 [http-nio-8081-exec-1] INFO  [63ac7c6fe1b8e383049072accf352b23,6d0361e1a5a62cd8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.050 [http-nio-8081-exec-8] INFO  [71859dd3ddd5777165a5530a78e22c18,369e3199924fbac4] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.051 [http-nio-8081-exec-11] INFO  [e5535b521a3263d7f4f6ace9ae840645,ece8d901ca871b37] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.076 [http-nio-8081-exec-2] INFO  [57cb88e7a07ee3a563eb3369f01e87d8,fbc8d4702c7cbff8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:27.106 [http-nio-8081-exec-12] INFO  [163066a4c62d47d6b46d8f3fb5f5555c,c02285831b07b1db] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:27.119 [http-nio-8081-exec-4] INFO  [8345e6c72201b4e618cd6c728730d108,92544f8af37869d4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:27.180 [http-nio-8081-exec-5] INFO  [d222825597b92ae7d4381fce41319066,35a6d449ae970994] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:27.258 [http-nio-8081-exec-7] INFO  [0c312e7e7235b5c77893ff0054bf199c,bd4d9bb8b852a111] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:27.304 [http-nio-8081-exec-8] INFO  [71859dd3ddd5777165a5530a78e22c18,369e3199924fbac4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:27.531 [http-nio-8081-exec-9] INFO  [bc8474e2031682e0d8238e25302f4205,dd53359809e49a91] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.532 [http-nio-8081-exec-10] INFO  [fc88f59177d8c43c13040f1592affa1e,d2d5304aa53c4880] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.625 [http-nio-8081-exec-9] INFO  [bc8474e2031682e0d8238e25302f4205,dd53359809e49a91] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:27.641 [http-nio-8081-exec-2] INFO  [b3aad22a96bc196e0a9929e4a1d8cc92,a22197fb96a45fe8] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.776 [http-nio-8081-exec-3] INFO  [a0eda40c2df5d67cf26f63447aae8cf0,9e2282db46487f0e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:27.788 [http-nio-8081-exec-12] INFO  [f36a9887e13ec8a30bfa94b3be298c71,b8006f30951398fe] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.798 [http-nio-8081-exec-4] INFO  [0a1a59e3b3a083982d1efcaf023fb32e,cf15a73388f36219] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.798 [http-nio-8081-exec-5] INFO  [bae556d6c2dcc8f3e9eba7cc23835010,e92a6f6b520e9fc0] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.813 [http-nio-8081-exec-7] INFO  [b7916067bba5cf70cc884d33af60b890,df3f192a75231fa3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.813 [http-nio-8081-exec-8] INFO  [26e16ddb7cfaf6c81e79e6db15bf8702,e8099d98ac2598bd] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:27.937 [http-nio-8081-exec-2] INFO  [b3aad22a96bc196e0a9929e4a1d8cc92,a22197fb96a45fe8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.034 [http-nio-8081-exec-12] INFO  [f36a9887e13ec8a30bfa94b3be298c71,b8006f30951398fe] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.210 [http-nio-8081-exec-9] INFO  [ce3b41ec04219f25c2d4856ce71489e5,1a520568a45fa890] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:28.213 [http-nio-8081-exec-2] INFO  [ad95235f5b86c5f7b2d9338dd02bf704,7125f34aa0e57039] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:28.213 [http-nio-8081-exec-3] INFO  [e70a4d50ce019a951790e99e9da92934,f77f24d46195c08f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:28.225 [http-nio-8081-exec-12] INFO  [fee35c535f94fdab4e569e0bfbed8eb8,87528e4901d34b1e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:28.247 [http-nio-8081-exec-14] INFO  [5c243d702f2223c7b7ae86fe3c02e26e,7a8db75a4a5f6fe7] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:28.252 [http-nio-8081-exec-13] INFO  [fc62f8bf7c2f6be70f3734e99b647b23,4b7a7bc187e26c2f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:28.258 [http-nio-8081-exec-1] INFO  [63ac7c6fe1b8e383049072accf352b23,6d0361e1a5a62cd8] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.295 [http-nio-8081-exec-6] INFO  [68658ad8a73fbb343ce91f007279330b,1d281df5bd5d6652] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.641 [http-nio-8081-exec-4] INFO  [0a1a59e3b3a083982d1efcaf023fb32e,cf15a73388f36219] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.722 [http-nio-8081-exec-14] INFO  [5c243d702f2223c7b7ae86fe3c02e26e,7a8db75a4a5f6fe7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.727 [http-nio-8081-exec-3] INFO  [e70a4d50ce019a951790e99e9da92934,f77f24d46195c08f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.727 [http-nio-8081-exec-5] INFO  [bae556d6c2dcc8f3e9eba7cc23835010,e92a6f6b520e9fc0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.745 [http-nio-8081-exec-9] INFO  [ce3b41ec04219f25c2d4856ce71489e5,1a520568a45fa890] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.842 [http-nio-8081-exec-8] INFO  [26e16ddb7cfaf6c81e79e6db15bf8702,e8099d98ac2598bd] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:28.871 [http-nio-8081-exec-11] INFO  [e5535b521a3263d7f4f6ace9ae840645,ece8d901ca871b37] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:29.007 [http-nio-8081-exec-10] INFO  [fc88f59177d8c43c13040f1592affa1e,d2d5304aa53c4880] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:29.147 [http-nio-8081-exec-7] INFO  [b7916067bba5cf70cc884d33af60b890,df3f192a75231fa3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:29.560 [http-nio-8081-exec-12] INFO  [fee35c535f94fdab4e569e0bfbed8eb8,87528e4901d34b1e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:29.624 [http-nio-8081-exec-13] INFO  [fc62f8bf7c2f6be70f3734e99b647b23,4b7a7bc187e26c2f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:30.097 [http-nio-8081-exec-2] INFO  [ad95235f5b86c5f7b2d9338dd02bf704,7125f34aa0e57039] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:39.175 [http-nio-8081-exec-1] INFO  [c6c399cc4d8587194a63a967ee7a7ee2,fd8727f5aea7d4e1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:40.486 [http-nio-8081-exec-1] INFO  [c6c399cc4d8587194a63a967ee7a7ee2,fd8727f5aea7d4e1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:42.107 [http-nio-8081-exec-6] INFO  [b58a2c61e3cb3f5dd597ac7eecd71e8b,67a40b0c1038cbf5] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:42.113 [http-nio-8081-exec-4] INFO  [d4d73ee09d2139e0957fefc7b6d0e211,11112d301aa468e6] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:42.122 [http-nio-8081-exec-14] INFO  [26d7dd2225bef83b1da3225dcc336e60,b71e720927becc51] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:42.122 [http-nio-8081-exec-3] INFO  [b0280fad588c5398af60020abe79ddc2,cc30e2f57c0461a0] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:00:42.962 [http-nio-8081-exec-14] INFO  [26d7dd2225bef83b1da3225dcc336e60,b71e720927becc51] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:43.383 [http-nio-8081-exec-6] INFO  [b58a2c61e3cb3f5dd597ac7eecd71e8b,67a40b0c1038cbf5] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:43.599 [http-nio-8081-exec-3] INFO  [b0280fad588c5398af60020abe79ddc2,cc30e2f57c0461a0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:00:43.814 [http-nio-8081-exec-4] INFO  [d4d73ee09d2139e0957fefc7b6d0e211,11112d301aa468e6] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:07:50.707 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 7208 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 14:07:50.733 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 14:07:50.734 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 14:07:56.698 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 14:07:56.748 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 14:07:56.752 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 14:07:56.942 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 14:07:56.943 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5957 ms
+2025-08-14 14:07:59.513 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 14:08:00.346 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 14:08:00.627 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 14:08:01.059 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 14:08:01.059 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 14:08:01.059 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 14:08:01.390 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 14:08:01.423 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 13.134 seconds (process running for 14.387)
+2025-08-14 14:09:37.299 [http-nio-8081-exec-4] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 14:09:37.299 [http-nio-8081-exec-4] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 14:09:37.302 [http-nio-8081-exec-4] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-08-14 14:09:37.544 [http-nio-8081-exec-1] INFO  [af762de712af2db3234a254b20a05ebc,503022ac290b8fe1] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:09:37.557 [http-nio-8081-exec-2] INFO  [d61593f50628806a89246fd9de72d9cb,ffaf350a9e7594e3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:09:37.560 [http-nio-8081-exec-4] INFO  [6d5392dbf0242e38a609b31321ff19c0,7a21813927e8dacf] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:09:37.572 [http-nio-8081-exec-3] INFO  [3e343c82a628d91b5368032e0530b997,6f7faa7b7ef5c5c0] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:09:38.115 [http-nio-8081-exec-1] INFO  [af762de712af2db3234a254b20a05ebc,503022ac290b8fe1] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:09:38.255 [http-nio-8081-exec-4] INFO  [6d5392dbf0242e38a609b31321ff19c0,7a21813927e8dacf] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:09:38.314 [http-nio-8081-exec-3] INFO  [3e343c82a628d91b5368032e0530b997,6f7faa7b7ef5c5c0] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:09:38.869 [http-nio-8081-exec-2] INFO  [d61593f50628806a89246fd9de72d9cb,ffaf350a9e7594e3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:17:31.511 [http-nio-8081-exec-9] INFO  [da298e74737e842ca8c7b584da676e6f,fccb54994c6f8157] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:17:31.576 [http-nio-8081-exec-9] INFO  [da298e74737e842ca8c7b584da676e6f,fccb54994c6f8157] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:17:33.825 [http-nio-8081-exec-10] INFO  [d3483926fc2882f4b750324cc1e2ed3d,ba3fbbd3dd2ce20c] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:17:34.108 [http-nio-8081-exec-3] INFO  [301215068d4cfe56f129feb9bef6c984,f3b47d686f74473f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:17:34.302 [http-nio-8081-exec-4] INFO  [58bfb804e7b927be6cc3b2503acd9700,3b8bdfb9cff8fe43] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:17:34.462 [http-nio-8081-exec-10] INFO  [d3483926fc2882f4b750324cc1e2ed3d,ba3fbbd3dd2ce20c] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:17:34.550 [http-nio-8081-exec-1] INFO  [72a95f2cce44a42a740649fe91d8efdd,dd658cb6939262fe] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:17:34.773 [http-nio-8081-exec-2] INFO  [c54e76b8c8282ce6d0fcd31889b50acc,f657b7844c3c5804] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:17:34.876 [http-nio-8081-exec-4] INFO  [58bfb804e7b927be6cc3b2503acd9700,3b8bdfb9cff8fe43] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:17:35.050 [http-nio-8081-exec-6] INFO  [78e309cf122fb202dab4f48e8597a22c,232a594dd14caf66] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:17:35.559 [http-nio-8081-exec-3] INFO  [301215068d4cfe56f129feb9bef6c984,f3b47d686f74473f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:17:35.803 [http-nio-8081-exec-2] INFO  [c54e76b8c8282ce6d0fcd31889b50acc,f657b7844c3c5804] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:17:36.099 [http-nio-8081-exec-1] INFO  [72a95f2cce44a42a740649fe91d8efdd,dd658cb6939262fe] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:17:36.162 [http-nio-8081-exec-6] INFO  [78e309cf122fb202dab4f48e8597a22c,232a594dd14caf66] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:18:24.696 [http-nio-8081-exec-10] INFO  [6ae025b2e9fcfd08dd67adb1b542b449,4ee44a405ff62e47] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:18:25.695 [http-nio-8081-exec-10] INFO  [6ae025b2e9fcfd08dd67adb1b542b449,4ee44a405ff62e47] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:24:10.376 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 24976 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 14:24:10.381 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 14:24:10.382 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 14:24:16.581 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 14:24:16.622 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 14:24:16.622 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 14:24:16.846 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 14:24:16.847 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6342 ms
+2025-08-14 14:24:19.702 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 14:24:20.483 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 14:24:20.714 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 14:24:21.008 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 14:24:21.009 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 14:24:21.009 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 14:24:21.572 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 14:24:21.622 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 13.549 seconds (process running for 14.81)
+2025-08-14 14:24:48.444 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 14:24:48.445 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 14:24:48.448 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-08-14 14:24:48.626 [http-nio-8081-exec-4] INFO  [727ee425835416b3b1032e7275953b7e,f5cc867ee948981b] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:24:48.626 [http-nio-8081-exec-3] INFO  [c60ecb7d6c0b711506c3f33838ba3108,58cfb1e337acd906] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:24:48.627 [http-nio-8081-exec-2] INFO  [f948778bfd1de23cbe2a4a6ccece8d17,adab68e2e6c72152] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:24:48.627 [http-nio-8081-exec-1] INFO  [bb4253879d4e5f247daac38575b453be,63822f3568f3a1ce] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:24:48.663 [http-nio-8081-exec-4] INFO  [727ee425835416b3b1032e7275953b7e,f5cc867ee948981b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:24:48.820 [http-nio-8081-exec-1] INFO  [bb4253879d4e5f247daac38575b453be,63822f3568f3a1ce] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:24:49.303 [http-nio-8081-exec-2] INFO  [f948778bfd1de23cbe2a4a6ccece8d17,adab68e2e6c72152] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:24:50.506 [http-nio-8081-exec-3] INFO  [c60ecb7d6c0b711506c3f33838ba3108,58cfb1e337acd906] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:26:01.058 [http-nio-8081-exec-9] INFO  [fe52fa8bd39c17142d987b1324de6f3d,72ed21ff2ba40196] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:26:01.509 [http-nio-8081-exec-10] INFO  [abf25851ac822e7d73b92e6c61493e15,edbdc34bf63d3d4d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:26:01.523 [http-nio-8081-exec-10] INFO  [abf25851ac822e7d73b92e6c61493e15,edbdc34bf63d3d4d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:26:01.685 [http-nio-8081-exec-1] INFO  [d4aeac98d3b49d08ccbb0bea298b7b81,cf242aae1c067a2d] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:26:01.890 [http-nio-8081-exec-4] INFO  [a264f0c74e1bc9873b7b4f2c8881c128,8bcd704f02a89786] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:26:01.899 [http-nio-8081-exec-1] INFO  [d4aeac98d3b49d08ccbb0bea298b7b81,cf242aae1c067a2d] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:26:01.917 [http-nio-8081-exec-9] INFO  [fe52fa8bd39c17142d987b1324de6f3d,72ed21ff2ba40196] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:26:02.158 [http-nio-8081-exec-4] INFO  [a264f0c74e1bc9873b7b4f2c8881c128,8bcd704f02a89786] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:34:39.430 [BatchSpanProcessor_WorkerThread-1] WARN  [,] i.o.e.zipkin.ZipkinSpanExporter - Failed to export spans
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(Unknown Source)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(Unknown Source)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinHttpClientSender.postSpans(ZipkinHttpClientSender.java:60)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:69)
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.HttpSender.postSpans(HttpSender.java:41)
+	at zipkin2.reporter.BaseHttpSender.send(BaseHttpSender.java:123)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.lambda$export$0(ZipkinSpanExporter.java:83)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:241)
+	at io.opentelemetry.api.internal.InstrumentationUtil.suppressInstrumentation(InstrumentationUtil.java:28)
+	at io.opentelemetry.exporter.zipkin.ZipkinSpanExporter.export(ZipkinSpanExporter.java:80)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.lambda$export$3(CompositeSpanExporter.java:90)
+	at java.base/java.lang.Iterable.forEach(Unknown Source)
+	at io.micrometer.tracing.otel.bridge.CompositeSpanExporter.export(CompositeSpanExporter.java:90)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.exportCurrentBatch(BatchSpanProcessor.java:344)
+	at io.opentelemetry.sdk.trace.export.BatchSpanProcessor$Worker.run(BatchSpanProcessor.java:258)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	... 1 common frames omitted
+Caused by: java.nio.channels.ClosedChannelException: null
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(Unknown Source)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(Unknown Source)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	... 10 common frames omitted
+2025-08-14 14:40:33.448 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 10840 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 14:40:33.453 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 14:40:33.456 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 14:40:39.505 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 14:40:39.592 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 14:40:39.592 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 14:40:40.058 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 14:40:40.058 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6502 ms
+2025-08-14 14:40:43.007 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 14:40:43.609 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 14:40:43.900 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 14:40:44.169 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 14:40:44.171 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 14:40:44.172 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 14:40:44.671 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 14:40:44.728 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 12.963 seconds (process running for 14.793)
+2025-08-14 14:42:21.981 [http-nio-8081-exec-1] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 14:42:21.982 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 14:42:21.989 [http-nio-8081-exec-1] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2025-08-14 14:42:22.253 [http-nio-8081-exec-1] INFO  [b591ba8dfa3d8e606a493d3b5299796a,79e677861418f40b] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:42:23.540 [http-nio-8081-exec-1] INFO  [b591ba8dfa3d8e606a493d3b5299796a,79e677861418f40b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:42:23.791 [http-nio-8081-exec-2] INFO  [c2a0caf6620f6b95c66866b3fce54f3b,06a80e15c0c0e346] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:42:24.048 [http-nio-8081-exec-3] INFO  [c149294480ea8d222c5d7549288fee73,401d2db4477b4ea3] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:42:24.475 [http-nio-8081-exec-4] INFO  [c0cf10b00fbe546b1ba3130a8a05e546,76b730f3baf584c4] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:42:24.524 [http-nio-8081-exec-3] INFO  [c149294480ea8d222c5d7549288fee73,401d2db4477b4ea3] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:42:24.571 [http-nio-8081-exec-5] INFO  [d0763546fdf88cf5907e7370a0c18222,654d00dc1960a222] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:42:24.915 [http-nio-8081-exec-5] INFO  [d0763546fdf88cf5907e7370a0c18222,654d00dc1960a222] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:42:25.318 [http-nio-8081-exec-4] INFO  [c0cf10b00fbe546b1ba3130a8a05e546,76b730f3baf584c4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:42:25.384 [http-nio-8081-exec-2] INFO  [c2a0caf6620f6b95c66866b3fce54f3b,06a80e15c0c0e346] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:04.162 [http-nio-8081-exec-9] INFO  [6b6aecfaf6b013e33b6f069174c6e117,47376209949cb7a7] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:04.423 [http-nio-8081-exec-10] INFO  [79014d051b0de52b3fcdf6d5f775b83a,f05d879a0293ef1f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:04.601 [http-nio-8081-exec-1] INFO  [ea0e4f7a75047103dc01ef8db069b1b1,d9fbc7273b26e752] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:04.866 [http-nio-8081-exec-3] INFO  [278433bab7d5b95c412245733bc1b4c6,183c0d7553e6dafe] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:05.144 [http-nio-8081-exec-1] INFO  [ea0e4f7a75047103dc01ef8db069b1b1,d9fbc7273b26e752] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:05.190 [http-nio-8081-exec-5] INFO  [814d0ac4f101ca626bde741ea622122e,7a23bdbf257a9d07] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:05.540 [http-nio-8081-exec-4] INFO  [21e1b11e20b5a91652d72779d76c23fd,5bae16e5a8691b66] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:05.778 [http-nio-8081-exec-2] INFO  [85d2212bb68b6e9618e479a619fb687a,674e23b41a619904] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:05.791 [http-nio-8081-exec-3] INFO  [278433bab7d5b95c412245733bc1b4c6,183c0d7553e6dafe] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:05.873 [http-nio-8081-exec-9] INFO  [6b6aecfaf6b013e33b6f069174c6e117,47376209949cb7a7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:06.075 [http-nio-8081-exec-6] INFO  [c4f02e37f95fdce15066f600e25fb77c,1452e9c87b6ec001] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:06.171 [http-nio-8081-exec-4] INFO  [21e1b11e20b5a91652d72779d76c23fd,5bae16e5a8691b66] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:06.257 [http-nio-8081-exec-10] INFO  [79014d051b0de52b3fcdf6d5f775b83a,f05d879a0293ef1f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:06.264 [http-nio-8081-exec-2] INFO  [85d2212bb68b6e9618e479a619fb687a,674e23b41a619904] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:06.264 [http-nio-8081-exec-6] INFO  [c4f02e37f95fdce15066f600e25fb77c,1452e9c87b6ec001] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:06.469 [http-nio-8081-exec-7] INFO  [30c868e43745a9a6e29740aabea9ffea,61fc4d4fd1cbde76] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:06.536 [http-nio-8081-exec-7] INFO  [30c868e43745a9a6e29740aabea9ffea,61fc4d4fd1cbde76] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:06.713 [http-nio-8081-exec-8] INFO  [6a41f6644d31000434404e4d05b55643,1ff17466e9dd4829] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:06.958 [http-nio-8081-exec-1] INFO  [5a91cc5dec4711a4c33dac8b862f5c8a,ac913d1533ea9c72] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:06.982 [http-nio-8081-exec-5] INFO  [814d0ac4f101ca626bde741ea622122e,7a23bdbf257a9d07] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:07.220 [http-nio-8081-exec-8] INFO  [6a41f6644d31000434404e4d05b55643,1ff17466e9dd4829] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:07.290 [http-nio-8081-exec-3] INFO  [1ed3e75229f873682fa2491da876b1f1,380677770ba132c4] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:07.587 [http-nio-8081-exec-9] INFO  [e688e63d7bc732fe1f3f45bb53d61462,bc6b1eb38b28534b] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:07.849 [http-nio-8081-exec-4] INFO  [fc451ccd09851b752b659adc0affba60,05140d2160f9b2cb] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:43:08.286 [http-nio-8081-exec-1] INFO  [5a91cc5dec4711a4c33dac8b862f5c8a,ac913d1533ea9c72] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:08.295 [http-nio-8081-exec-4] INFO  [fc451ccd09851b752b659adc0affba60,05140d2160f9b2cb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:08.374 [http-nio-8081-exec-9] INFO  [e688e63d7bc732fe1f3f45bb53d61462,bc6b1eb38b28534b] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:43:09.138 [http-nio-8081-exec-3] INFO  [1ed3e75229f873682fa2491da876b1f1,380677770ba132c4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:45:13.512 [http-nio-8081-exec-1] INFO  [cbcb13ad1f7ad1c9a472ff1de3823fc9,74a9060d7add3c16] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:45:13.700 [http-nio-8081-exec-4] INFO  [299c79aa8a9dc92c623173521d6cc071,ae9477b7650b8bd7] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:45:14.013 [http-nio-8081-exec-9] INFO  [26d7e5a8be856fd0e0d7943e43abd929,bacdcaffdbc9f988] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:45:14.231 [http-nio-8081-exec-3] INFO  [83b8edfe28b0f7c7a1753a2e7a751ee9,faf93f4bd4e9d9a2] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:45:14.415 [http-nio-8081-exec-4] INFO  [299c79aa8a9dc92c623173521d6cc071,ae9477b7650b8bd7] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:45:14.690 [http-nio-8081-exec-3] INFO  [83b8edfe28b0f7c7a1753a2e7a751ee9,faf93f4bd4e9d9a2] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:45:14.750 [http-nio-8081-exec-9] INFO  [26d7e5a8be856fd0e0d7943e43abd929,bacdcaffdbc9f988] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:45:15.480 [http-nio-8081-exec-1] INFO  [cbcb13ad1f7ad1c9a472ff1de3823fc9,74a9060d7add3c16] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:47:03.198 [http-nio-8081-exec-5] INFO  [5269e26d66771f46234a6b4e2e5ac92d,f91ac8e3864ebaa4] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:47:03.482 [http-nio-8081-exec-8] INFO  [8784a4e27d4481405afdd8e407732c93,af0bd7d55986614f] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:47:03.749 [http-nio-8081-exec-4] INFO  [1a683efa7bcf455514e42d83571945c2,5b837ca68f600931] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:47:03.968 [http-nio-8081-exec-3] INFO  [35947532b00f893581f5069d4de16bd7,f7eaf0d2379ccefd] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:47:04.081 [http-nio-8081-exec-3] INFO  [35947532b00f893581f5069d4de16bd7,f7eaf0d2379ccefd] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:47:04.333 [http-nio-8081-exec-9] INFO  [d81c23dc447d6b000c94a4ef97ad21a6,6f8094694c2d1a22] c.e.s.controller.UserController - Received request for user data
+2025-08-14 14:47:04.336 [http-nio-8081-exec-5] INFO  [5269e26d66771f46234a6b4e2e5ac92d,f91ac8e3864ebaa4] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:47:04.596 [http-nio-8081-exec-8] INFO  [8784a4e27d4481405afdd8e407732c93,af0bd7d55986614f] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:47:04.934 [http-nio-8081-exec-9] INFO  [d81c23dc447d6b000c94a4ef97ad21a6,6f8094694c2d1a22] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 14:47:05.063 [http-nio-8081-exec-4] INFO  [1a683efa7bcf455514e42d83571945c2,5b837ca68f600931] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 15:25:31.539 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - Starting ServiceUserApplicationTests using Java 21.0.1 with PID 30676 (started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 15:25:31.563 [Test worker] DEBUG [,] c.e.s.ServiceUserApplicationTests - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 15:25:31.569 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 15:25:42.748 [Test worker] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 15:25:45.278 [Test worker] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 6 endpoints beneath base path '/actuator'
+2025-08-14 15:25:45.967 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 15:25:45.967 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 15:25:45.968 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 15:25:46.736 [Test worker] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 15:25:46.828 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - Started ServiceUserApplicationTests in 16.774 seconds (process running for 21.852)
+2025-08-14 15:25:52.216 [SpringApplicationShutdownHook] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - Completed gRPC server shutdown
+2025-08-14 15:27:17.754 [main] INFO  [,] c.e.s.ServiceUserApplication - Starting ServiceUserApplication using Java 21.0.8 with PID 1276 (C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user\build\classes\java\main started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 15:27:17.757 [main] DEBUG [,] c.e.s.ServiceUserApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 15:27:17.759 [main] INFO  [,] c.e.s.ServiceUserApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 15:27:23.952 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-08-14 15:27:24.069 [main] INFO  [,] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-14 15:27:24.071 [main] INFO  [,] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-14 15:27:24.538 [main] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-14 15:27:24.545 [main] INFO  [,] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6659 ms
+2025-08-14 15:27:29.039 [main] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 15:27:29.814 [main] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 7 endpoints beneath base path '/actuator'
+2025-08-14 15:27:30.048 [main] INFO  [,] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-08-14 15:27:30.431 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 15:27:30.432 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 15:27:30.432 [main] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 15:27:31.141 [main] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 15:27:31.237 [main] INFO  [,] c.e.s.ServiceUserApplication - Started ServiceUserApplication in 15.74 seconds (process running for 17.239)
+2025-08-14 15:27:32.174 [http-nio-8081-exec-2] INFO  [,] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-14 15:27:32.179 [http-nio-8081-exec-2] INFO  [,] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-14 15:27:32.183 [http-nio-8081-exec-2] INFO  [,] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-08-14 15:27:32.536 [http-nio-8081-exec-1] INFO  [5c6ef56892877035da249debcfb30e57,6adde8c059e716bb] c.e.s.controller.UserController - Received request for user data
+2025-08-14 15:27:32.537 [http-nio-8081-exec-5] INFO  [71923e5ff8412ca4479bdc255b093c0b,c1fbff55a599dd3e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 15:27:32.536 [http-nio-8081-exec-3] INFO  [6ea1ff102c81dad532dc94c631a26e51,e200c021d7e1ace9] c.e.s.controller.UserController - Received request for user data
+2025-08-14 15:27:32.538 [http-nio-8081-exec-4] INFO  [af5cdcb05ef182b9b6ab57c3d02f5d1e,8d714d77c3448b03] c.e.s.controller.UserController - Received request for user data
+2025-08-14 15:27:32.539 [http-nio-8081-exec-2] INFO  [568bbbb1450656cf56a0ebea31c617a8,526775f090c8c58e] c.e.s.controller.UserController - Received request for user data
+2025-08-14 15:27:32.567 [http-nio-8081-exec-3] INFO  [6ea1ff102c81dad532dc94c631a26e51,e200c021d7e1ace9] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 15:27:32.967 [http-nio-8081-exec-5] INFO  [71923e5ff8412ca4479bdc255b093c0b,c1fbff55a599dd3e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 15:27:33.051 [http-nio-8081-exec-2] INFO  [568bbbb1450656cf56a0ebea31c617a8,526775f090c8c58e] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 15:27:33.305 [http-nio-8081-exec-4] INFO  [af5cdcb05ef182b9b6ab57c3d02f5d1e,8d714d77c3448b03] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 15:27:33.906 [http-nio-8081-exec-1] INFO  [5c6ef56892877035da249debcfb30e57,6adde8c059e716bb] c.e.s.controller.UserController - Returning user: Juan Pérez
+2025-08-14 15:33:32.408 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - Starting ServiceUserApplicationTests using Java 21.0.1 with PID 21900 (started by aldo_ in C:\Users\aldo_\Documents\SIIE\POC\service-user\service-user)
+2025-08-14 15:33:32.411 [Test worker] DEBUG [,] c.e.s.ServiceUserApplicationTests - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-14 15:33:32.412 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-08-14 15:33:38.346 [Test worker] INFO  [,] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-08-14 15:33:39.952 [Test worker] INFO  [,] o.s.b.a.e.web.EndpointLinksResolver - Exposing 6 endpoints beneath base path '/actuator'
+2025-08-14 15:33:40.503 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: user.UserService, bean: userServiceImpl, class: com.example.service_user.service.UserServiceImpl
+2025-08-14 15:33:40.504 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-08-14 15:33:40.505 [Test worker] INFO  [,] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-08-14 15:33:40.980 [Test worker] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-08-14 15:33:41.016 [Test worker] INFO  [,] c.e.s.ServiceUserApplicationTests - Started ServiceUserApplicationTests in 10.0 seconds (process running for 14.585)
+2025-08-14 15:33:43.589 [SpringApplicationShutdownHook] INFO  [,] n.d.b.g.s.s.GrpcServerLifecycle - Completed gRPC server shutdown

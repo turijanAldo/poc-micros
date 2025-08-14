@@ -1,46 +1,153 @@
-# application.yml para MICROSERVICIO 1 (gRPC)
-# 👇 CAMBIAR ESTOS VALORES POR LOS TUYOS
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN PRINCIPAL DEL SERVICE-USER
+# ═══════════════════════════════════════════════════════════════
+
 spring:
   application:
-    name: service-user  # 👈 CAMBIAR por el nombre real de tu servicio
+    name: service-user
 
 server:
-  port: 8081  # 👈 CAMBIAR por el puerto que usas
+  port: 8081
+  tomcat:
+    connection-timeout: 20000ms
+    keep-alive-timeout: 15000ms
 
-# Configuración gRPC
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DEL SERVIDOR gRPC
+# ═══════════════════════════════════════════════════════════════
 grpc:
   server:
-    port: 9090  # Puerto para gRPC (diferente del HTTP)
+    port: 9090
+    security:
+      enabled: false
+    max-inbound-message-size: 1MB
+    keep-alive-time: 30s
+    keep-alive-timeout: 5s
 
-# Configuración mínima para observabilidad
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DE OBSERVABILIDAD (Micrometer + OTEL)
+# ═══════════════════════════════════════════════════════════════
 management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+    propagation:
+      type: 
+        - B3
+        - B3_MULTI
+        - W3C
+    baggage:
+      correlation:
+        enabled: true
+        fields:
+          - user-id
+          - request-id
+          - operation-type
+          - session-id
+      remote-fields:
+        - user-id
+        - request-id
+        - operation-type
+        - session-id
+  
+  # Configuración limpia y unificada para OTLP
+  otlp:
+    tracing:
+      endpoint: http://host.docker.internal:4318/v1/traces
+
   endpoints:
     web:
+      base-path: /actuator
       exposure:
-        include: health,info,metrics,prometheus
+        include: health,info,metrics,prometheus,env,configprops,threaddump
+
   endpoint:
     health:
       show-details: always
-  # Configuración de tracing
-  tracing:
-    sampling:
-      probability: 1.0  # 100% para desarrollo, bajar en producción
-    # Configuración específica de Zipkin
-  zipkin:
-    tracing:
-      endpoint: http://localhost:9411/api/v2/spans
+      show-components: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
 
-
-# Logging con correlación de traces
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      version: "1.0.0"
+      environment: "development"
+      team: "backend"
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        http.client.requests: true
+      percentiles:
+        http.server.requests: 0.5, 0.75, 0.95, 0.99
+        http.client.requests: 0.5, 0.75, 0.95, 0.99
+      sla:
+        http.server.requests: 50ms, 100ms, 200ms, 500ms, 1s, 2s
+        http.client.requests: 50ms, 100ms, 200ms, 500ms, 1s
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+        step: 10s
+# ═══════════════════════════════════════════════════════════════
+# ATRIBUTOS DE RECURSO OTEL
+# ═══════════════════════════════════════════════════════════════
+otel:
+  resource:
+    attributes: 
+      service.name: service-user
+      service.version: "1.0.0"
+      deployment.environment: "development"
+      team: "backend"
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DE LOGGING CON TRACEID Y SPANID
+# ═══════════════════════════════════════════════════════════════
 logging:
   level:
     root: INFO
     com.example: DEBUG
-    net.devh.boot.grpc: DEBUG
+    org.springframework.web: INFO
+    io.micrometer: INFO
+    io.zipkin: INFO
+    brave: INFO
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
   file:
     name: ./logs/service-user.log
+    max-size: 100MB
+    max-history: 30
 
----
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DE TU APP PERSONALIZADA
+# ═══════════════════════════════════════════════════════════════
+app:
+  user-data:
+    default-role: "USER"
+    max-records: 1000
+
+# ═══════════════════════════════════════════════════════════════
+# INFORMACIÓN DE LA APP
+# ═══════════════════════════════════════════════════════════════
+info:
+  app:
+    name: ${spring.application.name}
+    description: "Service User con observabilidad completa - Jaeger, Zipkin y Prometheus"
+    version: "1.0.0"
+    team: "Backend Team"
+    contact:
+      email: "backend@empresa.com"
+  build:
+    artifact: "service-user"
+    version: "1.0.0"
+    timestamp: "2025-08-11"
+  features:
+    - "Spring Boot Actuator"
+    - "Micrometer Metrics"
+    - "Prometheus Integration"
+    - "Jaeger & Zipkin Distributed Tracing"
+    - "Custom Business Metrics"
+    - "Request Correlation"
