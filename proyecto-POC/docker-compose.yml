@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                        OPENTELEMETRY COLLECTOR                              ║
+  # ║        Ahora usa archivos externos - mucho más limpio y mantenible          ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    ports:
+      - "4317:4317"   # OTLP gRPC (alternativa para clientes que prefieren gRPC)
+      - "4318:4318"   # OTLP HTTP (CRÍTICO: tus microservicios Spring Boot envían aquí)
+      - "8889:8889"   # Métricas Prometheus del collector (para scraping desde Prometheus)
+      - "13133:13133" # Health check endpoint
+    volumes:
+      # 🎯 CAMBIO PRINCIPAL: Montamos el archivo de configuración directamente
+      # En lugar de generar el archivo con un script, lo leemos desde el sistema de archivos local
+      - ./configs/otelcol/otel-collector-config.yaml:/etc/otelcol-contrib/otel-collector-config.yaml:ro
+    command: ["--config=/etc/otelcol-contrib/otel-collector-config.yaml"]
+    depends_on:
+      - jaeger  # Esperar a que Jaeger esté listo para recibir datos
+      - zipkin  # Esperar a que Zipkin esté listo para recibir datos
+    networks:
+      - observability
+    restart: unless-stopped
+    # Configuración de salud para Docker Compose
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:13133/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                                 JAEGER                                      ║
+  # ║              Sistema de trazas distribuidas - sin cambios                   ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      - "16686:16686"  # UI de Jaeger (acceso desde navegador)
+      - "14268:14268"  # Receptor HTTP Jaeger
+      - "14250:14250"  # Receptor gRPC Jaeger
+    expose:
+      - "4317"  # OTLP gRPC (interno)
+      - "4318"  # OTLP HTTP (interno - usado por el collector)
+      - "9411"  # Puerto Zipkin (interno - usado por el collector)
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+      - SPAN_STORAGE_TYPE=memory
+      - QUERY_BASE_PATH=/
+      - LOG_LEVEL=info
+      - MEMORY_MAX_TRACES=50000
+    networks:
+      - observability
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://host.docker.internal:16686/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                                ZIPKIN                                       ║
+  # ║                    Sistema alternativo de trazas - sin cambios              ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mem
+      - JAVA_OPTS=-Xms512m -Xmx512m
+    networks:
+      - observability
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://host.docker.internal:9411/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                               PROMETHEUS                                     ║
+  # ║          Ahora usa archivo de configuración externo - más mantenible        ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9091:9090"   # Puerto 9091 en el host para evitar conflictos
+    volumes:
+      # 🎯 OTRO CAMBIO PRINCIPAL: Configuración externa de Prometheus
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+networks:
+  observability:
+    driver: bridge

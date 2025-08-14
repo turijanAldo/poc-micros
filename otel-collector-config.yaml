@@ -10,6 +10,20 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 processors:
+  resource:
+    attributes:
+      - key: service.name
+        value: default-service
+        action: insert   # Solo agrega si el micro no envía nombre
+      - key: service.version
+        value: "1.0.0"
+        action: upsert   # Actualiza o agrega versión
+      - key: deployment.environment
+        value: "development"
+        action: upsert
+      - key: team
+        value: "backend"
+        action: upsert
   batch:
     timeout: 1s
     send_batch_size: 1024
@@ -29,9 +43,9 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter, resource, batch]
       exporters: [zipkin, logging]
     metrics:
       receivers: [otlp]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter, resource, batch]
       exporters: [prometheus, logging]

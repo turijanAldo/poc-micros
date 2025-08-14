@@ -1,0 +1,111 @@
+# ╔══════════════════════════════════════════════════════════════════════════════╗
+# ║                         CONFIGURACIÓN DE PROMETHEUS                         ║
+# ║                    Scraping optimizado para microservicios                  ║
+# ╚══════════════════════════════════════════════════════════════════════════════╝
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: "microservices-monitor"
+    environment: "development"
+    platform: "windows-docker"
+    prometheus_instance: "main"
+
+scrape_configs:
+  # ────────────── PROMETHEUS AUTO-MONITOREO ──────────────
+  - job_name: "prometheus-self"
+    scrape_interval: 30s
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["localhost:9090"]
+        labels:
+          service_type: "monitoring"
+          component: "prometheus"
+
+  # ────────────── OTEL COLLECTOR - BUSINESS METRICS ──────────────
+  - job_name: "otel-collector-business"
+    scrape_interval: 10s
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["host.docker.internal:8889"]
+        labels:
+          service_type: "observability"
+          component: "otel-collector"
+          metric_type: "business"
+
+  # ────────────── OTEL COLLECTOR - INTERNAL METRICS ──────────────
+  - job_name: "otel-collector-internal"
+    scrape_interval: 30s
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["host.docker.internal:8888"]
+        labels:
+          service_type: "observability"
+          component: "otel-collector"
+          metric_type: "internal"
+
+  # ────────────── MICROSERVICIOS SPRING BOOT ──────────────
+  - job_name: "service-user"
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    metrics_path: "/actuator/prometheus"
+    honor_labels: true
+    static_configs:
+      - targets: ["localhost:8081"]
+        labels:
+          service: "user-service"
+          team: "backend"
+          environment: "development"
+          service_type: "business"
+          component: "microservice"
+
+  - job_name: "service-gateway"
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    metrics_path: "/actuator/prometheus"
+    honor_labels: true
+    static_configs:
+      - targets: ["localhost:8082"]
+        labels:
+          service: "gateway-service"
+          team: "backend"
+          environment: "development"
+          service_type: "business"
+          component: "microservice"
+
+  # ────────────── HERRAMIENTAS DE OBSERVABILIDAD ──────────────
+  - job_name: "jaeger-tracing"
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["host.docker.internal:14269"]
+        labels:
+          service_type: "observability"
+          component: "jaeger"
+          metric_type: "tracing"
+
+  - job_name: "zipkin-tracing"
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    metrics_path: "/prometheus"
+    static_configs:
+      - targets: ["host.docker.internal:9411"]
+        labels:
+          service_type: "observability"
+          component: "zipkin"
+          metric_type: "tracing"
+
+  # ────────────── HEALTH CHECKS ──────────────
+  - job_name: "health-checks"
+    scrape_interval: 60s
+    scrape_timeout: 3s
+    metrics_path: "/actuator/health"
+    static_configs:
+      - targets: 
+          - "localhost:8081"
+          - "localhost:8082"
+        labels:
+          service_type: "health"
+          component: "health-check"
