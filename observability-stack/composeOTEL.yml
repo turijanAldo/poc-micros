@@ -1,0 +1,504 @@
+version: '3.8'
+
+services:
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                    GENERADOR DE CONFIGURACIONES CORREGIDO                   ║
+  # ║          Configuración actualizada para OpenTelemetry Collector moderno     ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  config-generator:
+    image: alpine:latest
+    container_name: config-generator
+    volumes:
+      - shared_configs:/shared
+    command: |
+      sh -c '
+      echo "🔧 Generando configuración CORREGIDA para OpenTelemetry Collector moderno..."
+      echo "📊 Usando exportadores compatibles con la versión actual"
+      
+      # ╔══════════════════════════════════════════════════════════════════════════════╗
+      # ║               CONFIGURACIÓN OPTIMIZADA DEL OPENTELEMETRY COLLECTOR          ║
+      # ║              Adaptada para las versiones actuales del collector             ║
+      # ╚══════════════════════════════════════════════════════════════════════════════╝
+      cat > /shared/otel-collector-config.yaml << "EOF"
+# ╔══════════════════════════════════════════════════════════════════════════════╗
+# ║                    OPENTELEMETRY COLLECTOR - CONFIGURACIÓN OPTIMIZADA       ║
+# ║              Compatible con Spring Boot 3.x + Jaeger + Prometheus           ║
+# ╚══════════════════════════════════════════════════════════════════════════════╝
+
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                                  RECEPTORES                                  │
+# │              Configuración de entrada de datos de telemetría                │
+# └──────────────────────────────────────────────────────────────────────────────┘
+receivers:
+  # Receptor OTLP - Protocolo estándar de OpenTelemetry
+  # Recibe trazas y métricas de tus microservicios Spring Boot
+  otlp:
+    protocols:
+      # gRPC - Protocolo preferido para alta performance
+      grpc:
+        endpoint: 0.0.0.0:4317
+        # Configuración de seguridad para desarrollo
+        tls:
+          insecure: true
+        # Límites de mensaje para evitar problemas de memoria
+        max_recv_msg_size: 4194304  # 4MB
+        max_concurrent_streams: 16
+        read_buffer_size: 512000
+        write_buffer_size: 512000
+        keepalive:
+          server_parameters:
+            time: 30s
+            timeout: 5s
+          enforcement_policy:
+            min_time: 10s
+            permit_without_stream: true
+      
+      # HTTP - Protocolo alternativo, más fácil para debugging
+      http:
+        endpoint: 0.0.0.0:4318
+        # CORS habilitado para desarrollo local
+        cors:
+          allowed_origins:
+            - "http://localhost:*"
+            - "http://127.0.0.1:*"
+            - "http://host.docker.internal:*"
+          allowed_headers:
+            - "*"
+          allowed_methods:
+            - "GET"
+            - "POST"
+            - "OPTIONS"
+          max_age: 3600
+
+  # Receptor para métricas del propio collector (auto-monitoreo)
+  prometheus/internal:
+    config:
+      scrape_configs:
+        - job_name: "otel-collector-internal"
+          scrape_interval: 30s
+          static_configs:
+            - targets: ["localhost:8888"]
+
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                                 PROCESADORES                                 │
+# │            Transformación y enriquecimiento de datos de telemetría          │
+# └──────────────────────────────────────────────────────────────────────────────┘
+processors:
+  # 🛡️ LIMITADOR DE MEMORIA - Previene uso excesivo de recursos
+  memory_limiter:
+    limit_mib: 1024        # Límite total de memoria: 1GB
+    spike_limit_mib: 256   # Límite para picos: 256MB
+    check_interval: 5s     # Frecuencia de verificación
+    
+  # 📦 PROCESADOR DE LOTES - Optimiza el rendimiento de envío
+  batch:
+    # Configuración optimizada para latencia vs throughput
+    send_batch_size: 512        # Tamaño del lote para envío
+    send_batch_max_size: 1024   # Tamaño máximo del lote
+    timeout: 2s                 # Tiempo máximo de espera
+    
+  # 🏷️ PROCESADOR DE RECURSOS - Enriquece metadatos de servicios
+  resource:
+    attributes:
+      # ═══ DETECCIÓN AUTOMÁTICA DE SERVICE.NAME ═══
+      # Si el microservicio no envía service.name, lo asignamos
+      - key: service.name
+        value: "unknown-service"
+        action: upsert
+        
+      # ═══ METADATOS DE VERSIÓN Y ENTORNO ═══
+      - key: service.version
+        value: "1.0.0"
+        action: insert
+        
+      - key: deployment.environment
+        value: "development"
+        action: insert
+        
+      - key: team
+        value: "backend-team"
+        action: insert
+        
+      # ═══ METADATOS DE INFRAESTRUCTURA ═══
+      - key: platform
+        value: "docker-desktop-windows"
+        action: insert
+        
+      - key: collector.name
+        value: "otel-collector-main"
+        action: insert
+        
+      - key: collector.version
+        value: "latest"
+        action: insert
+
+  # 🔍 PROCESADOR DE ATRIBUTOS - Añade información contextual
+  attributes:
+    actions:
+      # Timestamp de procesamiento
+      - key: otel.processed_at
+        action: insert
+        value: "collector"
+        
+      # Identificador único del collector
+      - key: otel.collector_id
+        action: insert
+        value: "main-collector-001"
+        
+      # Región/ubicación del collector
+      - key: deployment.region
+        action: insert
+        value: "local"
+
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                                EXPORTADORES                                  │
+# │              Configuración de destinos de datos de telemetría               │
+# └──────────────────────────────────────────────────────────────────────────────┘
+exporters:
+  # 🔍 ZIPKIN - Exportador para Jaeger (compatible con formato Zipkin)
+  zipkin:
+    endpoint: "http://jaeger:9411/api/v2/spans"
+    format: json
+    timeout: 10s
+    # Configuración de reintentos robusta
+    retry_on_failure:
+      enabled: true
+      initial_interval: 1s
+      max_interval: 30s
+      max_elapsed_time: 300s
+    # Configuración de cola para tolerancia a fallos
+    sending_queue:
+      enabled: true
+      num_consumers: 4
+      queue_size: 1000
+
+  # 📈 PROMETHEUS - Exportador de métricas
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+    namespace: "otel"
+    # Constantes añadidas a todas las métricas
+    const_labels:
+      environment: "development"
+      platform: "docker"
+      collector: "main"
+    # Configuración de métricas
+    metric_expiration: 180m
+    resource_to_telemetry_conversion:
+      enabled: true
+    # Configuración de etiquetas de recursos
+    send_timestamps: true
+    add_metric_suffixes: true
+
+  # 🐞 DEBUG - Exportador para troubleshooting y desarrollo
+  debug:
+    verbosity: detailed
+    sampling_initial: 5      # Primeras 5 muestras siempre se loggean
+    sampling_thereafter: 1000 # Después, 1 de cada 1000
+    use_internal_logger: true
+
+  # 🔄 OTLP JAEGER - Exportador OTLP nativo para Jaeger
+  # Alternativa moderna al exportador Zipkin
+  otlp/jaeger:
+    endpoint: "http://jaeger:4318"
+    tls:
+      insecure: true
+    timeout: 10s
+    retry_on_failure:
+      enabled: true
+      initial_interval: 1s
+      max_interval: 30s
+      max_elapsed_time: 300s
+    sending_queue:
+      enabled: true
+      num_consumers: 4
+      queue_size: 1000
+    compression: gzip
+
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                              CONFIGURACIÓN DEL SERVICIO                     │
+# │                    Definición de pipelines de procesamiento                 │
+# └──────────────────────────────────────────────────────────────────────────────┘
+service:
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # PIPELINES DE PROCESAMIENTO
+  # ═══════════════════════════════════════════════════════════════════════════════
+  pipelines:
+    # 🔍 PIPELINE DE TRAZAS
+    # Flujo: OTLP → Procesadores → Jaeger/Zipkin + Debug
+    traces:
+      receivers: 
+        - otlp
+      processors: 
+        - memory_limiter
+        - resource
+        - attributes
+        - batch
+      exporters: 
+        - zipkin              # Envío principal a Jaeger vía Zipkin
+        - otlp/jaeger         # Envío alternativo vía OTLP nativo
+        - debug              # Debug para desarrollo
+        
+    # 📊 PIPELINE DE MÉTRICAS
+    # Flujo: OTLP → Procesadores → Prometheus + Debug
+    metrics:
+      receivers: 
+        - otlp
+        - prometheus/internal
+      processors: 
+        - memory_limiter
+        - resource
+        - batch
+      exporters: 
+        - prometheus         # Envío principal a Prometheus
+        - debug             # Debug para desarrollo
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # CONFIGURACIÓN DE TELEMETRÍA DEL COLLECTOR
+  # ═══════════════════════════════════════════════════════════════════════════════
+  telemetry:
+    logs:
+      level: "info"          # Nivel de logging: debug, info, warn, error
+      development: false     # true para logs más detallados en desarrollo
+      encoding: "console"    # console o json
+      output_paths: ["stdout"]
+      error_output_paths: ["stderr"]
+      initial_fields:
+        service: "otel-collector"
+        version: "latest"
+    
+    metrics:
+      level: "normal"        # normal, none, detailed
+      # El collector expondrá sus propias métricas en :8888
+      address: "0.0.0.0:8888"
+
+  # ═══════════════════════════════════════════════════════════════════════════════
+  # EXTENSIONES (OPCIONAL)
+  # ═══════════════════════════════════════════════════════════════════════════════
+  extensions:
+    - health_check
+
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                                 EXTENSIONES                                  │
+# │                        Funcionalidades adicionales                          │
+# └──────────────────────────────────────────────────────────────────────────────┘
+extensions:
+  # 🏥 HEALTH CHECK - Endpoint de salud del collector
+  health_check:
+    endpoint: "0.0.0.0:13133"
+    path: "/health"
+
+# ╔══════════════════════════════════════════════════════════════════════════════╗
+# ║                                   NOTAS                                     ║
+# ╚══════════════════════════════════════════════════════════════════════════════╝
+#
+# 🎯 PUERTOS EXPUESTOS:
+#   - 4317: OTLP gRPC (microservicios Spring Boot)
+#   - 4318: OTLP HTTP (microservicios Spring Boot)
+#   - 8889: Métricas Prometheus (scraping)
+#   - 8888: Métricas internas del collector
+#   - 13133: Health check
+#
+# 🔧 CONFIGURACIÓN DE SPRING BOOT:
+#   management.otlp.tracing.endpoint: http://localhost:4318/v1/traces
+#   management.tracing.endpoint: http://localhost:4318/v1/traces
+#
+# 📊 VERIFICACIÓN:
+#   - Health: curl http://localhost:13133/health
+#   - Métricas: curl http://localhost:8889/metrics
+#
+# 🐳 DOCKER COMPOSE:
+#   Asegúrate de exponer los puertos 4317, 4318 y 8889 en tu docker-compose.yml
+EOF
+      
+      echo "✅ Configuración de OpenTelemetry Collector OPTIMIZADA generada"
+      
+      # ╔══════════════════════════════════════════════════════════════════════════════╗
+      # ║                    CONFIGURACIÓN DE PROMETHEUS (sin cambios)                ║
+      # ╚══════════════════════════════════════════════════════════════════════════════╝
+      echo "📈 Generando configuración de Prometheus..."
+      
+      cat > /shared/prometheus.yml << "EOF"
+      global:
+        scrape_interval: 15s
+        evaluation_interval: 15s
+        external_labels:
+          monitor: "microservices-monitor"
+          environment: "development"
+          platform: "windows-docker"
+      
+      scrape_configs:
+        - job_name: "prometheus"
+          static_configs:
+            - targets: ["localhost:9090"]
+          scrape_interval: 30s
+      
+        - job_name: "otel-collector"
+          static_configs:
+            - targets: ["otel-collector:8889"]
+          scrape_interval: 10s
+          
+        - job_name: "service-user"
+          static_configs:
+            - targets: ["host.docker.internal:8081"]
+              labels:
+                service: "user-service"
+                team: "backend"
+                environment: "development"
+          metrics_path: "/actuator/prometheus"
+          scrape_interval: 10s
+      
+        - job_name: "service-gateway"
+          static_configs:
+            - targets: ["host.docker.internal:8082"]
+              labels:
+                service: "gateway-service"
+                team: "backend"
+                environment: "development"
+          metrics_path: "/actuator/prometheus"
+          scrape_interval: 10s
+      
+        - job_name: "jaeger"
+          static_configs:
+            - targets: ["jaeger:14269"]
+          scrape_interval: 30s
+      
+        - job_name: "zipkin"
+          static_configs:
+            - targets: ["zipkin:9411"]
+          scrape_interval: 30s
+          metrics_path: "/prometheus"
+      EOF
+      
+      echo "✅ Todas las configuraciones generadas exitosamente"
+      echo "🎯 Configuración compatible con OpenTelemetry Collector moderno"
+      '
+
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                            OPENTELEMETRY COLLECTOR                          ║
+  # ║     PUERTO 4318 EXPUESTO: Los microservicios Spring Boot necesitan acceso  ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    ports:
+      - "4317:4317"   # OTLP gRPC (alternativa para clientes que prefieren gRPC)
+      - "4318:4318"   # OTLP HTTP (CRÍTICO: tus microservicios Spring Boot envían aquí)
+      - "8889:8889"   # Métricas Prometheus del collector (para scraping desde Prometheus)
+      - "13133:13133" # Health check endpoint (NUEVO - para verificar estado del collector)
+    volumes:
+      - shared_configs:/etc/otelcol-contrib
+    command: ["--config=/etc/otelcol-contrib/otel-collector-config.yaml"]
+    depends_on:
+      - config-generator
+      - jaeger  # Esperar a que Jaeger esté listo para recibir datos
+      - zipkin  # Esperar a que Zipkin esté listo para recibir datos
+    networks:
+      - observability
+    restart: unless-stopped
+
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                       JAEGER CON SOPORTE OTLP HABILITADO                    ║
+  # ║   CONFIGURACIÓN CORREGIDA: Solo expone puertos necesarios al host           ║
+  # ║   Los puertos OTLP (4317, 4318) están disponibles internamente para el     ║
+  # ║   collector                                                                  ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      # Solo exponemos al host los puertos que necesitamos acceder directamente
+      - "16686:16686"  # UI de Jaeger (acceso desde navegador)
+      - "14268:14268"  # Receptor HTTP Jaeger (por si quieres enviar trazas directamente)
+      - "14250:14250"  # Receptor gRPC Jaeger (por si quieres enviar trazas directamente)
+      # Los puertos 4317 y 4318 están disponibles internamente pero NO expuestos al host
+      # Esto evita el conflicto con el otel-collector
+    expose:
+      # Exponemos internamente los puertos OTLP para comunicación con el collector
+      - "4317"  # OTLP gRPC (interno)
+      - "4318"  # OTLP HTTP (interno - usado por el collector)
+      - "9411"  # Puerto Zipkin (interno - usado por el collector)
+    environment:
+      # CRÍTICO: Habilitar explícitamente el receptor OTLP
+      - COLLECTOR_OTLP_ENABLED=true
+      - SPAN_STORAGE_TYPE=memory
+      - QUERY_BASE_PATH=/
+      - LOG_LEVEL=info
+      - MEMORY_MAX_TRACES=50000
+    networks:
+      - observability
+    restart: unless-stopped
+
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                                ZIPKIN (sin cambios)                         ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mem
+      - JAVA_OPTS=-Xms512m -Xmx512m
+    networks:
+      - observability
+    restart: unless-stopped
+
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                       PROMETHEUS (sin cambios significativos)               ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9091:9090"
+    volumes:
+      - shared_configs:/etc/prometheus:ro
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+      - "--storage.tsdb.retention.time=15d"
+      - "--web.enable-lifecycle"
+      - "--storage.tsdb.retention.size=1GB"
+    depends_on:
+      - config-generator
+    networks:
+      - observability
+    restart: unless-stopped
+
+  # ╔══════════════════════════════════════════════════════════════════════════════╗
+  # ║                                GRAFANA (sin cambios)                        ║
+  # ╚══════════════════════════════════════════════════════════════════════════════╝
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - observability
+    depends_on:
+      - prometheus
+      - jaeger
+    restart: unless-stopped
+
+volumes:
+  shared_configs:
+    driver: local
+  grafana_data:
+    driver: local
+  prometheus_data:
+    driver: local
+
+networks:
+  observability:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

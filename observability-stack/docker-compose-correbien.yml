@@ -1,0 +1,255 @@
+version: '3.8'
+
+services:
+  # Contenedor auxiliar que genera la configuración usando una imagen con shell
+  # Actualizando el generador de configuración para soporte dual Zipkin/Jaeger
+  otel-config-generator:
+    image: alpine:latest
+    container_name: otel-config-generator
+    volumes:
+      - otel_config:/shared
+    command: |
+      sh -c '
+      echo "🔧 Generando configuración avanzada del OpenTelemetry Collector..."
+      echo "📊 Configurando distribución dual: Zipkin + Jaeger"
+      
+      cat > /shared/otel-collector-config.yaml << "EOF"
+      # ═══════════════════════════════════════════════════════════════
+      # CONFIGURACIÓN AVANZADA DE OPENTELEMETRY COLLECTOR
+      # Distribución dual de trazas a Zipkin y Jaeger simultáneamente
+      # ═══════════════════════════════════════════════════════════════
+      
+      receivers:
+        # Receptor OTLP para recibir trazas de tus microservicios Spring Boot
+        otlp:
+          protocols:
+            grpc:
+              endpoint: 0.0.0.0:4317
+            http:
+              endpoint: 0.0.0.0:4318
+      
+      processors:
+        # Processor de lotes para optimizar el envío de datos
+        batch:
+          timeout: 1s
+          send_batch_size: 1024
+          send_batch_max_size: 2048
+        
+        # Limitador de memoria para evitar consumo excesivo de recursos
+        memory_limiter:
+          limit_mib: 512
+          check_interval: 5s
+        
+        # Processor de recursos para añadir metadatos enriquecedores
+        resource:
+          attributes:
+            # Metadatos que se añaden a todas las trazas
+            - key: environment
+              value: "development"
+              action: insert
+            - key: service.version
+              value: "1.0.0"
+              action: insert
+            - key: deployment.environment
+              value: "local-docker"
+              action: insert
+        
+        # Processor de atributos para enriquecimiento adicional
+        attributes:
+          actions:
+            # Añadir timestamp de procesamiento
+            - key: otel.processed_at
+              action: insert
+              value: "collector"
+      
+      exporters:
+        # ═══════════════════════════════════════════════════════════════
+        # EXPORTADOR PARA ZIPKIN (mantenemos compatibilidad existente)
+        # ═══════════════════════════════════════════════════════════════
+        zipkin:
+          endpoint: "http://zipkin:9411/api/v2/spans"
+          format: json
+          timeout: 5s
+        
+        # ═══════════════════════════════════════════════════════════════
+        # EXPORTADOR PARA JAEGER (nueva capacidad analítica avanzada)
+        # ═══════════════════════════════════════════════════════════════
+        otlp/jaeger:
+          endpoint: "jaeger:4318"
+          tls:
+            insecure: true
+          timeout: 5s
+          retry_on_failure:
+            enabled: true
+            initial_interval: 1s
+            max_interval: 30s
+            max_elapsed_time: 300s
+        
+        # ═══════════════════════════════════════════════════════════════
+        # EXPORTADOR PARA PROMETHEUS (métricas continúan igual)
+        # ═══════════════════════════════════════════════════════════════
+        prometheus:
+          endpoint: "0.0.0.0:8889"
+          namespace: "otel"
+          const_labels:
+            environment: "development"
+        
+        # ═══════════════════════════════════════════════════════════════
+        # EXPORTADOR DEBUG (útil para troubleshooting)
+        # ═══════════════════════════════════════════════════════════════
+        debug:
+          verbosity: detailed
+      
+      service:
+        pipelines:
+          # Pipeline de trazas: distribuye a ambos sistemas simultáneamente
+          traces:
+            receivers: [otlp]
+            processors: [memory_limiter, resource, attributes, batch]
+            # ¡Aquí está la magia! Enviamos a ambos destinos
+            exporters: [zipkin, otlp/jaeger, debug]
+          
+          # Pipeline de métricas: continúa funcionando como antes
+          metrics:
+            receivers: [otlp]
+            processors: [memory_limiter, batch]
+            exporters: [prometheus, debug]
+      EOF
+      
+      echo "✅ Configuración dual Zipkin/Jaeger generada exitosamente"
+      echo "🎯 Trazas serán enviadas simultáneamente a ambos sistemas"
+      '
+
+  # Colector OpenTelemetry usando la configuración generada
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "8889:8889"
+    volumes:
+      - otel_config:/etc/otelcol-contrib  # Montar el volumen con la configuración generada
+    command: ["--config=/etc/otelcol-contrib/otel-collector-config.yaml"]
+    depends_on:
+      - otel-config-generator  # Asegurar que la configuración se genere primero
+      - zipkin
+      - prometheus
+    networks:
+      - observability
+
+  # Resto de servicios permanecen igual...
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mem
+    networks:
+      - observability
+# ═══════════════════════════════════════════════════════════════
+# JAEGER: SISTEMA AVANZADO DE TRAZADO DISTRIBUIDO
+# Añadir estos servicios a tu docker-compose.yml existente
+# ═══════════════════════════════════════════════════════════════
+
+  # Jaeger All-in-One: Incluye collector, query service, y UI en un contenedor
+  # Esta configuración es perfecta para desarrollo y comparación con Zipkin
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      # Puerto principal para la interfaz web de Jaeger - acceso desde tu navegador
+      - "16686:16686"
+      
+      # Puerto para recibir trazas en formato Jaeger nativo (UDP) - para compatibilidad
+      - "14268:14268"
+      
+      # Puerto para recibir trazas en formato OpenTelemetry (gRPC)
+      - "14250:14250"
+      
+      # REMOVEMOS el puerto 4318 para evitar conflicto con otel-collector
+      # Jaeger recibirá trazas del Collector internamente, no directamente del host
+    
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+      - SPAN_STORAGE_TYPE=memory
+      - QUERY_BASE_PATH=/
+      - LOG_LEVEL=info
+    
+    networks:
+      - observability
+    
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:16686/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Jaeger Agent (Opcional): Proporciona un buffer local para optimización de rendimiento
+  # En desarrollo puedes omitir esto, pero es educativo entender su propósito
+  jaeger-agent:
+    image: jaegertracing/jaeger-agent:latest
+    container_name: jaeger-agent
+    ports:
+      # Puerto para recibir trazas via UDP en formato Jaeger nativo
+      - "6831:6831/udp"
+      
+      # Puerto alternativo para trazas UDP
+      - "6832:6832/udp"
+      
+      # Puerto para servir configuración del agent y métricas
+      - "5778:5778"
+    
+    environment:
+      # Configuración para que el agent envíe datos al collector principal de Jaeger
+      - REPORTER_GRPC_HOST_PORT=jaeger:14250
+      
+      # Configuración de logging
+      - LOG_LEVEL=info
+    
+    depends_on:
+      jaeger:
+        condition: service_healthy
+    
+    networks:
+      - observability
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    # Parámetros de configuración adicionales
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=15d'  # Retiene datos por 15 días
+      - '--web.enable-lifecycle'  # Permite recargar configuración sin reiniciar
+    networks:
+      - observability
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - observability
+
+volumes:
+  otel_config:  # Volumen para compartir configuración entre contenedores
+  grafana_data:
+
+networks:
+  observability:
+    driver: bridge

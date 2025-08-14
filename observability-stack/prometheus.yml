@@ -1,37 +1,116 @@
-global:
-  scrape_interval: 15s
-  scrape_timeout: 10s
-  evaluation_interval: 15s
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DE PROMETHEUS PARA MICROSERVICIOS
+# Scraping optimizado de métricas desde múltiples fuentes
+# ═══════════════════════════════════════════════════════════════
 
+global:
+  # Intervalo base para recolectar métricas
+  scrape_interval: 15s
+  
+  # Intervalo para evaluar reglas de alertas
+  evaluation_interval: 15s
+  
+  # Etiquetas globales que se añaden a todas las métricas
+  external_labels:
+    monitor: 'microservices-monitor'
+    environment: 'development'
+
+# Configuración de reglas de alertas (puedes expandir esto más adelante)
+rule_files:
+  # - "alert_rules/*.yml"
+
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DE SCRAPING DE MÉTRICAS
+# ═══════════════════════════════════════════════════════════════
 scrape_configs:
+  # Scraping del propio Prometheus (automonitoreo)
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
-    metrics_path: '/metrics'
     scrape_interval: 30s
+    metrics_path: '/metrics'
 
-  - job_name: 'service-gateway'
+  # ═══════════════════════════════════════════════════════════════
+  # SCRAPING DEL OPENTELEMETRY COLLECTOR
+  # El collector expone métricas sobre su propio funcionamiento
+  # ═══════════════════════════════════════════════════════════════
+  - job_name: 'otel-collector'
     static_configs:
-      - targets: ['host.docker.internal:8082']
-        labels:
-          service: 'gateway'
-          environment: 'development'
-          team: 'backend'
+      - targets: ['otel-collector:8889']  # Métricas de negocio del collector
+    scrape_interval: 10s
+    metrics_path: '/metrics'
+    
+  # Métricas internas del collector (diagnóstico)
+  - job_name: 'otel-collector-internal'
+    static_configs:
+      - targets: ['otel-collector:8888']  # Métricas internas del collector
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+
+  # ═══════════════════════════════════════════════════════════════
+  # SCRAPING DE TUS MICROSERVICIOS SPRING BOOT
+  # Estas son las métricas más importantes para tu aplicación
+  # ═══════════════════════════════════════════════════════════════
+  
+  # Service-User: tu microservicio de usuarios
+  - job_name: 'service-user'
+    static_configs:
+      # host.docker.internal permite acceder a servicios en el host desde Docker
+      - targets: ['host.docker.internal:8081']
     metrics_path: '/actuator/prometheus'
     scrape_interval: 10s
-
-  - job_name: 'service-user'
+    # Añadir etiquetas específicas para identificar este servicio
     static_configs:
       - targets: ['host.docker.internal:8081']
         labels:
           service: 'user-service'
-          environment: 'development'
           team: 'backend'
+          environment: 'development'
+
+  # Service-Gateway: tu API gateway
+  - job_name: 'service-gateway'
+    static_configs:
+      - targets: ['host.docker.internal:8082']
     metrics_path: '/actuator/prometheus'
     scrape_interval: 10s
-
-  - job_name: 'otel-collector'
     static_configs:
-      - targets: ['otel-collector:8889']
+      - targets: ['host.docker.internal:8082']
+        labels:
+          service: 'gateway-service'
+          team: 'backend'
+          environment: 'development'
+
+  # ═══════════════════════════════════════════════════════════════
+  # SCRAPING DE HERRAMIENTAS DE OBSERVABILIDAD
+  # Métricas sobre el funcionamiento de las herramientas mismas
+  # ═══════════════════════════════════════════════════════════════
+
+  # Jaeger: métricas sobre el funcionamiento del sistema de trazas
+  - job_name: 'jaeger'
+    static_configs:
+      - targets: ['jaeger:14269']  # Puerto de métricas de Jaeger
+    scrape_interval: 30s
     metrics_path: '/metrics'
-    scrape_interval: 15s
+
+  # Zipkin: métricas alternativas del sistema de trazas
+  - job_name: 'zipkin'
+    static_configs:
+      - targets: ['zipkin:9411']
+    scrape_interval: 30s
+    metrics_path: '/prometheus'  # Zipkin usa este path específico
+
+  # Grafana: métricas sobre el uso de dashboards
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['grafana:3000']
+    scrape_interval: 60s  # Menos frecuente porque cambia lentamente
+    metrics_path: '/metrics'
+
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN ADICIONAL PARA TROUBLESHOOTING
+# ═══════════════════════════════════════════════════════════════
+
+# Configuración para debugging de Prometheus
+# (útil cuando las métricas no aparecen como esperamos)
+# global:
+#   query_log_file: '/prometheus/query.log'
