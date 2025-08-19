@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package solicitud;
+
+
+//Optional: para que genere codigo java
+option java_multiple_files = true;
+option java_package = "com.company.solicitud.grpc";
+option java_outer_classname = "solicitudProto";
+
+message RecibeSolicitud {
+    int64 id = 1;
+    string fechaCreacion = 2;
+    int32  status = 3;
+    string statusString = 4;
+
+    string sistemaDestino = 5;
+    string fechaEnvioS1 = 6;
+    string fechaRespuestaS1 = 7;
+
+    string sistemaDestino2 = 8;
+    string fechaEnvioS2 = 9;
+    string fechaRespuestaS2 = 10;
+
+    string fechaActualizacion = 11;
+    string mensaje = 12;
+
+
+}
+
+message SolicitudResponse {
+    int64 id = 1;
+    string mensaje = 2;
+    bool exito = 3;
+}
+
+service SolicitudService {
+    rpc ProcesarSolicitud(RecibeSolicitud) returns (RecibeSolicitud);
+}
+
+service SolicitudResponseService {
+    rpc EnviarRespuesta(RecibeSolicitud) returns (SolicitudResponse);
+}
