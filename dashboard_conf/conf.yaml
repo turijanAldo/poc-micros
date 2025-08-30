@@ -1,0 +1,27 @@
+# Contenido para: dashboard_conf/conf.yaml
+
+conf:
+  listen:
+    host: 0.0.0.0
+    port: 9000
+  
+  etcd:
+    endpoints:
+      - "http://etcd:2379"
+    
+  apisix:
+    base_url: "http://apisix:9080/apisix/admin"
+    admin_key: "apisix123"
+  
+  authentication:
+    secret: dashboard123
+    users:
+      - username: admin
+        password: admin
+  
+  log:
+    error_log:
+      level: warn
+      file_path: /dev/stderr
+    access_log:
+      file_path: /dev/stdout

@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  etcd:
+    image: bitnami/etcd:3.5.12
+    container_name: apisix-etcd
+    restart: always
+    environment:
+      ALLOW_NONE_AUTHENTICATION: "yes"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_ENABLE_V2: "true"
+    ports:
+      - "2379:2379"
+    networks:
+      - apisix
+    volumes:
+      - etcd_data:/bitnami/etcd
+    healthcheck:
+      test: ["CMD-SHELL", "etcdctl --endpoints=http://127.0.0.1:2379 endpoint health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  apisix:
+    image: apache/apisix:3.6.0-debian
+    container_name: apisix-gateway
+    restart: always
+    depends_on:
+      etcd:
+        condition: service_healthy
+    ports:
+      - "9080:9080"
+      - "9443:9443"
+      - "9180:9180"
+    networks:
+      - apisix
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - APISIX_STAND_ALONE=false
+    volumes:
+      - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
+
+networks:
+  apisix:
+    driver: bridge
+
+volumes:
+  etcd_data:
+    driver: local
