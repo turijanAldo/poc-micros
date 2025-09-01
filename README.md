@@ -293,6 +293,236 @@ docker exec -it apisix-gateway ping etcd
    - Implementar monitoreo de métricas
    - Configurar alertas para accesos no autorizados
 
+# Docker Compose APISIX - Explicación línea por línea
+
+## ¿Qué hace este archivo?
+
+Este `docker-compose.yml` crea una infraestructura de API Gateway usando dos componentes principales:
+- **etcd**: Base de datos que guarda las configuraciones
+- **APISIX**: El gateway que procesa las peticiones
+
+## Anatomía del archivo
+
+### Declaración de versión
+```yaml
+version: '3.8'
+```
+**¿Qué hace?** Especifica la versión del formato Docker Compose que usaremos. La 3.8 es estable y soporta todas las funciones que necesitamos.
+
+---
+
+### Inicio de servicios
+```yaml
+services:
+```
+**¿Qué hace?** Declara que vamos a definir contenedores. Todo lo que sigue son los diferentes servicios (contenedores) que queremos ejecutar.
+
+---
+
+## Servicio etcd (Base de datos de configuración)
+
+### Definición del servicio
+```yaml
+  etcd:
+    image: bitnami/etcd:3.5.12
+```
+**¿Qué hace?** 
+- Crea un servicio llamado `etcd`
+- Usa la imagen oficial de Bitnami (versión 3.5.12)
+- etcd es como una agenda compartida donde APISIX guarda sus configuraciones
+
+### Nombre del contenedor
+```yaml
+    container_name: apisix-etcd
+```
+**¿Qué hace?** Le da un nombre fijo al contenedor. Sin esto, Docker inventaría un nombre aleatorio. Con este nombre puedes hacer `docker logs apisix-etcd`.
+
+### Política de reinicio
+```yaml
+    restart: always
+```
+**¿Qué hace?** Si el contenedor se cierra por cualquier razón (error, reinicio del sistema), Docker automáticamente lo vuelve a iniciar.
+
+### Variables de entorno
+```yaml
+    environment:
+      ALLOW_NONE_AUTHENTICATION: "yes"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_ENABLE_V2: "true"
+```
+**¿Qué hace cada variable?**
+- `ALLOW_NONE_AUTHENTICATION: "yes"` → No pide contraseña (solo para desarrollo)
+- `ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"` → Le dice a otros servicios "conéctate a mí en el puerto 2379"
+- `ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"` → "Escucho conexiones en todos los IPs en puerto 2379"
+- `ETCD_ENABLE_V2: "true"` → Habilita la versión 2 de la API (APISIX la necesita)
+
+### Mapeo de puertos
+```yaml
+    ports:
+      - "2379:2379"
+```
+**¿Qué hace?** Conecta el puerto 2379 de tu computadora con el puerto 2379 del contenedor. Ahora puedes acceder a etcd desde `localhost:2379`.
+
+### Red de comunicación
+```yaml
+    networks:
+      - apisix
+```
+**¿Qué hace?** Pone este contenedor en una red llamada `apisix`. Los contenedores en la misma red pueden "hablarse" entre ellos usando sus nombres.
+
+### Almacenamiento persistente
+```yaml
+    volumes:
+      - etcd_data:/bitnami/etcd
+```
+**¿Qué hace?** Crea un espacio de almacenamiento llamado `etcd_data` que sobrevive aunque borres el contenedor. Así no pierdes las configuraciones.
+
+### Health check
+```yaml
+    healthcheck:
+      test: ["CMD-SHELL", "etcdctl --endpoints=http://127.0.0.1:2379 endpoint health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+```
+**¿Qué hace cada línea?**
+- `test: [...]` → Comando que verifica si etcd está funcionando bien
+- `interval: 10s` → Ejecuta la prueba cada 10 segundos
+- `timeout: 5s` → Si la prueba toma más de 5 segundos, falla
+- `retries: 3` → Intenta 3 veces antes de marcar como "unhealthy"
+- `start_period: 10s` → Espera 10 segundos antes de empezar las pruebas
+
+---
+
+## Servicio APISIX (API Gateway)
+
+### Definición del servicio
+```yaml
+  apisix:
+    image: apache/apisix:3.6.0-debian
+    container_name: apisix-gateway
+```
+**¿Qué hace?** Crea el servicio principal usando la imagen oficial de Apache APISIX versión 3.6.0 basada en Debian.
+
+### Dependencias
+```yaml
+    depends_on:
+      etcd:
+        condition: service_healthy
+```
+**¿Qué hace?** 
+- APISIX no se inicia hasta que etcd esté completamente sano
+- `service_healthy` significa que espera hasta que el health check de etcd pase
+
+### Puertos expuestos
+```yaml
+    ports:
+      - "9080:9080"  # Gateway público
+      - "9443:9443"  # HTTPS (si se configura)
+      - "9180:9180"  # Admin API
+```
+**¿Qué hace cada puerto?**
+- `9080` → Puerto principal donde llegan las peticiones de los clientes
+- `9443` → Puerto para HTTPS (encriptado)
+- `9180` → Puerto para administrar APISIX (crear rutas, configurar plugins)
+
+### Conectividad con el host
+```yaml
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+```
+**¿Qué hace?** Permite que APISIX se conecte a servicios que corren en tu computadora (fuera de Docker). Crea un alias especial llamado `host.docker.internal`.
+
+### Variables de configuración
+```yaml
+    environment:
+      - APISIX_STAND_ALONE=false
+```
+**¿Qué hace?** Le dice a APISIX que use etcd para guardar configuraciones (no modo autónomo).
+
+### Archivo de configuración
+```yaml
+    volumes:
+      - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
+```
+**¿Qué hace?**
+- Monta el archivo `config.yaml` de tu carpeta al contenedor
+- `:ro` significa "read-only" (solo lectura)
+- Este archivo contiene la configuración principal de APISIX
+
+---
+
+## Configuración de red
+
+```yaml
+networks:
+  apisix:
+    driver: bridge
+```
+**¿Qué hace?**
+- Crea una red privada llamada `apisix`
+- `bridge` es el tipo de red (los contenedores pueden comunicarse entre ellos)
+- Es como crear una LAN virtual solo para estos servicios
+
+---
+
+## Almacenamiento persistente
+
+```yaml
+volumes:
+  etcd_data:
+    driver: local
+```
+**¿Qué hace?**
+- Define un volumen llamado `etcd_data`
+- `local` significa que se guarda en el disco duro de tu computadora
+- Aquí se almacenan las configuraciones de APISIX permanentemente
+
+---
+
+## Flujo de comunicación
+
+```
+Tu aplicación → Puerto 9080 → APISIX → host.docker.internal:8001-8004 → Tus microservicios
+                     ↕
+                   etcd (configuraciones)
+```
+
+## Comandos útiles con esta configuración
+
+```bash
+# Iniciar todo
+docker-compose up -d
+
+# Ver estado de servicios
+docker-compose ps
+
+# Ver logs de APISIX
+docker-compose logs apisix
+
+# Ver logs de etcd
+docker-compose logs etcd
+
+# Detener todo
+docker-compose down
+
+# Detener y eliminar datos
+docker-compose down -v
+```
+
+## Lo que obtienes al ejecutar este archivo
+
+1. **Un gateway funcional** en `localhost:9080`
+2. **Una interfaz de administración** en `localhost:9180`  
+3. **Conexión automática entre servicios** mediante la red `apisix`
+4. **Persistencia de datos** a través del volumen `etcd_data`
+5. **Reinicio automático** si algo falla
+6. **Health monitoring** para garantizar que etcd esté sano
+
+Este archivo crea la infraestructura completa para que puedas enrutar peticiones desde un punto único hacia tus 4 microservicios externos.
+
 ## Recursos adicionales
 
 - [Documentación oficial de APISIX](https://apisix.apache.org/docs/)
