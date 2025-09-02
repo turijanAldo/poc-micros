@@ -5,6 +5,7 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,7 @@ import com.company.micros1.utilitaria.Monitores;
 
 
 @RestController
+@RequestMapping("/api/micro1")
 public class Micro1Controller {
     @Autowired
     Micro1Service micro1Service;
@@ -43,6 +45,11 @@ public class Micro1Controller {
     public ResponseEntity<RecibeSolicitudDto> recibeRespuesta(@RequestBody RecibeSolicitudDto solicitudDDto) {
         return micro1Service.recibeSolicitud(solicitudDDto);
 
+    }
+
+    @GetMapping("/test-trace")
+    public ResponseEntity<String> testTrace() {
+        return ResponseEntity.ok("Tracing OK!");
     }
 
 }

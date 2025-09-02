@@ -1,85 +1,161 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.5.4'
-	id 'io.spring.dependency-management' version '1.1.7'
-	id 'com.google.protobuf' version '0.9.4'
+    id 'java'
+    id 'org.springframework.boot' version '3.5.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.google.protobuf' version '0.9.4'
 }
 
 group = 'com.company'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+// Configuración del compilador para retener nombres de parámetros
+// Esto mejora la introspección y resuelve algunos problemas de compatibilidad
+compileJava {
+    options.compilerArgs += ['-parameters']
+}
+
+compileTestJava {
+    options.compilerArgs += ['-parameters']
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
+
+// Versiones estratégicamente seleccionadas para Spring Boot 3.5.4
 ext {
-    openTelemetryVersion = '2.18.1'
-    micrometerTracingVersion = '1.4.0'
+    // Versión que incluye el método setExportUnsampledSpans requerido por Spring Boot 3.5.4
+    openTelemetryInstrumentationVersion = '2.0.0-alpha'
+    
+    // Versión de Micrometer compatible
+    micrometerTracingVersion = '1.2.0'
+    
+    // Versiones para gRPC estables
+    grpcVersion = '1.58.0'
+    protobufVersion = '3.24.4'
 }
+
+// BOM actualizado para versiones compatibles con Spring Boot 3.5.4
+dependencyManagement {
+    imports {
+        mavenBom 'io.opentelemetry:opentelemetry-bom:1.34.1'
+        mavenBom 'io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:2.0.0-alpha'
+    }
+}
+
 dependencies {
-    	// Lombok
-	compileOnly 'org.projectlombok:lombok'  // Lombok solo se usa en compilación, no se incluye en el JAR final
-    annotationProcessor 'org.projectlombok:lombok' // Procesa las anotaciones de Lombok (@Getter, @Setter, @Builder, etc.) en tiempo de compilación.
+    // ═══════════════════════════════════════════════════════════════
+    // HERRAMIENTAS DE DESARROLLO
+    // ═══════════════════════════════════════════════════════════════
+    
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
     
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-    // gRPC
-    implementation 'io.grpc:grpc-netty-shaded:1.63.0'
-    implementation 'io.grpc:grpc-protobuf:1.63.0'
-    implementation 'io.grpc:grpc-stub:1.63.0'
     
-    // Protobuf
-    implementation 'com.google.protobuf:protobuf-java:3.25.3'
+    // ═══════════════════════════════════════════════════════════════
+    // EXCLUSIONES PARA RESOLVER CONFLICTOS
+    // ═══════════════════════════════════════════════════════════════
     
-    // Anotaciones para @Generated - CAMBIAR A JAVAX
+    configurations.all {
+        exclude group: 'org.springdoc', module: 'springdoc-openapi-starter-webmvc-ui'
+        exclude group: 'org.springdoc'
+    }
+    
+    // ═══════════════════════════════════════════════════════════════
+    // gRPC Y PROTOBUF - COMUNICACIÓN ENTRE SERVICIOS
+    // ═══════════════════════════════════════════════════════════════
+    
+    implementation "io.grpc:grpc-netty-shaded:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+    implementation "io.grpc:grpc-core:${grpcVersion}"
+    implementation "com.google.protobuf:protobuf-java:${protobufVersion}"
+    
     implementation 'javax.annotation:javax.annotation-api:1.3.2'
-	        // ===== NUEVAS DEPENDENCIAS OPENTELEMETRY =====
-    // Actuator para métricas
+    
+    // ═══════════════════════════════════════════════════════════════
+    // SPRING BOOT - FRAMEWORK BASE
+    // ═══════════════════════════════════════════════════════════════
+    
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     
-    // OpenTelemetry Tracing - MÍNIMO NECESARIO
-    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
-    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
-    // Prometheus para métricas - MÍNIMO
-    implementation 'io.micrometer:micrometer-registry-prometheus'
-    
-    // Para logs estructurados (opcional por ahora)
-    implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
-
-	// Spring Boot
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'net.devh:grpc-server-spring-boot-starter:3.0.0.RELEASE'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0' // Use the latest stable version
-
-	// herramientas para desarrollo -- opcional
-	// developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-	// MariaDB driver
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-
-	// Para pruebas
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+    
+    // ═══════════════════════════════════════════════════════════════
+    // OPENTELEMETRY - ESTRATEGIA SIMPLIFICADA
+    // ═══════════════════════════════════════════════════════════════
+    
+    // ENFOQUE PRINCIPAL: Usar el starter y dejar que maneje las dependencias
+    // El starter automáticamente trae todas las dependencias necesarias:
+    // - opentelemetry-api
+    // - opentelemetry-sdk  
+    // - opentelemetry-semconv
+    // - opentelemetry-exporter-otlp
+    // Todo en versiones compatibles probadas juntas
+    implementation "io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:${openTelemetryInstrumentationVersion}"
+    
+    // DEPENDENCIAS ADICIONALES ESPECÍFICAS
+    // Solo agregamos lo que el starter no incluye por defecto
+    
+    // NOTA: Removemos temporalmente el exportador Zipkin para evitar conflictos
+    // de versiones. El collector puede enviar trazas a Zipkin usando OTLP.
+    // implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
+    
+    // ═══════════════════════════════════════════════════════════════
+    // MICROMETER - BRIDGE ENTRE SPRING Y OPENTELEMETRY
+    // ═══════════════════════════════════════════════════════════════
+    
+    // Bridge crucial para conectar Spring Boot Actuator con OpenTelemetry
+    implementation "io.micrometer:micrometer-tracing-bridge-otel:${micrometerTracingVersion}"
+    implementation 'io.micrometer:micrometer-tracing'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+    implementation 'io.opentelemetry.instrumentation:opentelemetry-grpc-1.6'
+    // Registry para métricas de Prometheus
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation 'io.opentelemetry.semconv:opentelemetry-semconv:1.21.0-alpha'
+    
+    // ═══════════════════════════════════════════════════════════════
+    // LOGGING Y OBSERVABILIDAD ADICIONAL
+    // ═══════════════════════════════════════════════════════════════
+    
+    implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
+    
+    // ═══════════════════════════════════════════════════════════════
+    // BASE DE DATOS Y TESTING
+    // ═══════════════════════════════════════════════════════════════
+    
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
+// ═══════════════════════════════════════════════════════════════
+// CONFIGURACIÓN DE PROTOBUF
+// ═══════════════════════════════════════════════════════════════
+
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.25.3"
+        artifact = "com.google.protobuf:protoc:${protobufVersion}"
     }
+    
     plugins {
         grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.63.0"
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
         }
     }
+    
     generateProtoTasks {
         all().each { task ->
             task.plugins {
@@ -88,6 +164,7 @@ protobuf {
         }
     }
 }
+
 sourceSets {
     main {
         java {
@@ -98,5 +175,63 @@ sourceSets {
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CONFIGURACIÓN DE DUPLICADOS Y OPTIMIZACIONES
+// ═══════════════════════════════════════════════════════════════
+
+// Estrategia para manejar archivos duplicados durante el empaquetado
+tasks.withType(Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+// Configuración específica para bootJar
+bootJar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    
+    manifest {
+        attributes(
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Built-By': System.getProperty('user.name'),
+            'Built-Date': new Date().toString(),
+            'Built-JDK': System.getProperty('java.version')
+        )
+    }
+}
+
+// Tarea de verificación mejorada
+task checkObservabilityDependencies {
+    group = 'verification'
+    description = 'Verifica que todas las dependencias de observabilidad estén disponibles'
+
+    doLast {
+        println "🔍 Verificando dependencias de observabilidad..."
+        def requiredClasses = [
+            'io.micrometer.tracing.Tracer': 'Micrometer Tracing API',
+            'io.opentelemetry.api.OpenTelemetry': 'OpenTelemetry API',
+            'io.opentelemetry.sdk.OpenTelemetrySdk': 'OpenTelemetry SDK',
+            'io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter': 'OTLP Exporter',
+            'io.micrometer.core.instrument.MeterRegistry': 'Micrometer Core'
+        ]
+
+        boolean allFound = true
+        requiredClasses.each { className, description ->
+            try {
+                Class.forName(className)
+                println "✅ $description: $className"
+            } catch (ClassNotFoundException e) {
+                println "❌ FALTA: $description: $className"
+                allFound = false
+            }
+        }
+
+        if (allFound) {
+            println "🎯 ¡Todas las dependencias de observabilidad están correctamente configuradas!"
+        } else {
+            println "⚠️  Algunas dependencias no están disponibles. Revisa la configuración."
+        }
+    }
 }

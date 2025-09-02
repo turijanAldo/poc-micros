@@ -1,4 +1,6 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: micros1
   datasource:
@@ -29,13 +31,106 @@ grpc:
     port: 9095
     security:
       enabled: false
+      max-inbound-message-size: 1MB
+    keep-alive-time: 30s
+    keep-alive-timeout: 5s
+
+# ═══════════════════════════════════════════════════════════════
+# CONFIGURACIÓN DE OBSERVABILIDAD (OpenTelemetry + Micrometer)
+# ═══════════════════════════════════════════════════════════════
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+    propagation:
+      type: 
+        - B3
+        - B3_MULTI
+        - W3C
+    baggage:
+      correlation:
+        enabled: true
+        fields:
+          - user-id
+          - request-id
+          - operation-type
+          - session-id
+      remote-fields:
+        - user-id
+        - request-id
+        - operation-type
+        - session-id
+  
+  # Configuración para enviar trazas al collector
+  otlp:
+    tracing:
+      endpoint: http://host.docker.internal:4318/v1/traces
+
+
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info,metrics,prometheus,env,configprops,threaddump
+
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      version: "1.0.0"
+      environment: "development"
+      team: "backend"
+      protocol.type: "grpc-server"  # Esta etiqueta te ayudará a filtrar métricas por protocolo
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        http.client.requests: true
+        grpc.server.requests: true    # Métricas específicas para gRPC
+        grpc.client.requests: true
+      percentiles:
+        http.server.requests: 0.5, 0.75, 0.95, 0.99
+        http.client.requests: 0.5, 0.75, 0.95, 0.99
+        grpc.server.requests: 0.5, 0.75, 0.95, 0.99
+        grpc.client.requests: 0.5, 0.75, 0.95, 0.99
+      sla:
+        http.server.requests: 50ms, 100ms, 200ms, 500ms, 1s, 2s
+        http.client.requests: 50ms, 100ms, 200ms, 500ms, 1s
+        grpc.server.requests: 10ms, 50ms, 100ms, 200ms, 500ms  # gRPC típicamente es más rápido
+        grpc.client.requests: 10ms, 50ms, 100ms, 200ms, 500ms
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+        step: 10s
+
+# ═══════════════════════════════════════════════════════════════
+# ATRIBUTOS DE RECURSO OPENTELEMETRY
+# ═══════════════════════════════════════════════════════════════
+otel:
+  resource:
+    attributes: 
+      service.name: micros1
+      service.version: "1.0.0"
+      deployment.environment: "development"
+      team: "backend"
+      service.instance.id: "${random.uuid}"
+
 
 # Enhanced logging configuration
 logging:
   level:
     root: INFO
     com.company: DEBUG
-    org.springframework: DEBUG
+    org.springframework: INFO
     org.springframework.boot: DEBUG
     org.springframework.context: DEBUG
     org.springframework.beans: DEBUG
@@ -44,7 +139,23 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     net.devh.boot.grpc: DEBUG
     io.grpc: DEBUG
+    io.micrometer: DEBUG
+    io.zipkin: INFO
+    brave: INFO
+    io.micrometer.tracing: DEBUG
+    io.opentelemetry: DEBUG
+    org.springframework.boot.actuate.autoconfigure: DEBUG
+    io.opentelemetry.exporter.otlp: DEBUG
+    io.opentelemetry.exporter.otlp.http: DEBUG
+    io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter: TRACE
+    io.opentelemetry.exporter.otlp.internal: TRACE
+    io.opentelemetry.sdk.trace.export: DEBUG
+    io.opentelemetry.sdk.trace: DEBUG
+    io.opentelemetry.sdk.common: DEBUG
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
   file:
-    name: logs/monitor.log
+    name: ./logs/micros1.log
+    max-size: 100MB
+    max-history: 30
